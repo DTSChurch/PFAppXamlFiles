@@ -1,0 +1,52 @@
+<StackLayout>
+    {% contentchannelitem where:'ContentChannelId == 4 && StartDateTime <= "{{ 'Now' | Date }}"' sort:'StartDateTime desc' securityenabled:'false' %}
+
+    {% assign closeCurly = '}' -%}
+    {%- capture seriesJSON -%}
+        [
+            {%- for item in contentchannelitemItems -%}
+            {
+                "Id": {{ item.Id | ToJSON }},
+                "Title": {{ item.Title | ToJSON }},
+                "Summary": {{ item | Attribute:'Summary' | ToJSON }},
+                "ImageId": {{ item | Attribute:'SeriesImage','RawValue' | ToJSON }},
+                "ImageLink": "{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Guid={{ item | Attribute:'SeriesImage','RawValue' }}",
+                "MessageCount": {{ item.ChildItems | Size | ToJSON }}
+            {% if forloop.last %}{{ closeCurly -}}{% else %}{{ closeCurly | Append:', ' -}}{%- endif -%}
+            {%- endfor -%}
+        ]
+    {%- endcapture -%}
+
+    {% endcontentchannelitem %}
+    <StackLayout.Resources>
+        <Rock:FromJson x:Key="Series">
+            {}{{ seriesJSON | XamlWrap }}
+        </Rock:FromJson>
+    </StackLayout.Resources>
+    <CarouselView
+        ItemsSource="{StaticResource Series}"
+        HeightRequest="250"
+        PeekAreaInsets="20,0,40,0" >
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Rock:ContainedCard 
+                        Tagline="DESTINATIONS"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="10,5,10,5"
+                        Title="{Binding Title}"
+                        Image="{Binding ImageLink}">
+                        <Label Text="{Binding Title}" Margin="10,5,10,5" StyleClass="heading4, leading-none, text-bold" />
+                    </Rock:ContainedCard>
+                </Grid>
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+    </CarouselView>
+</StackLayout>

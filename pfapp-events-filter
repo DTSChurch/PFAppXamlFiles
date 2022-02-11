@@ -1,0 +1,52 @@
+<StackLayout>
+    <StackLayout.Behaviors>
+    	<Rock:EntranceTransition Duration="300" />
+    </StackLayout.Behaviors>
+
+<Rock:Expander>
+    <Rock:Expander.Header>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+            CornerRadius="10,10,10,10"
+            IsClippedToBounds="true"
+            HorizontalOptions="FillAndExpand"
+            Margin="10"
+            HeightRequest="50"
+            Grid.Row="0"
+            Grid.Column="0" />
+
+        <Label Text="Filter"
+            TextColor="{Rock:PaletteColor App-Light}"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            Grid.Row="0"
+            Grid.Column="0"
+            StyleClass="text-lg" />
+
+    </Grid>
+
+    </Rock:Expander.Header>
+    <StackLayout>
+       {% definedtype id:'108' securityenabled:'false' %}
+
+{% for dv in definedtype.DefinedValues %}
+
+    <Button Text="{{dv.Value}}"
+        StyleClass="btn,btn-primary"
+        Margin="20,0,20,0"
+        HorizontalOptions="FillAndExpand" Command="{Binding PushPage}" CommandParameter="3ae0cf1c-e49a-4b3a-bec7-b66700ff0891?DefinedValueId={{dv.Id}}"  />
+
+{% endfor %}
+
+{% enddefinedtype %}
+
+    </StackLayout>
+</Rock:Expander>
+</StackLayout>

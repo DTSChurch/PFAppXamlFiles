@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Rock="clr-namespace:Rock.Mobile.Cms;assembly=Rock.Mobile"
+             xmlns:Common="clr-namespace:Rock.Mobile.Common;assembly=Rock.Mobile.Common">
+   <StackLayout>
+       <StackLayout Orientation="Horizontal">
+            <Rock:Zone ZoneName="Header" HorizontalOptions="FillAndExpand" />
+       </StackLayout>
+        <ScrollView>
+        <StackLayout>
+            <Rock:Zone ZoneName="Main" />
+        
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                <Rock:Zone ZoneName="Left"  
+                    Grid.Row="0"
+                    Grid.Column="0" />
+
+                <Rock:Zone ZoneName="Right"  
+                    Grid.Row="0"
+                    Grid.Column="1" />
+
+
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+    </StackLayout>
+</ContentPage>

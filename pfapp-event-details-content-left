@@ -1,0 +1,35 @@
+{% assign itemId = PageParameter.ItemId %}
+{% if itemId and itemId != null %}
+{% eventcalendaritem id:'{{itemId}}' securityenabled:'false' %}
+{% capture link %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ eventcalendaritem.EventItem.PhotoId }}{% endcapture %}
+
+{% assign eventItem = eventcalendaritem.EventItem %}
+{% assign wholeLifeCategory = eventItem | Attribute:'WholeLifeCategory','Object' %}
+{% assign wholeLifeCategoryValue = wholeLifeCategory.Value %}
+{% assign wholeLifeCategoryImageId = wholeLifeCategory | Attribute:'Image','Id' %}
+{% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
+
+
+<StackLayout>
+
+ <StackLayout.Behaviors>
+    	<Rock:EntranceTransition Duration="300" />
+    </StackLayout.Behaviors>
+
+
+
+    <Label Text="{{wholeLifeCategoryValue}}"
+        StyleClass="text-lg"
+        TextColor="{Rock:PaletteColor App-Primary}"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Center" />
+
+    <Rock:Image HeightRequest="150"
+        Margin="10,0,10,10"
+        Source="{{wholeLifeCategoryImageLink}}"
+        Aspect="AspectFit" />
+
+
+</StackLayout>
+{% endeventcalendaritem %}
+{% endif %}

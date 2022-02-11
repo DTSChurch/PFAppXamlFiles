@@ -1,0 +1,18 @@
+    {% eventcalendaritem where:'EventCalendarId == 1' sort:'StartDateTime desc' securityenabled:'false' %}
+
+    {% assign closeCurly = '}' -%}
+    {%- capture eventJSON -%}
+        [
+            {%- for item in eventcalendaritemItems -%}
+            {
+                "Id": {{ item.Id | ToJSON }},
+                "Title": {{ item.EventItem.Name | ToJSON }},
+                "Summary": {{ item.EventItem.Description | ToJSON }},
+                "ImageId": {{ item.EventItem.PhotoId | ToJSON }},
+                "ImageLink": "{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ item.EventItem.PhotoId }}"
+            {% if forloop.last %}{{ closeCurly -}}{% else %}{{ closeCurly | Append:', ' -}}{%- endif -%}
+            {%- endfor -%}
+        ]
+    {%- endcapture -%}
+
+    {% endeventcalendaritem %}

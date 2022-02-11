@@ -1,0 +1,19 @@
+<StackLayout Orientation="Vertical" Padding="10,40,10,0" HorizontalOptions="FillAndExpand">
+    <StackLayout.Behaviors>
+    	<Rock:EntranceTransition Duration="300" />
+    </StackLayout.Behaviors>
+
+    <Rock:Image Source="https://staff.pathfinderstl.org/Content/MobileApp/Lantern_Only_RGB.png" WidthRequest="100" Margin="0,0,0,20" />
+    <StackLayout StyleClass="px-32, py-16">
+        <Button Text="Watch"
+        StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+            Command="{Binding PushPage}"
+            CommandParameter="9bbc8b74-0204-4744-a082-1e1c05b3eab3" />
+    </StackLayout>
+    <StackLayout StyleClass="px-32, py-16">
+        <Button Text="Coming Up"
+            StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+            Command="{Binding PushPage}"
+            CommandParameter="70909791-34ec-46a5-9d6d-8fcf2cdf1704" />
+    </StackLayout>
+</StackLayout>

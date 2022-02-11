@@ -1,0 +1,65 @@
+<StackLayout>
+    {% assign itemId = PageParameter.ItemId %}
+    {% if itemId and itemId != null %}
+    {% contentchannelitem id:'{{itemId}}' securityenabled:'false' %}
+    {% assign item = contentchannelitem %}
+
+    <StackLayout.Behaviors>
+    	<Rock:EntranceTransition Duration="150" />
+    </StackLayout.Behaviors>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+            CornerRadius="15,15,15,15"
+            IsClippedToBounds="true"
+            HorizontalOptions="FillAndExpand"
+            Margin="10"
+            HeightRequest="100"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3" />
+
+
+        <Label Text="{{item.Title}}"
+            TextColor="{Rock:PaletteColor App-Light}"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            StyleClass="text-lg" />
+
+        <Label Text="Speaker: {{item | Attribute:'Speaker'}}"
+            TextColor="{Rock:PaletteColor App-Light}"
+            Margin="0,0,20,20"
+            HorizontalTextAlignment="Right"
+            VerticalTextAlignment="End"
+            Grid.Row="0"
+            Grid.Column="2"
+            StyleClass="heading4" />
+
+            <Rock:Icon IconClass="plus"
+                FontSize="14"
+                IconFamily="FontAwesomeSolid"
+                TextColor="{Rock:PaletteColor App-Light}"
+                HorizontalTextAlignment="Right"
+                VerticalTextAlignment="Start"
+                Margin="0,20,20,0"
+                Grid.Row="0"
+                Grid.Column="2" />
+    </Grid>
+
+    <Rock:MediaPlayer Source="{{item | Attribute:'VideoLink'}}" AutoPlay="false" />
+
+    {% endcontentchannelitem %}
+    {% endif %}
+
+</StackLayout>

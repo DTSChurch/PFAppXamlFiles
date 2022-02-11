@@ -1,0 +1,6 @@
+{% assign itemId = PageParameter.ItemId %}
+{% if itemId and itemId != null %}
+{% contentchannelitem id:'{{itemId}}' securityenabled:'false' %}
+<Label Text="{{contentchannelitem.Title}}" StyleClass="text-title" HorizontalOptions="Center"/>
+{% endcontentchannelitem %}
+{% endif %}

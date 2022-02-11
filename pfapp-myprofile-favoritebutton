@@ -1,0 +1,40 @@
+<Grid>
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4" />
+    </Grid.GestureRecognizers>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+        CornerRadius="10,10,10,10"
+        IsClippedToBounds="true"
+        HorizontalOptions="FillAndExpand"
+        Margin="10"
+        HeightRequest="50"
+        Grid.Row="0"
+        Grid.Column="0"
+         Grid.ColumnSpan="2" />
+
+    <Label Text="Favorites"
+        TextColor="{Rock:PaletteColor App-Light}"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Center"
+        Grid.Row="0"
+        Grid.Column="0"
+        StyleClass="text-lg" />
+
+    <Rock:Icon IconClass="star"
+        FontSize="32"
+        Grid.Row="0"
+        Grid.Column="1"
+        HorizontalTextAlignment="End"
+        VerticalTextAlignment="Center"
+        MarginRight="30"
+        TextColor="{Rock:PaletteColor App-Light}" />
+
+</Grid>

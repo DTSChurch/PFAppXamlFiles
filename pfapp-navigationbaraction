@@ -1,0 +1,33 @@
+<Grid>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="60" />
+        <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+
+    <Rock:Icon IconClass="bell" 
+        FontSize="28" 
+        IconFamily="FontAwesomeRegular"
+        StyleClass="btn,btn-primary"
+        Command="{Binding ReplacePage}"
+        CommandParameter="d2ace62e-620e-4245-9f92-8c76bef23dd7"
+        Grid.Row="0" 
+        Grid.Column="0" />
+
+    <Rock:LoginStatusPhoto
+        NotLoggedInPhotoFillColor="{Rock:PaletteColor App-Primary}"
+        LoggedInNoPhotoFillColor="{Rock:PaletteColor App-Primary}"
+        ProfilePhotoStrokeColor="{Rock:PaletteColor App-Primary}"
+        ProfilePhotoStrokeWidth="2"
+        NotLoggedInCommand="{Binding ReplacePage}"
+        NotLoggedInCommandParameter="7261c51f-b545-4401-85af-26233d9707b1" 
+        LoggedInCommand="{Binding ReplacePage}"
+        LoggedInCommandParameter="6b9e8d7e-af76-4461-9d5d-c4817c1d3600" 
+        Grid.Row="0" 
+        Grid.Column="1" />
+
+    
+</Grid>

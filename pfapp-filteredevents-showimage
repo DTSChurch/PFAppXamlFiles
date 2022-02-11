@@ -1,0 +1,46 @@
+{% assign definedValueId = PageParameter.DefinedValueId %}
+{% if definedValueId and definedValueId != null %}
+{% definedvalue id:'{{definedValueId}}' securityenabled:'false' %}
+
+{% assign wholeLifeCategoryValue = definedvalue.Value %}
+{% assign wholeLifeCategoryImageId = definedvalue | Attribute:'Image','Id' %}
+{% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
+
+
+<StackLayout>
+
+    <Grid>
+     <Grid.Behaviors>
+    	<Rock:EntranceTransition Duration="300" />
+    </Grid.Behaviors>
+       <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+        <Rock:Image HeightRequest="150"
+            Source="{{wholeLifeCategoryImageLink}}"
+            Aspect="AspectFit"
+            VerticalOptions="StartAndExpand"
+            Grid.Row="0"
+            Grid.Column="0" />
+
+        <Label Text="{{wholeLifeCategoryValue}}"
+            StyleClass="text-lg"
+            TextColor="{Rock:PaletteColor App-Primary}"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            Grid.Row="1"
+             Grid.Column="0" />
+
+    </Grid>
+
+
+
+</StackLayout>
+{% enddefinedvalue %}
+{% endif %}

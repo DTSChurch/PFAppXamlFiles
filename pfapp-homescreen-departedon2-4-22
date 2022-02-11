@@ -1,0 +1,64 @@
+<StackLayout Orientation="Vertical"
+    Padding="10,40,10,0" 
+    HorizontalOptions="FillAndExpand" >
+
+    <Rock:Image Source="https://staff.pathfinderstl.org/Content/MobileApp/Pathfinder_Logo_RGB_3_5_19.png" Margin="20,0,20,20" />
+    <Label Text="Welcome!" StyleClass="text-title" TextColor="White" HorizontalOptions="Center"  />
+
+
+<Grid>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+     <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="11fd268f-baad-4eea-9ba5-0530e2d57825"  />
+    </Grid.GestureRecognizers>
+    
+    <Grid.Resources>
+        <Rock:FadeToAnimation x:Key="FadeInDown"
+            Target="{x:Reference circleIcon}"
+            Duration="250"
+            Opacity="1" />
+        <Rock:FadeToAnimation x:Key="FadeInUp"
+            Target="{x:Reference userIcon}"
+            Duration="250"
+            Opacity="1" />
+    </Grid.Resources>
+
+
+    <Rock:Icon IconClass="circle" 
+        FontSize="200"
+        HorizontalOptions="Center"
+        StyleClass="text-secondary"
+        VerticalOptions="Center"
+        IconFamily="FontAwesomeSolid"
+        Grid.Column="0"
+        x:Name="circleIcon"
+        Opacity="0" >
+
+        <Rock:Icon.Behaviors>
+            <Rock:BeginAnimationBehavior Animation="{StaticResource FadeInDown}" />
+        </Rock:Icon.Behaviors>
+      </Rock:Icon>  
+
+    <Rock:Icon IconClass="user" 
+        FontSize="100" 
+        StyleClass="text-primary"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        IconFamily="FontAwesomeRegular"
+        Grid.Column="0"
+        Opacity="0"
+        x:Name="userIcon" >
+        <Rock:Icon.Behaviors>
+            <Rock:BeginAnimationBehavior Animation="{StaticResource FadeInUp}" />
+        </Rock:Icon.Behaviors>
+      </Rock:Icon>  
+
+    
+
+</Grid>
+
+    <Label Text="Create Profile" StyleClass="text-title,text-primary" HorizontalOptions="Center"  />
+</StackLayout>

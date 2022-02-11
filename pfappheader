@@ -1,0 +1,50 @@
+<Grid Padding="10,10,10,0">
+    <Grid.Effects>
+        <Rock:SafeAreaPaddingEffect Edges="Top" />
+    </Grid.Effects>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+    <Rock:Icon IconClass="bars" 
+            FontSize="28" 
+            StyleClass="btn,btn-primary,bars-background,text-primary"
+            Command="{Binding PushPage}"
+            CommandParameter="a9ccef18-c471-4810-9152-4c0bd2f35e72"
+            Grid.Row="0" 
+            Grid.Column="0" />
+
+
+    <Rock:Icon IconClass="bell" 
+            FontSize="28" 
+            IconFamily="FontAwesomeRegular"
+            StyleClass="btn,btn-primary,bars-background,text-primary"
+            Command="{Binding PushPage}"
+            CommandParameter="d2ace62e-620e-4245-9f92-8c76bef23dd7"
+            Grid.Row="0" 
+            Grid.Column="2" />
+
+    <Rock:StyledView
+                CornerRadius="22"
+                HasShadow="True"
+                Elevation="1"
+                Padding="0"
+                Margin="10,5,10,5"
+                Grid.Row="0" 
+                Grid.Column="3"
+                IsClippedToBounds="True">
+                    <Rock:Icon IconClass="user" 
+                        FontSize="28"
+                        StyleClass="btn,btn-primary,text-secondary"
+                        Command="{Binding PushPage}"
+                        CommandParameter="7261c51f-b545-4401-85af-26233d9707b1" />
+            </Rock:StyledView>
+
+    
+</Grid>
