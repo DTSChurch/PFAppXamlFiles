@@ -1,0 +1,65 @@
+<StackLayout>
+    {%comment%}<StackLayout.Behaviors>
+    	<Rock:EntranceTransition Duration="50" />
+    </StackLayout.Behaviors>{%endcomment%}
+
+    {% connectionopportunity where:'ConnectionTypeId == 4' sort:'Name' securityenabled:'false' %}
+    {%- for item in connectionopportunityItems -%}
+
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			<Grid.GestureRecognizers>
+				<TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="61850847-e59e-46a9-8ca7-058e9430967e?ItemId={{item.Id}}" />
+			</Grid.GestureRecognizers>
+			
+
+			<Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+				CornerRadius="15,15,15,15"
+				IsClippedToBounds="true"
+				HorizontalOptions="FillAndExpand"
+				Margin="10"
+				HeightRequest="100"
+				Grid.Row="0"
+				Grid.Column="0"
+				Grid.ColumnSpan="3" />
+
+			<Label Text="{{item.Name | Escape}}"
+				TextColor="{Rock:PaletteColor App-Light}"
+				VerticalTextAlignment="Center"
+				HorizontalTextAlignment="Center"
+				Grid.Row="0"
+				Grid.Column="0"
+				Grid.ColumnSpan="2"
+				StyleClass="text-md" />
+
+			<Label Text="Speaker: {{item | Attribute:'Frequency'}}"
+				TextColor="{Rock:PaletteColor App-Light}"
+				Margin="0,0,20,20"
+				HorizontalTextAlignment="Right"
+				VerticalTextAlignment="End"
+				Grid.Row="0"
+				Grid.Column="2"
+				StyleClass="heading4" />
+
+			 <Rock:Icon IconClass="plus"
+				FontSize="14"
+				IconFamily="FontAwesomeSolid"
+				TextColor="{Rock:PaletteColor App-Light}"
+				HorizontalTextAlignment="Right"
+				VerticalTextAlignment="Start"
+				 Margin="0,20,20,0"
+				Grid.Row="0"
+				Grid.Column="2" />
+		</Grid>
+
+    {%- endfor -%}
+{% endconnectionopportunity %}
+</StackLayout>
