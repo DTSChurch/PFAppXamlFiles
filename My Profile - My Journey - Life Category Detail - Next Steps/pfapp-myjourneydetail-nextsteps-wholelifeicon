@@ -1,0 +1,41 @@
+{% assign definedValueId = PageParameter.DefinedValueId %}
+{% definedvalue id:'{{definedValueId}}' securityenabled:'false' %}
+
+    {%- assign item = definedvalue -%}
+
+    {% assign wholeLifeCategoryValue = item.Value %}
+    {% assign wholeLifeCategoryImageId = item | Attribute:'Image','Id' %}
+    {% assign wholeLifeDescription = item | Attribute:'HTMLDescription','Id' %}
+    {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
+
+
+
+<Grid Margin="10">
+<Grid.Behaviors>
+    <Rock:EntranceTransition Duration="300" />
+</Grid.Behaviors>
+<Grid.ColumnDefinitions>
+    <ColumnDefinition Width="*"/>
+
+</Grid.ColumnDefinitions>
+<Grid.RowDefinitions>
+    <RowDefinition Height="Auto"/>
+</Grid.RowDefinitions>
+
+
+    <Label Text="{{wholeLifeCategoryValue}}"
+        StyleClass="text-title"
+        TextColor="{Rock:PaletteColor App-Primary}"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Center"
+        Grid.Row="0"
+        Grid.Column="0" />
+
+
+
+</Grid>
+
+
+
+{% enddefinedvalue %}
+

@@ -59,8 +59,6 @@
             VerticalTextAlignment="Start" />
     </Grid>
 
-    <Rock:MediaPlayer Source="{{item | Attribute:'VideoLink'}}" AutoPlay="false" />
-
     <Rock:Html Text="{{item.Content | Escape}}" Margin="10" />
 
     {% endcontentchannelitem %}
