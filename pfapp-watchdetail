@@ -23,7 +23,7 @@
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="591490d1-3d0d-43e3-b572-bc3575260a5c?ItemId={{item.Id}}" />
                     </Grid.GestureRecognizers>
-
+                    
 
                     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
                         CornerRadius="15,15,15,15"
@@ -53,15 +53,18 @@
                         Grid.Column="2"
                         StyleClass="heading4" />
 
-                     <Rock:Icon IconClass="plus"
-                        FontSize="14"
-                        IconFamily="FontAwesomeSolid"
-                        TextColor="{Rock:PaletteColor App-Light}"
+                    <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
+                        EntityId="{{ item.Id }}"
+                        FontSize="22"
+                        IsFollowed="{{ item | IsFollowed }}"
+                        FollowingIconColor="{Rock:PaletteColor App-Light}"
+                        NotFollowingIconColor="{Rock:PaletteColor App-Light}" 
                         HorizontalTextAlignment="Right"
                         VerticalTextAlignment="Start"
-                        Margin="0,20,20,0"
+                         Margin="0,20,20,0"
                         Grid.Row="0"
                         Grid.Column="2" />
+
                 </Grid>
 
 

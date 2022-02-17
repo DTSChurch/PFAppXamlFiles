@@ -38,7 +38,7 @@
             <DataTemplate>
                 <StackLayout WidthRequest="180" >
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Path=BindingContext.PushPage, Source={x:Reference Name=CarouselView}}" CommandParameter="{Binding DetailLink}" />
+                        <TapGestureRecognizer Command="{Binding PushPage, Source={x:Reference Name=CarouselView}}" CommandParameter="{Binding DetailLink}" />
                     </StackLayout.GestureRecognizers>
                     <Grid>
                         <Grid.ColumnDefinitions>

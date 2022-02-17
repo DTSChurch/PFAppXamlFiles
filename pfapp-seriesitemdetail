@@ -46,18 +46,22 @@
             Grid.Column="2"
             StyleClass="heading4" />
 
-            <Rock:Icon IconClass="plus"
-                FontSize="14"
-                IconFamily="FontAwesomeSolid"
-                TextColor="{Rock:PaletteColor App-Light}"
-                HorizontalTextAlignment="Right"
-                VerticalTextAlignment="Start"
-                Margin="0,20,20,0"
-                Grid.Row="0"
-                Grid.Column="2" />
+        <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
+            EntityId="{{ item.Id }}"
+            FontSize="22"
+            IsFollowed="{{ item | IsFollowed }}"
+            FollowingIconColor="{Rock:PaletteColor App-Light}"
+            NotFollowingIconColor="{Rock:PaletteColor App-Light}" 
+            Grid.Row="0"
+            Grid.Column="2"
+            Margin="0,20,20,0"
+            HorizontalTextAlignment="Right"
+            VerticalTextAlignment="Start" />
     </Grid>
 
     <Rock:MediaPlayer Source="{{item | Attribute:'VideoLink'}}" AutoPlay="false" />
+
+    <Rock:Html Text="{{item.Content | Escape}}" Margin="10" />
 
     {% endcontentchannelitem %}
     {% endif %}

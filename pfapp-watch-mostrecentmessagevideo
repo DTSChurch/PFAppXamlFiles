@@ -1,0 +1,5 @@
+{% contentchannelitem where:'ContentChannelId == 5' securityenabled:'false' sort:'StartDateTime desc' limit:'1' %}
+
+<Rock:WebView Source="{{contentchannelitem | Attribute:'VideoLink'}}" />
+
+{% endcontentchannelitem %}

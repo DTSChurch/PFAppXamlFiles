@@ -41,7 +41,7 @@
     <Button Text="{{dv.Value}}"
         StyleClass="btn,btn-primary"
         Margin="20,0,20,0"
-        HorizontalOptions="FillAndExpand" Command="{Binding PushPage}" CommandParameter="3ae0cf1c-e49a-4b3a-bec7-b66700ff0891?DefinedValueId={{dv.Id}}"  />
+        HorizontalOptions="FillAndExpand" Command="{Binding PushPage}" CommandParameter="3ae0cf1c-e49a-4b3a-bec7-b66700ff0891?DefinedValueGuid={{dv.Guid}}"  />
 
 {% endfor %}
 

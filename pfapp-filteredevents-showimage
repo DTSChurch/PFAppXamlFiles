@@ -1,7 +1,7 @@
-{% assign definedValueId = PageParameter.DefinedValueId %}
-{% if definedValueId and definedValueId != null %}
-{% definedvalue id:'{{definedValueId}}' securityenabled:'false' %}
-
+{% assign definedValueGuid = PageParameter.DefinedValueGuid %}
+{% if definedValueGuid and definedValueGuid != null %}
+{% definedvalue where:'Guid == "{{definedValueGuid}}"' securityenabled:'false' %}
+{% assign definedvalue = definedvalueItems | First %}
 {% assign wholeLifeCategoryValue = definedvalue.Value %}
 {% assign wholeLifeCategoryImageId = definedvalue | Attribute:'Image','Id' %}
 {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}

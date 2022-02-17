@@ -4,6 +4,7 @@
     </StackLayout.Behaviors>
 
     <Rock:Image Source="https://staff.pathfinderstl.org/Content/MobileApp/Lantern_Only_RGB.png" WidthRequest="100" Margin="0,0,0,20" />
+    
     <StackLayout StyleClass="px-32, py-16">
         <Button Text="Watch"
         StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
