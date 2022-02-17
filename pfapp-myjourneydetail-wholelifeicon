@@ -1,0 +1,68 @@
+{% assign definedValueId = PageParameter.DefinedValueId %}
+{% definedvalue id:'{{definedValueId}}' securityenabled:'false' %}
+<Grid Margin="0,30,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+    {%- assign item = definedvalue -%}
+
+    {% assign wholeLifeCategoryValue = item.Value %}
+    {% assign wholeLifeCategoryImageId = item | Attribute:'Image','Id' %}
+    {% assign wholeLifeDescription = item | Attribute:'HTMLDescription','Id' %}
+    {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
+
+    <StackLayout Grid.Row="0" Grid.Column="0">
+
+        <Grid Margin="10">
+        <Grid.Behaviors>
+            <Rock:EntranceTransition Duration="300" />
+        </Grid.Behaviors>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+            <Rock:Image HeightRequest="150"
+                Source="{{wholeLifeCategoryImageLink}}"
+                Aspect="AspectFit"
+                VerticalOptions="StartAndExpand"
+                Grid.Row="0"
+                Grid.Column="0" />
+
+            <Label Text="{{wholeLifeCategoryValue}}"
+                StyleClass="text-lg"
+                TextColor="{Rock:PaletteColor App-Primary}"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                Grid.Row="1"
+                Grid.Column="0" />
+
+
+            <Rock:Html Text="{{wholeLifeDescription | Escape}}"
+                Grid.Row="2"
+                Grid.Column="0" />
+
+            <Button Text="Next Steps"
+                StyleClass="btn,btn-lg,btn-warning"
+                Command="{Binding PushPage}"
+                CommandParameter="d29ed247-7898-45f2-bf80-63869a6292cb"
+                Grid.Row="3"
+                Grid.Column="0" />
+
+
+        </Grid>
+
+    </StackLayout>
+</Grid>
+{% enddefinedvalue %}
+
