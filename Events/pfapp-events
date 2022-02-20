@@ -15,7 +15,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Rock:StyledView CornerRadius="15"
+
                     <Rock:StyledView
                         CornerRadius="15,15,0,0"
                         Padding="0"
@@ -43,7 +43,6 @@
                         Margin="0,0,10,0"
                         HorizontalTextAlignment="Right" />
                         
-                </Rock:StyledView>
             </Grid>
         </StackLayout>
     {%- endfor -%}
