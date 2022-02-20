@@ -4,18 +4,23 @@
     <ListView.Header>
         <StackLayout VerticalOptions="FillAndExpand"
             Orientation="Vertical">
-            <BoxView HeightRequest="1" BackgroundColor="rgba(255, 255, 255, 0.2)"
+            <BoxView HeightRequest="1" 
                 HorizontalOptions="FillAndExpand"/>
-            <Rock:LoginStatus StyleClass="login-status"/>
+            <Rock:LoginStatus 
+                StyleClass="login-status"
+                NotLoggedInColor="{Rock:PaletteColor App-Dark}"
+                NoProfileIconColor="{Rock:PaletteColor App-Primary}"
+                TitleTextColor="{Rock:PaletteColor App-Dark}"
+                SubTitleTextColor="{Rock:PaletteColor App-Dark}" />
         </StackLayout>
     </ListView.Header>
     <ListView.ItemTemplate>
         <DataTemplate>
-            <Rock:ViewCell SelectedBackgroundColor="rgba(255, 255, 255, 0.2)">
+            <Rock:ViewCell SelectedBackgroundColor="#f1f1f1">
                 <StackLayout VerticalOptions="FillAndExpand"
                     Orientation="Vertical">
                     <ContentView StyleClass="pt-16, pb-12">
-                        <Label StyleClass="text-white, ml-32, flyout-menu-item"
+                        <Label StyleClass="ml-32, flyout-menu-item"
                             Text="{Binding Title}"
                             VerticalOptions="Center"
                             HorizontalOptions="FillAndExpand" />
@@ -29,7 +34,7 @@
             Orientation="Vertical">
             <Rock:Icon IconClass="search"
                 FontSize="28"
-                TextColor="{Rock:PaletteColor App-Light}"
+                TextColor="{Rock:PaletteColor App-Dark}"
                 StyleClass="btn,btn-primary"
                 Margin="30,20,0,0" />
             <Rock:Image Source="https://staff.pathfinderstl.org/Content/MobileApp/Pathfinder_Logo_RGB_3_5_19.png" Margin="30,30,30,30" Aspect="AspectFit" />

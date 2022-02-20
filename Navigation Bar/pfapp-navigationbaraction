@@ -1,4 +1,5 @@
 <Grid>
+    
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="60" />
         <ColumnDefinition Width="Auto" />
@@ -7,11 +8,10 @@
         <RowDefinition Height="Auto" />
     </Grid.RowDefinitions>
 
-
     <Rock:Icon IconClass="bell" 
         FontSize="28" 
         IconFamily="FontAwesomeRegular"
-        StyleClass="btn,btn-primary"
+        StyleClass="btn,btn-icon"
         Command="{Binding ReplacePage}"
         CommandParameter="d2ace62e-620e-4245-9f92-8c76bef23dd7"
         Grid.Row="0" 
@@ -28,6 +28,5 @@
         LoggedInCommandParameter="6b9e8d7e-af76-4461-9d5d-c4817c1d3600" 
         Grid.Row="0" 
         Grid.Column="1" />
-
-    
+        
 </Grid>

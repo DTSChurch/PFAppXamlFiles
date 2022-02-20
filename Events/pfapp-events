@@ -15,38 +15,35 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Rock:StyledView
-                    CornerRadius="15"
-                    HasShadow="True"
-                    Elevation="1"
-                    Padding="0"
-                    Margin="10,5,10,5"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3"
-                    IsClippedToBounds="True">
-
-                    <Rock:Image MarginBottom="-64" HeightRequest="220" Source="{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ item.EventItem.PhotoId }}" Aspect="AspectFill" VerticalOptions="CenterAndExpand"/>
-
-                    
-
-                </Rock:StyledView>
+                <Rock:StyledView CornerRadius="15"
+                    <Rock:StyledView
+                        CornerRadius="15,15,0,0"
+                        Padding="0"
+                        Margin="0"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        IsClippedToBounds="true">
+    
+                        <Rock:Image MarginBottom="-64" HeightRequest="220" Source="{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ item.EventItem.PhotoId }}" Aspect="AspectFill" VerticalOptions="CenterAndExpand"/>
+    
+                    </Rock:StyledView>
                 
-
-                <Label Text="{{item.EventItem.Name | Escape}}" Margin="10,5,10,5" Grid.Row="1" Grid.Column="0" StyleClass="heading4, leading-none, text-bold"/>
-                <Label Text="Jan '21"  Margin="10,5,10,5" HorizontalTextAlignment="Right" Grid.Row="1" Grid.Column="1" StyleClass="heading4, leading-none"/>
-
-                <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
-                    EntityId="{{ item.Id }}"
-                    FontSize="25"
-                    IsFollowed="{{ item | IsFollowed }}"
-                    FollowingIconColor="{Rock:PaletteColor App-Primary}"
-                    NotFollowingIconColor="{Rock:PaletteColor App-Primary}" 
-                    Grid.Row="1"
-                    Grid.Column="2"
-                    Margin="0,0,10,0"
-                    HorizontalTextAlignment="Right" />
-
+                    <Label Text="{{item.EventItem.Name | Escape}}" Margin="10,5,10,5" Grid.Row="1" Grid.Column="0" StyleClass="heading4, leading-none, text-bold"/>
+                    <Label Text="Jan '21"  Margin="10,5,10,5" HorizontalTextAlignment="Right" Grid.Row="1" Grid.Column="1" StyleClass="heading4, leading-none"/>
+    
+                    <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
+                        EntityId="{{ item.Id }}"
+                        FontSize="25"
+                        IsFollowed="{{ item | IsFollowed }}"
+                        FollowingIconColor="{Rock:PaletteColor App-Primary}"
+                        NotFollowingIconColor="{Rock:PaletteColor App-Primary}" 
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="0,0,10,0"
+                        HorizontalTextAlignment="Right" />
+                        
+                </Rock:StyledView>
             </Grid>
         </StackLayout>
     {%- endfor -%}

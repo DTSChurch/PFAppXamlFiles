@@ -13,7 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-White}" BorderColor="{Rock:PaletteColor App-Light}"
             CornerRadius="10,10,10,10"
             IsClippedToBounds="true"
             HorizontalOptions="FillAndExpand"
@@ -22,8 +22,8 @@
             Grid.Row="0"
             Grid.Column="0" />
 
-        <Label Text="Filter"
-            TextColor="{Rock:PaletteColor App-Light}"
+        <Label Text="FILTER"
+            TextColor="{Rock:PaletteColor App-Dark}"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"
             Grid.Row="0"
