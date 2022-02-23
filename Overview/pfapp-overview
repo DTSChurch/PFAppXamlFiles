@@ -4,7 +4,12 @@
     </StackLayout.Behaviors>
 
     <Rock:Image Source="https://staff.pathfinderstl.org/Content/MobileApp/Lantern_Only_RGB.png" WidthRequest="100" Margin="0,0,0,20" />
-    
+    <StackLayout StyleClass="px-32, py-16">
+        <Button Text="My Journey"
+            StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+            Command="{Binding PushPage}"
+            CommandParameter="b41d997a-7206-490a-9f25-e96dbeff575d" />
+    </StackLayout>
     <StackLayout StyleClass="px-32, py-16">
         <Button Text="Watch"
         StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
@@ -12,9 +17,19 @@
             CommandParameter="9bbc8b74-0204-4744-a082-1e1c05b3eab3" />
     </StackLayout>
     <StackLayout StyleClass="px-32, py-16">
-        <Button Text="Coming Up"
+        <Button Text="Pop-Up Events"
             StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
             Command="{Binding PushPage}"
             CommandParameter="70909791-34ec-46a5-9d6d-8fcf2cdf1704" />
+    </StackLayout>
+
+     <StackLayout StyleClass="px-32, py-16">
+        <Rock:StyledView HasShadow="true" >
+            <Button Text="Action Teams"
+                StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+                Command="{Binding PushPage}"
+                CommandParameter="7945cc85-bdcf-4d8c-8b49-47b0eb493ade" >
+                </Button>
+        </Rock:StyledView > 
     </StackLayout>
 </StackLayout>
