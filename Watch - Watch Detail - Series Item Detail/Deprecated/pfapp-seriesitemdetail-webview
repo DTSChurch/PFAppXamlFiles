@@ -1,0 +1,16 @@
+<StackLayout>
+    {% assign itemId = PageParameter.ItemId %}
+    {% if itemId and itemId != null %}
+    {% contentchannelitem id:'{{itemId}}' securityenabled:'false' %}
+    {% assign item = contentchannelitem %}
+
+    <StackLayout.Behaviors>
+    	<Rock:EntranceTransition Duration="150" />
+    </StackLayout.Behaviors>
+
+    <Rock:WebView Source="{{item | Attribute:'VideoLink'}}"  />
+
+    {% endcontentchannelitem %}
+    {% endif %}
+
+</StackLayout>

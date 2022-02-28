@@ -1,5 +1,5 @@
 {% assign personAliasId = CurrentPerson.PrimaryAliasId %}
-{% following where:'PersonAliasId == {{personAliasId}} && EntityTypeId == 270' securityenabled:'false' %}
+{% following where:'PersonAliasId == {{personAliasId}} && EntityTypeId == 270 || EntityTypeId == 236' securityenabled:'false' %}
 {% comment %}EntityTypeId == 270 is EventCalendarItem{% endcomment %}
 {% assign size = followingItems | Size %}
 {% if size > 0 %}
@@ -33,6 +33,9 @@
                         IsClippedToBounds="True">
 
                         <Rock:Image MarginBottom="-64" HeightRequest="220" Source="{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ item.EventItem.PhotoId }}" Aspect="AspectFill" VerticalOptions="CenterAndExpand"/>
+
+
+
                     </Rock:StyledView>
 
 

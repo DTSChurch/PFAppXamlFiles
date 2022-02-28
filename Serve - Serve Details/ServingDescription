@@ -1,0 +1,12 @@
+{% assign itemId = PageParameter.ItemId %}
+{% if itemId and itemId != null %}
+{% connectionopportunity id:'{{itemId}}' securityenabled:'false' %}
+
+<StackLayout>
+ <StackLayout.Behaviors>
+    	<Rock:EntranceTransition Duration="150" />
+    </StackLayout.Behaviors>
+<Rock:Html Text="{{connectionopportunity.Description | Escape}}" Margin="10" />
+</StackLayout>
+{% endconnectionopportunity %}
+{% endif %}

@@ -1,0 +1,6 @@
+{% assign itemId = PageParameter.ItemId %}
+{% if itemId and itemId != null %}
+{% connectionopportunity id:'{{itemId}}' securityenabled:'false' %}
+<Label Text="{{connectionopportunity.Name | Escape}}" StyleClass="text-title" HorizontalOptions="Center"/>
+{% endconnectionopportunity %}
+{% endif %}

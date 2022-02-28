@@ -1,0 +1,63 @@
+<StackLayout>
+    {% definedvalue where:'DefinedTypeId == 108' securityenabled:'false' %}
+    {% assign closeCurly = '}' -%}
+    {%- capture seriesJSON -%}
+        [
+            {%- for item in definedvalueItems -%}
+            {
+                "Id": {{ item.Id| ToJSON }},
+                "Title": {{ item.Value | ToJSON }},
+                "Color": {{ item | Attribute:'WatchButtonColor' | ToJSON }},
+                "DetailLink": "63217172-6ef2-4c36-b258-a18ce6eafcef?ItemId={{item.Id}}"
+            {% if forloop.last %}{{ closeCurly -}}{% else %}{{ closeCurly | Append:', ' -}}{%- endif -%}
+            {%- endfor -%}
+        ]
+    {%- endcapture -%}
+    {% enddefinedvalue %}
+    <StackLayout.Resources>
+        <Rock:FromJson x:Key="Series">
+            {}{{ seriesJSON | XamlWrap }}
+        </Rock:FromJson>
+    </StackLayout.Resources>
+    <StackLayout.Behaviors>
+    	<Rock:EntranceTransition Duration="300" />
+    </StackLayout.Behaviors>
+
+
+    <CarouselView
+        ItemsSource="{StaticResource Series}"
+        HeightRequest="210"
+        PeekAreaInsets="0,0,30,0"
+        Loop="False"
+         x:Name="CarouselView" >
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout WidthRequest="250" >
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Path=BindingContext.PushPage, Source={x:Reference Name=CarouselView}}" CommandParameter="{Binding DetailLink}" />
+                    </StackLayout.GestureRecognizers>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Rock:StyledView 
+                            BackgroundColor="{Binding Color}"
+                            CornerRadius="15"
+                            Margin="10,10,10,5"
+                            HeightRequest="150"
+                            Grid.ColumnSpan="2"
+                            IsClippedToBounds="true"
+                            HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Title}" StyleClass="text-title" Margin="0,60,0,0" HorizontalOptions="Center"  />
+                        </Rock:StyledView>
+                    </Grid>
+                </StackLayout>
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+    </CarouselView>
+</StackLayout>

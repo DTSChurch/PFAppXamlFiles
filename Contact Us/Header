@@ -4,4 +4,4 @@
     	<Rock:EntranceTransition Duration="250" />
     </StackLayout.Behaviors>
     <Label Text="Contact Us" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
-    </StackLayout>
+</StackLayout>

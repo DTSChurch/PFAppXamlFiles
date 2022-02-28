@@ -24,7 +24,7 @@
 
 
     <Label Text="{{wholeLifeCategoryValue}}"
-        StyleClass="text-title"
+        StyleClass="text-title" 
         TextColor="{Rock:PaletteColor App-Primary}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"

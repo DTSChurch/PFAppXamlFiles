@@ -19,9 +19,8 @@
 			<Grid.GestureRecognizers>
 				<TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="61850847-e59e-46a9-8ca7-058e9430967e?ItemId={{item.Id}}" />
 			</Grid.GestureRecognizers>
-
-
-			<Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+			
+            <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
 				CornerRadius="15,15,15,15"
 				IsClippedToBounds="true"
 				HorizontalOptions="FillAndExpand"
@@ -58,6 +57,7 @@
 				 Margin="0,20,20,0"
 				Grid.Row="0"
 				Grid.Column="2" />
+				
 		</Grid>
 
     {%- endfor -%}

@@ -13,7 +13,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-White}" BorderColor="{Rock:PaletteColor App-Light}"
+        <Rock:StyledView BackgroundColor="#fff" 
+            BorderColor="#e1e1e1"
+            BorderThickness="2"
             CornerRadius="10,10,10,10"
             IsClippedToBounds="true"
             HorizontalOptions="FillAndExpand"

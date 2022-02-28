@@ -1,0 +1,13 @@
+{% assign itemId = 55 %}
+{% if itemId and itemId != null %}
+{% contentchannelitem id:'{{itemId}}' securityenabled:'false' %}
+{% assign messageSeriesRelation = contentchannelitem.ParentItems | First %}
+{% assign messageSeries = messageSeriesRelation.ContentChannelItem %}
+{% assign imageId = messageSeries | Attribute:'SeriesImage','RawValue' %}
+<StackLayout>
+    <Rock:Image HeightRequest="220" Source="{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Guid={{imageId}}" Aspect="AspectFill" VerticalOptions="CenterAndExpand"/>
+    <Label Text="{{messageSeries.Title}} Series" StyleClass="text-title" HorizontalOptions="Center"/>
+</StackLayout>
+
+{% endcontentchannelitem %}
+{% endif %}

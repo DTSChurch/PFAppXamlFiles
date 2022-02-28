@@ -1,0 +1,20 @@
+{% assign itemId = PageParameter.ItemId %}
+{% if itemId and itemId != null %}
+{% connectionopportunity id:'{{itemId}}' securityenabled:'false' %}
+    {% for co in connectionopportunityItems %}
+        {% assign frequency = co | Attribute:'Frequency'%}
+        {% assign ministry = co | Attribute:'MinistryArea'%}
+    {%endfor%}
+{% endconnectionopportunity %}
+
+<StackLayout>
+        <Label Text="Frequncy: {{frequency}}" 
+            TextColor="{Rock:PaletteColor App-Primary}"
+            TextTransform="Uppercase" />
+        {% if ministry and ministry != '' %}
+        <Label Text="Ministry Area:"
+            TextColor="{Rock:PaletteColor App-Primary}"
+            TextTransform="Uppercase" />
+        {%endif%}
+</StackLayout>
+{% endif %}
