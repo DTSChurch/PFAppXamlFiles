@@ -1,0 +1,74 @@
+{% assign groupGuid = PageParameter.GroupGuid %}
+<StackLayout>
+{% if groupGuid != null and groupGuid != "" %}
+
+{% group where:'Guid == "{{groupGuid}}"' securityenabled:'false' %}
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+
+
+        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+            CornerRadius="15,15,15,15"
+            IsClippedToBounds="true"
+            HorizontalOptions="FillAndExpand"
+            Margin="10"
+            HeightRequest="100"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Grid.RowSpan="2" />
+
+        <Label Text="{{ group.Name | Escape }}"
+            TextColor="{Rock:PaletteColor App-Light}"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
+            StyleClass="text-lg" />
+
+        {% if group.Schedule.WeeklyTimeOfDay != null %}
+            {% assign groupSchedule = group.Schedule.WeeklyTimeOfDayText %}
+        {% elsif group.Schedule != null %}
+            {% assign groupSchedule = group.Schedule.FriendlyScheduleText %}
+        {% endif %}
+
+        <Label Text="Schedule: {{groupSchedule}}"
+            TextColor="{Rock:PaletteColor App-Light}"
+            Margin="0,0,20,20"
+            HorizontalTextAlignment="Right"
+            VerticalTextAlignment="End"
+            Grid.Row="1"
+            Grid.Column="2"
+            StyleClass="heading4" />
+
+        {% assign topic = group | Attribute:'Topic' %}
+        {% if topic != empty %}
+            <Label Text="Topic: {{ topic | Escape }}"
+                TextColor="{Rock:PaletteColor App-Light}"
+                Margin="0,0,20,20"
+                HorizontalTextAlignment="Right"
+                VerticalTextAlignment="End"
+                Grid.Row="0"
+                Grid.Column="2"
+                StyleClass="heading4" />
+        {% endif %}
+    </Grid>
+
+{% endgroup %}
+
+{% endif %}
+</StackLayout>
