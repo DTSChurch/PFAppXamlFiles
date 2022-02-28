@@ -1,0 +1,42 @@
+{% assign groupPage = "79dc4186-5c1e-45ce-b5ef-f3c60363cc8a" %}
+{% if Groups == empty %}
+    <Rock:NotificationBox NotificationType="Warning" Text="No groups match your search criteria." />
+{% else %}
+    <StackLayout Margin="20" >
+        <Rock:Divider />
+        {% for group in Groups %}
+        {% assign distance = Distances[group.Id] }} %}
+        <Grid ColumnDefinitions="1*, 15" ColumnSpacing="12" StyleClass="group-content">
+            {% if groupPage != null %}
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="{{ groupPage }}?GroupGuid={{ group.Guid }}" />
+                </Grid.GestureRecognizers>
+            {% endif %}
+            <StackLayout Grid.Column="0" StyleClass="group-primary-content">
+                {% if group.Schedule.WeeklyDayOfWeek != null %}
+                    <Label Text="{{ group.Schedule.WeeklyDayOfWeek }}" StyleClass="group-meeting-day" />
+                {% endif %}
+                <Label Text="{{ group.Name | Escape }}" StyleClass="group-name" />
+                <StackLayout Orientation="Horizontal">
+                    {% if group.Schedule.WeeklyTimeOfDay != null %}
+                        <Label Text="Weekly at {{ group.Schedule.WeeklyTimeOfDayText }}" HorizontalOptions="Start" StyleClass="group-meeting-time" />
+                    {% elsif group.Schedule != null %}
+                        <Label Text="{{ group.Schedule.FriendlyScheduleText }}" HorizontalOptions="Start" StyleClass="group-meeting-time" />
+                    {% endif %}
+                    {% assign topic = group | Attribute:'Topic' %}
+                    {% if topic != empty %}
+                        <Label Text="{{ topic | Escape }}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" StyleClass="group-topic" />
+                    {% endif %}
+                </StackLayout>
+                {% if distance != null %}
+                    <Label Text="{{ distance | Format:'#,##0.0' }} mi" StyleClass="group-distance" />
+                {% endif %}
+            </StackLayout>
+
+            <Rock:Icon IconClass="chevron-right" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" StyleClass="group-more-icon" />
+        </Grid>
+
+        <Rock:Divider />
+        {% endfor %}
+    </StackLayout>
+{% endif %}

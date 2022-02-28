@@ -1,7 +1,7 @@
-<StackLayout>
+<StackLayout Margin="20">
 
         <Rock:FieldContainer>
-            <Rock:TextBox x:Name="SearchTerm" Text="{{ Parameters.Term | Escape }}" />
+            <Rock:TextBox x:Name="SearchTerm" Text="{{ Parameters.Term | Escape }}" Label="Search" />
         </Rock:FieldContainer>
 
 
@@ -29,7 +29,7 @@
                     {% assign item = contentchannelitem %}
                     {% assign messageSeriesRelation = contentchannelitem.ParentItems | First %}
                     {% assign messageSeries = messageSeriesRelation.ContentChannelItem %}
-                    {% assign imageId = messageSeries | Attribute:'SeriesImage','RawValue' %}
+                    {% assign ImageId = messageSeries | Attribute:'SeriesImage','RawValue' %}
 
 
                     <Grid>
@@ -47,15 +47,18 @@
                         </Grid.GestureRecognizers>
 
 
-                        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
-                            CornerRadius="15,15,15,15"
-                            IsClippedToBounds="true"
-                            HorizontalOptions="FillAndExpand"
-                            Margin="10"
-                            HeightRequest="100"
+                       <Rock:StyledView
+                            CornerRadius="15"
+                            HasShadow="True"
+                            Elevation="1"
+                            Padding="0"
+                            Margin="10,5,10,5"
                             Grid.Row="0"
                             Grid.Column="0"
-                            Grid.ColumnSpan="3" />
+                            Grid.ColumnSpan="3"
+                            IsClippedToBounds="True">
+                            <Rock:Image MarginBottom="-64" HeightRequest="220" Source="{Binding ImageId, StringFormat='{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Guid={0}'}" Aspect="AspectFill" VerticalOptions="CenterAndExpand"/>
+                        </Rock:StyledView>
 
                         <Label Text="{{item.Title}}"
                             TextColor="{Rock:PaletteColor App-Light}"

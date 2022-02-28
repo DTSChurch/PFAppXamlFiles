@@ -19,7 +19,7 @@
 			<Grid.GestureRecognizers>
 				<TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="61850847-e59e-46a9-8ca7-058e9430967e?ItemId={{item.Id}}" />
 			</Grid.GestureRecognizers>
-			
+
 
 			<Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
 				CornerRadius="15,15,15,15"

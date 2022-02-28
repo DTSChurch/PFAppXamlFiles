@@ -13,6 +13,6 @@
         <Button Text="Action Teams"
             StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
             Command="{Binding PushPage}"
-            CommandParameter="6a344a77-0862-412f-9973-42bdea0730c9" />
+            CommandParameter="674628fb-7810-46bf-8746-511aaf200266" />
     </StackLayout>
 </StackLayout>

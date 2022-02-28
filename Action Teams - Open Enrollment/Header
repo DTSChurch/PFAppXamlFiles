@@ -1,0 +1,19 @@
+<StackLayout Orientation="Vertical"
+    Padding="10,10,10,0"
+    HorizontalOptions="FillAndExpand" >
+
+     <StackLayout.Behaviors>
+    	 <Rock:EntranceTransition Duration="250" />
+    </StackLayout.Behaviors>
+
+    <Label Text="Action Teams" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
+
+    <StackLayout StyleClass="px-32, py-16">
+        <Button Text="View All Teams"
+            StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+            Command="{Binding PushPage}"
+            CommandParameter="6a344a77-0862-412f-9973-42bdea0730c9" />
+    </StackLayout>
+
+
+</StackLayout>

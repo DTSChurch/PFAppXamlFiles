@@ -1,7 +1,7 @@
-<StackLayout>
+<StackLayout Margin="20">
 
         <Rock:FieldContainer>
-            <Rock:TextBox x:Name="SearchTerm" Label="Name"  />
+            <Rock:TextBox x:Name="SearchTerm" Label="Search"  />
         </Rock:FieldContainer>
 
 
