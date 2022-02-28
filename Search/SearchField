@@ -1,0 +1,18 @@
+<StackLayout>
+
+        <Rock:FieldContainer>
+            <Rock:TextBox x:Name="SearchTerm" Label="Name"  />
+        </Rock:FieldContainer>
+
+
+    <Button Text="Search"
+            StyleClass="btn, btn-primary"
+            Command="{Binding Callback}">
+        <Button.CommandParameter>
+            <Rock:CallbackParameters Name="Search">
+                <Rock:Parameter Name="Term"
+                                Value="{Binding Source={x:Reference SearchTerm}, Path=Text}" />
+            </Rock:CallbackParameters>
+        </Button.CommandParameter>
+    </Button>
+</StackLayout>
