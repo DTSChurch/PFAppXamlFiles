@@ -1,23 +1,19 @@
 <StackLayout>
-    {% contentchannelitem where:'ContentChannelId == 4 && StartDateTime <= "{{ 'Now' | Date }}"' sort:'StartDateTime desc' securityenabled:'false' %}
-
+    {% definedvalue where:'DefinedTypeId == 108' securityenabled:'false' %}
     {% assign closeCurly = '}' -%}
     {%- capture seriesJSON -%}
         [
-            {%- for item in contentchannelitemItems -%}
+            {%- for item in definedvalueItems -%}
             {
-                "Id": {{ item.Id | ToJSON }},
-                "Title": {{ item.Title | ToJSON }},
-                "Summary": {{ item | Attribute:'Summary' | ToJSON }},
-                "ImageId": {{ item | Attribute:'SeriesImage','RawValue' | ToJSON }},
-                "MessageCount": {{ item.ChildItems | Size | ToJSON }},
+                "Id": {{ item.Id| ToJSON }},
+                "Title": {{ item.Value | ToJSON }},
+                "Color": {{ item | Attribute:'WatchButtonColor' | ToJSON }},
                 "DetailLink": "9b85c217-3669-470d-80de-373145c62f32?ItemId={{item.Id}}"
             {% if forloop.last %}{{ closeCurly -}}{% else %}{{ closeCurly | Append:', ' -}}{%- endif -%}
             {%- endfor -%}
         ]
     {%- endcapture -%}
-
-    {% endcontentchannelitem %}
+    {% enddefinedvalue %}
     <StackLayout.Resources>
         <Rock:FromJson x:Key="Series">
             {}{{ seriesJSON | XamlWrap }}
@@ -26,12 +22,10 @@
     <StackLayout.Behaviors>
     	<Rock:EntranceTransition Duration="300" />
     </StackLayout.Behaviors>
-
-
     <CarouselView
         ItemsSource="{StaticResource Series}"
-        HeightRequest="250"
-        PeekAreaInsets="20,0,40,0"
+        HeightRequest="210"
+        PeekAreaInsets="0,0,30,0"
         Loop="False"
          x:Name="CarouselView" >
         <CarouselView.ItemTemplate>
@@ -58,11 +52,9 @@
                             Grid.Row="0"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
-                            IsClippedToBounds="True">
-                            <Rock:Image MarginBottom="-64" HeightRequest="220" Source="{Binding ImageId, StringFormat='{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Guid={0}'}" Aspect="AspectFill" VerticalOptions="CenterAndExpand"/>
+                            IsClippedToBounds="True"
+                            BackgroundColor="#bc91d7">
                         </Rock:StyledView>
-                        <Label Text="{Binding Title}" Margin="10,5,10,5" Grid.Row="1" Grid.Column="0" StyleClass="heading4, leading-none, text-bold" />
-                        <Label Text="Jan '21"  Margin="10,5,10,5" HorizontalTextAlignment="Right" Grid.Row="1" Grid.Column="1" StyleClass="heading4, leading-none" />
                     </Grid>
                 </StackLayout>
             </DataTemplate>
