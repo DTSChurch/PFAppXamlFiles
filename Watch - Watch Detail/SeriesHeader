@@ -1,0 +1,36 @@
+{% assign itemId = PageParameter.ItemId %}
+{% assign rowCount = 2 %}
+    {% if itemId and itemId != null %}
+        {% contentchannelitem id:'{{itemId}}' securityenabled:'false' %}
+        {% assign channelTitle = contentchannelitem.Title %}
+{% endcontentchannelitem %}
+{% endif %}
+<StackLayout>
+    <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Light}"
+			CornerRadius="15,15,15,15"
+			BorderColor="{Rock:PaletteColor App-Brand}"
+			BorderThickness="1"
+			HasShadow="true"
+			Elevation="3"
+			HorizontalOptions="FillAndExpand"
+			Margin="20,-25,20,10"
+			Grid.Row="0"
+			Grid.Column="0">
+		<Label Text="{{channelTitle}} Series" StyleClass="text-title" 
+			HorizontalOptions="Center"
+			VerticalTextAlignment="Center"
+			Margin="0,-10,0,0"
+			HeightRequest="80"
+			Grid.Row="0"
+			Grid.Column="0"
+			Grid.ColumnSpan="1"/>
+		</Rock:StyledView>
+    </Grid>
+</StackLayout>
