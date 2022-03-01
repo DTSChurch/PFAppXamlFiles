@@ -12,41 +12,86 @@
 
         
         {% assign distance = Distances[group.Id] }} %}
-        <Grid ColumnDefinitions="1*, 100" ColumnSpacing="12" StyleClass="group-content">
+        
+
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
             {% if groupPage != null %}
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="{{ groupPage }}?GroupGuid={{ group.Guid }}" />
                 </Grid.GestureRecognizers>
             {% endif %}
-            <StackLayout Grid.Column="0" StyleClass="group-primary-content">
-                {% if group.Schedule.WeeklyDayOfWeek != null %}
-                    <Label Text="{{ group.Schedule.WeeklyDayOfWeek }}" StyleClass="group-meeting-day" />
-                {% endif %}
-                <Label Text="{{ group.Name | Escape }}" StyleClass="group-name" />
-                <StackLayout Orientation="Horizontal">
-                    {% if group.Schedule.WeeklyTimeOfDay != null %}
-                        <Label Text="Weekly at {{ group.Schedule.WeeklyTimeOfDayText }}" HorizontalOptions="Start" StyleClass="group-meeting-time" />
-                    {% elsif group.Schedule != null %}
-                        <Label Text="{{ group.Schedule.FriendlyScheduleText }}" HorizontalOptions="Start" StyleClass="group-meeting-time" />
-                    {% endif %}
-                    {% assign topic = group | Attribute:'Topic' %}
-                    {% if topic != empty %}
-                        <Label Text="{{ topic | Escape }}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" StyleClass="group-topic" />
-                    {% endif %}
-                </StackLayout>
-                {% if distance != null %}
-                    <Label Text="{{ distance | Format:'#,##0.0' }} mi" StyleClass="group-distance" />
-                {% endif %}
-            </StackLayout>
 
-            <Rock:Icon IconClass="chevron-right" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" StyleClass="group-more-icon" />
-            
-            {% if wholeLifeCategory != null %}
-            <Label Text="{{ wholeLifeCategory.Value | Escape }}" StyleClass="group-topic" Grid.Column="1" HorizontalOptions="End" VerticalOptions="End" />
+
+            <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Light}"
+                CornerRadius="15,15,15,15"
+                BorderColor="{Rock:PaletteColor App-Brand}"
+                BorderThickness="1"
+                HasShadow="true"
+                Elevation="3"
+                HorizontalOptions="FillAndExpand"
+                Margin="20,0,20,0"
+                HeightRequest="100"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="3" />
+
+            <Label Text="{{ group.Name | Escape }}"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.RowSpan="3"
+                StyleClass="text-lg" />
+
+            {% if group.Schedule.WeeklyDayOfWeek != null %}
+            <Label Text="{{ group.Schedule.WeeklyDayOfWeek }}"
+                Margin="0,10,30,0"
+                HorizontalTextAlignment="Right"
+                VerticalTextAlignment="End"
+                Grid.Row="1"
+                Grid.Column="2"
+                StyleClass="heading4" />
             {% endif %}
+
+           
+            {% if wholeLifeCategory != empty %}
+            <Label Text="{{ wholeLifeCategory.Value | Escape }}"
+                Margin="0,10,30,10"
+                HorizontalTextAlignment="Right"
+                VerticalTextAlignment="End"
+                Grid.Row="2"
+                Grid.Column="2"
+                StyleClass="heading4" />
+            {% endif %}
+
+            <Rock:FollowingIcon EntityTypeId="16"
+                EntityId="{{ group.Id }}"
+                FontSize="22"
+                IsFollowed="{{ group | IsFollowed }}"
+                FollowingIconColor="{Rock:PaletteColor App-Dark}"
+                NotFollowingIconColor="{Rock:PaletteColor App-Dark}"
+                HorizontalTextAlignment="Right"
+                VerticalTextAlignment="Start"
+                 Margin="0,10,30,0"
+                Grid.Row="0"
+                Grid.Column="2" />
+
         </Grid>
 
-        <Rock:Divider />
         {% endif %}
         {% endfor %}
     </StackLayout>
