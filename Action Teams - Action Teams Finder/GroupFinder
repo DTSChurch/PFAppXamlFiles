@@ -2,11 +2,19 @@
 {% if Groups == empty %}
     <Rock:NotificationBox NotificationType="Warning" Text="No groups match your search criteria." />
 {% else %}
-    <StackLayout Margin="20" >
-        <Rock:Divider />
-        {% for group in Groups %}
+{% assign wholeLifeCategoryIdPage = PageParameter.DefinedValueId %}
+<StackLayout Margin="20" >
+    <Rock:Divider />
+    {% for group in Groups %}
+        {% assign wholeLifeCategory = group | Attribute:'GroupType1','Object' %}
+
+        <Label Text="{{wholeLifeCategory.Id}}" StyleClass="group-meeting-day" />
+        {% if wholeLifeCategory.Id == wholeLifeCategoryIdPage %}
+
+
+        {% endif %}
         {% assign distance = Distances[group.Id] }} %}
-        <Grid ColumnDefinitions="1*, 15" ColumnSpacing="12" StyleClass="group-content">
+        <Grid ColumnDefinitions="1*, 100" ColumnSpacing="12" StyleClass="group-content">
             {% if groupPage != null %}
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="{{ groupPage }}?GroupGuid={{ group.Guid }}" />
@@ -34,6 +42,10 @@
             </StackLayout>
 
             <Rock:Icon IconClass="chevron-right" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" StyleClass="group-more-icon" />
+            
+            {% if wholeLifeCategory != null %}
+            <Label Text="{{ wholeLifeCategory.Value | Escape }}" StyleClass="group-topic" Grid.Column="1" HorizontalOptions="End" VerticalOptions="End" />
+            {% endif %}
         </Grid>
 
         <Rock:Divider />

@@ -25,18 +25,20 @@
                     </Grid.GestureRecognizers>
 
 
-                    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+                    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Light}"
                         CornerRadius="15,15,15,15"
-                        IsClippedToBounds="true"
+                        BorderColor="{Rock:PaletteColor App-Brand}"
+                        BorderThickness="1"
+                        HasShadow="true"
+                        Elevation="3"
                         HorizontalOptions="FillAndExpand"
-                        Margin="10"
+                        Margin="20,10,20,10"
                         HeightRequest="100"
                         Grid.Row="0"
                         Grid.Column="0"
                         Grid.ColumnSpan="3" />
 
                     <Label Text="{{item.Title}}"
-                        TextColor="{Rock:PaletteColor App-Light}"
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
                         Grid.Row="0"
@@ -45,8 +47,7 @@
                         StyleClass="text-lg" />
 
                     <Label Text="Speaker: {{item | Attribute:'Speaker'}}"
-                        TextColor="{Rock:PaletteColor App-Light}"
-                        Margin="0,0,20,20"
+                        Margin="0,0,30,20"
                         HorizontalTextAlignment="Right"
                         VerticalTextAlignment="End"
                         Grid.Row="0"
@@ -57,11 +58,11 @@
                         EntityId="{{ item.Id }}"
                         FontSize="22"
                         IsFollowed="{{ item | IsFollowed }}"
-                        FollowingIconColor="{Rock:PaletteColor App-Light}"
-                        NotFollowingIconColor="{Rock:PaletteColor App-Light}"
+                        FollowingIconColor="{Rock:PaletteColor App-Dark}"
+                        NotFollowingIconColor="{Rock:PaletteColor App-Dark}"
                         HorizontalTextAlignment="Right"
                         VerticalTextAlignment="Start"
-                         Margin="0,20,20,0"
+                         Margin="0,20,30,0"
                         Grid.Row="0"
                         Grid.Column="2" />
 
