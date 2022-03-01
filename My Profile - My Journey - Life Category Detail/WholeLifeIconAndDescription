@@ -53,7 +53,9 @@
                 Grid.Column="0" />
 
             <Button Text="Next Steps"
-                StyleClass="btn,btn-lg,btn-warning"
+                StyleClass="btn,btn-warning"
+                FontSize="28"
+                Margin="20,0,20,0"
                 Command="{Binding PushPage}"
                 CommandParameter="d29ed247-7898-45f2-bf80-63869a6292cb?DefinedValueId={{item.Id}}"
                 Grid.Row="3"
