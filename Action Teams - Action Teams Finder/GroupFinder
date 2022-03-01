@@ -6,13 +6,11 @@
 <StackLayout Margin="20" >
     <Rock:Divider />
     {% for group in Groups %}
-        {% assign wholeLifeCategory = group | Attribute:'GroupType1','Object' %}
-
-        <Label Text="{{wholeLifeCategory.Id}}" StyleClass="group-meeting-day" />
-        {% if wholeLifeCategory.Id == wholeLifeCategoryIdPage %}
+        {% assign wholeLifeCategory = group | Attribute:'WholeLifeCategory','Object' %}
+        {% if wholeLifeCategory.Id == wholeLifeCategoryIdPage or wholeLifeCategoryIdPage == null %}
 
 
-        {% endif %}
+        
         {% assign distance = Distances[group.Id] }} %}
         <Grid ColumnDefinitions="1*, 100" ColumnSpacing="12" StyleClass="group-content">
             {% if groupPage != null %}
@@ -49,6 +47,7 @@
         </Grid>
 
         <Rock:Divider />
+        {% endif %}
         {% endfor %}
     </StackLayout>
 {% endif %}
