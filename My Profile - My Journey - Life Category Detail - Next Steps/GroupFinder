@@ -1,0 +1,98 @@
+{% assign groupPage = "79dc4186-5c1e-45ce-b5ef-f3c60363cc8a" %}
+{% if Groups == empty %}
+    <Rock:NotificationBox NotificationType="Warning" Text="No groups match your search criteria." />
+{% else %}
+{% assign wholeLifeCategoryIdPage = PageParameter.DefinedValueId %}
+<StackLayout Margin="20" >
+    <Rock:Divider />
+    {% for group in Groups %}
+        {% assign wholeLifeCategory = group | Attribute:'WholeLifeCategory','Object' %}
+        {% if wholeLifeCategory.Id == wholeLifeCategoryIdPage or wholeLifeCategoryIdPage == null %}
+
+
+
+        {% assign distance = Distances[group.Id] %}
+
+
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            {% if groupPage != null %}
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="{{ groupPage }}?GroupGuid={{ group.Guid }}" />
+                </Grid.GestureRecognizers>
+            {% endif %}
+
+
+            <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Light}"
+                CornerRadius="15,15,15,15"
+                BorderColor="{Rock:PaletteColor App-Brand}"
+                BorderThickness="1"
+                HasShadow="true"
+                Elevation="3"
+                HorizontalOptions="FillAndExpand"
+                Margin="20,0,20,0"
+                HeightRequest="100"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="3" />
+
+            <Label Text="{{ group.Name | Escape }}"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.RowSpan="3"
+                StyleClass="text-lg" />
+
+            {% if group.Schedule.WeeklyDayOfWeek != null %}
+            <Label Text="{{ group.Schedule.WeeklyDayOfWeek }}"
+                Margin="0,10,30,0"
+                HorizontalTextAlignment="Right"
+                VerticalTextAlignment="End"
+                Grid.Row="1"
+                Grid.Column="2"
+                StyleClass="heading4" />
+            {% endif %}
+
+
+            {% if wholeLifeCategory != empty %}
+            <Label Text="{{ wholeLifeCategory.Value | Escape }}"
+                Margin="0,10,30,10"
+                HorizontalTextAlignment="Right"
+                VerticalTextAlignment="End"
+                Grid.Row="2"
+                Grid.Column="2"
+                StyleClass="heading4" />
+            {% endif %}
+
+            <Rock:FollowingIcon EntityTypeId="16"
+                EntityId="{{ group.Id }}"
+                FontSize="22"
+                IsFollowed="{{ group | IsFollowed }}"
+                FollowingIconColor="{Rock:PaletteColor App-Dark}"
+                NotFollowingIconColor="{Rock:PaletteColor App-Dark}"
+                HorizontalTextAlignment="Right"
+                VerticalTextAlignment="Start"
+                 Margin="0,10,30,0"
+                Grid.Row="0"
+                Grid.Column="2" />
+
+        </Grid>
+
+        {% endif %}
+        {% endfor %}
+    </StackLayout>
+{% endif %}
