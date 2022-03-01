@@ -8,6 +8,8 @@
     {% for group in Groups %}
         {% assign wholeLifeCategory = group | Attribute:'WholeLifeCategory','Object' %}
         {% if wholeLifeCategory.Id == wholeLifeCategoryIdPage or wholeLifeCategoryIdPage == null %}
+        {% assign wholeLifeCategoryImageId = wholeLifeCategory | Attribute:'Image','Id' %}
+        {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
 
 
 
@@ -69,13 +71,23 @@
 
 
             {% if wholeLifeCategory != empty %}
-            <Label Text="{{ wholeLifeCategory.Value | Escape }}"
+            <StackLayout Grid.Row="2"
+                Grid.Column="2"
+                Orientation="Horizontal"
+                HorizontalOptions="End" >
+
+                <Rock:Image HeightRequest="25"
+                Source="{{wholeLifeCategoryImageLink}}"
+                Aspect="AspectFit"
+                VerticalOptions="Center" />
+
+                <Label Text="{{ wholeLifeCategory.Value | Escape }}"
                 Margin="0,10,30,10"
                 HorizontalTextAlignment="Right"
                 VerticalTextAlignment="End"
-                Grid.Row="2"
-                Grid.Column="2"
                 StyleClass="heading4" />
+            </StackLayout>
+
             {% endif %}
 
             <Rock:FollowingIcon EntityTypeId="16"
