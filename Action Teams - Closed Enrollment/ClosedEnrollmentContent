@@ -1,0 +1,63 @@
+<StackLayout Orientation="Vertical" Padding="10,40,10,0" HorizontalOptions="FillAndExpand">
+
+    <StackLayout.Behaviors>
+    	<Rock:EntranceTransition Duration="250" />
+    </StackLayout.Behaviors>
+    <Label Text="Action Team" FontSize="45" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
+    <Label Text=" Contact Info" FontSize="45" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
+
+
+    <Grid Margin="0,20,0,0">
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="4*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			
+			
+        <Rock:Icon IconClass="phone-alt"
+        FontSize="32"
+        Grid.Row="0"
+        Grid.Column="0"
+        Margin="0,20,0,0"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        TextColor="{Rock:PaletteColor App-Dark}" />
+
+        <Label Text="123-4567" 
+        Grid.Row="0"
+        Grid.Column="1"
+        StyleClass="text-title" 
+        Margin="10,20,0,0"
+        TextColor="{Rock:PaletteColor App-Primary}" 
+        HorizontalTextAlignment="Start"
+        VerticalTextAlignment="Center"  />
+
+
+        <Rock:Icon IconClass="envelope"
+        FontSize="32"
+        Grid.Row="1"
+        Grid.Column="0"
+        Margin="0,20,0,0"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        TextColor="{Rock:PaletteColor App-Dark}" />
+
+        <Label Text="ethan@dtschurch.com" 
+        Grid.Row="1"
+        Grid.Column="1"
+        Margin="10,20,0,0"
+        StyleClass="text-title" 
+        TextColor="{Rock:PaletteColor App-Primary}" 
+        HorizontalTextAlignment="Start"
+        VerticalTextAlignment="Center"  />
+    </Grid>
+<Rock:Image Source="https://staff.pathfinderstl.org/Content/MobileApp/Pathfinder_Logo_RGB_3_5_19.png" Margin="90" Aspect="AspectFit" />
+       
+
+</StackLayout>

@@ -1,3 +1,11 @@
+{% assign enrollmentStatus = 'Global' | Attribute:'ActionTeamEnrollmentStatus' %}
+{% assign actionTeamsPageGuid = "" %}
+{% if enrollmentStatus == "Open" %}
+{% assign actionTeamsPageGuid = "674628fb-7810-46bf-8746-511aaf200266" %}
+{% else %}
+{% assign actionTeamsPageGuid = "efdb6313-f5f0-4974-86a7-8a3d9b1c0deb" %}
+{% endif %}
+
 <StackLayout Orientation="Vertical" Padding="10,40,10,0" HorizontalOptions="FillAndExpand">
     <StackLayout.Behaviors>
     	<Rock:EntranceTransition Duration="300" />
@@ -13,6 +21,6 @@
         <Button Text="Action Teams"
             StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
             Command="{Binding PushPage}"
-            CommandParameter="674628fb-7810-46bf-8746-511aaf200266" />
+            CommandParameter="{{actionTeamsPageGuid}}" />
     </StackLayout>
 </StackLayout>
