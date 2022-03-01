@@ -35,7 +35,21 @@
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="85bfcfc5-f1f4-469a-8a99-7c67e4a6b537?DefinedValueId={{item.Id}}" />
             </Grid.GestureRecognizers>
-    
+            
+
+            <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Light}"
+                CornerRadius="15,15,15,15"
+                BorderColor="{Rock:PaletteColor App-Brand}"
+                BorderThickness="1"
+                HasShadow="true"
+                Elevation="3"
+                Margin="15"
+                HorizontalOptions="FillAndExpand"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="1"
+                Grid.RowSpan="2" />
+
                 <Rock:Image HeightRequest="150"
                     Source="{{wholeLifeCategoryImageLink}}"
                     Aspect="AspectFit"
@@ -45,6 +59,7 @@
     
                 <Label Text="{{wholeLifeCategoryValue}}"
                     StyleClass="text-lg"
+                    Margin="0,0,0,30"
                     TextColor="{Rock:PaletteColor App-Primary}"
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"
