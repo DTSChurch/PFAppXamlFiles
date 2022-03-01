@@ -2,4 +2,5 @@
                 StyleClass="text-title"
                 TextColor="{Rock:PaletteColor App-Primary}"
                 VerticalTextAlignment="Center"
-                HorizontalTextAlignment="Center" />
+                HorizontalTextAlignment="Center"
+                Margin="0,20" />
