@@ -8,9 +8,18 @@
             <Rock:Zone ZoneName="Header" HorizontalOptions="FillAndExpand" />
         </StackLayout>
         <ScrollView>
-            <StackLayout Padding="15" Orientation="Vertical">
-                <Rock:Zone ZoneName="Main" VerticalOptions="CenterAndExpand" />
-            </StackLayout>
+            <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Light}"
+                CornerRadius="15,15,15,15"
+                BorderColor="{Rock:PaletteColor App-Brand}"
+                BorderThickness="1"
+                HasShadow="true"
+                Elevation="3"
+                Margin="15"
+                HorizontalOptions="FillAndExpand" >
+                    <StackLayout Margin="15" Orientation="Vertical">
+                        <Rock:Zone ZoneName="Main" VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                </Rock:StyledView>
         </ScrollView>
     </StackLayout>
 </ContentPage>
