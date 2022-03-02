@@ -9,7 +9,7 @@
         </StackLayout>
         <ScrollView>
             <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Light}"
-                CornerRadius="15,15,15,15"
+                CornerRadius="9,9,9,9"
                 BorderColor="{Rock:PaletteColor App-Brand}"
                 BorderThickness="1"
                 HasShadow="true"
