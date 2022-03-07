@@ -1,0 +1,4 @@
+<StackLayout Orientation="Vertical" Padding="10,10,10,0" HorizontalOptions="FillAndExpand">
+    <Label Text="Login" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />    
+    <Label Text="This is a test sentence about Contacting Pathfinder" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
+</StackLayout>
