@@ -51,16 +51,14 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Rock:StyledView
-                            CornerRadius="15"
-                            HasShadow="True"
-                            Elevation="1"
-                            Padding="0"
+                            CornerRadius="9"
                             Margin="10,10,10,5"
-                            Grid.Row="0"
-                            Grid.Column="0"
+                            HeightRequest="150"
                             Grid.ColumnSpan="2"
-                            IsClippedToBounds="True">
-                            <Rock:Image MarginBottom="-64" HeightRequest="220" Source="{Binding ImageId, StringFormat='{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Guid={0}'}" Aspect="AspectFill" VerticalOptions="CenterAndExpand">
+                            HasShadow="true"
+                            Elevation="3"
+                            HorizontalOptions="FillAndExpand">
+                            <Rock:Image HeightRequest="220" Source="{Binding ImageId, StringFormat='{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Guid={0}'}" Aspect="AspectFill" VerticalOptions="CenterAndExpand">
                             </Rock:Image>
                         </Rock:StyledView>
                     </Grid>

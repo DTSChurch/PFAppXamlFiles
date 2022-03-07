@@ -44,7 +44,6 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Rock:StyledView 
-                            BackgroundColor="{Binding Color}"
                             CornerRadius="9"
                             Margin="10,10,10,5"
                             HeightRequest="150"
@@ -52,7 +51,7 @@
                             HasShadow="true"
                             Elevation="3"
                             HorizontalOptions="FillAndExpand">
-                            <Rock:Image MarginBottom="-64" HeightRequest="220" Source="{Binding ImageId, StringFormat='{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Guid={0}'}" 
+                            <Rock:Image HeightRequest="220" Source="{Binding ImageId, StringFormat='{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Guid={0}'}" 
                                 Aspect="AspectFill" VerticalOptions="CenterAndExpand">
                             </Rock:Image>
                         </Rock:StyledView>
