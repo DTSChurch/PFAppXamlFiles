@@ -48,7 +48,7 @@
             <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="591490d1-3d0d-43e3-b572-bc3575260a5c?ItemId={{item.Id}}" />
         </Grid.GestureRecognizers>    
                 <BoxView Color="{Rock:PaletteColor App-Dark}"
-                    Margin="0,-40,0,0"
+                    Margin="10,-40,10,0"
                     HeightRequest="1"
                     Grid.Row="0"
                     Grid.Column="0"
