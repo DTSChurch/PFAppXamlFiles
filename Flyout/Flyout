@@ -4,9 +4,9 @@
     <ListView.Header>
         <StackLayout VerticalOptions="FillAndExpand"
             Orientation="Vertical">
-            <BoxView HeightRequest="1" 
+            <BoxView HeightRequest="1"
                 HorizontalOptions="FillAndExpand"/>
-            <Rock:LoginStatus 
+            <Rock:LoginStatus
                 StyleClass="login-status"
                 NotLoggedInColor="{Rock:PaletteColor App-Dark}"
                 NoProfileIconColor="{Rock:PaletteColor App-Primary}"
@@ -37,10 +37,20 @@
                 TextColor="{Rock:PaletteColor App-Dark}"
                 StyleClass="btn,btn-primary"
                 Margin="30,20,0,0"
-                Command="{Binding PushPage}" 
-                CommandParameter="7ec92ef3-1046-43bf-a284-84841d69b30d" 
+                Command="{Binding PushPage}"
+                CommandParameter="7ec92ef3-1046-43bf-a284-84841d69b30d"
                  />
             <Rock:Image Source="https://staff.pathfinderstl.org/Content/MobileApp/Pathfinder_Logo_RGB_3_5_19.png" Margin="30,30,30,30" Aspect="AspectFit" />
+
+             <Rock:Icon IconClass="info-circle"
+                FontSize="28"
+                TextColor="{Rock:PaletteColor App-Dark}"
+                StyleClass="btn,btn-primary"
+                Margin="0,20,30,0"
+                Command="{Binding PushPage}"
+                CommandParameter="82d4474c-e5a7-425f-92a8-5b0b2132e94a"
+                HorizontalOptions="End"
+                 />
         </StackLayout>
     </ListView.Footer>
 </ListView>

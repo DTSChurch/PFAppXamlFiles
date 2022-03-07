@@ -1,0 +1,11 @@
+ <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Light}"
+                CornerRadius="9,9,9,9"
+                BorderColor="{Rock:PaletteColor App-Brand}"
+                BorderThickness="1"
+                HasShadow="true"
+                Elevation="3"
+                Margin="15"
+                HorizontalOptions="FillAndExpand" >
+                    <Rock:ApplicationInfo Margin="15" />
+                </Rock:StyledView>
+
