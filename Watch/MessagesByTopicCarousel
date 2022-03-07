@@ -7,7 +7,7 @@
             {
                 "Id": {{ item.Id| ToJSON }},
                 "Title": {{ item.Value | ToJSON }},
-                "Color": {{ item | Attribute:'WatchButtonColor' | ToJSON }},
+                "ImageId": {{ item | Attribute:'TopicButtonImage','RawValue' | ToJSON }},
                 "DetailLink": "63217172-6ef2-4c36-b258-a18ce6eafcef?ItemId={{item.Id}}"
             {% if forloop.last %}{{ closeCurly -}}{% else %}{{ closeCurly | Append:', ' -}}{%- endif -%}
             {%- endfor -%}
@@ -22,8 +22,6 @@
     <StackLayout.Behaviors>
     	<Rock:EntranceTransition Duration="300" />
     </StackLayout.Behaviors>
-
-
     <CarouselView
         ItemsSource="{StaticResource Series}"
         HeightRequest="210"
@@ -47,13 +45,16 @@
                         </Grid.RowDefinitions>
                         <Rock:StyledView 
                             BackgroundColor="{Binding Color}"
-                            CornerRadius="15"
+                            CornerRadius="9"
                             Margin="10,10,10,5"
                             HeightRequest="150"
                             Grid.ColumnSpan="2"
-                            IsClippedToBounds="true"
+                            HasShadow="true"
+                            Elevation="3"
                             HorizontalOptions="FillAndExpand">
-                            <Label Text="{Binding Title}" StyleClass="text-title" Margin="0,60,0,0" HorizontalOptions="Center"  />
+                            <Rock:Image MarginBottom="-64" HeightRequest="220" Source="{Binding ImageId, StringFormat='{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Guid={0}'}" 
+                                Aspect="AspectFill" VerticalOptions="CenterAndExpand">
+                            </Rock:Image>
                         </Rock:StyledView>
                     </Grid>
                 </StackLayout>

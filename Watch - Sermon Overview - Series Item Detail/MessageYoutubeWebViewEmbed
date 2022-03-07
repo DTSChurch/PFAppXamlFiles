@@ -8,7 +8,7 @@
     	<Rock:EntranceTransition Duration="150" />
     </StackLayout.Behaviors>
 
-    <Rock:WebView Source="{{item | Attribute:'VideoLink'}}"  />
+    <Rock:WebView Source="{{item | Attribute:'VideoLink'}}"  HeightRequest="220"/>
 
     {% endcontentchannelitem %}
     {% endif %}
