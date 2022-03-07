@@ -10,46 +10,6 @@
 <Grid>
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
-    </Grid.ColumnDefinitions>
-    <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="50" />
-    </Grid.RowDefinitions>
-
-     <Grid.GestureRecognizers>
-        <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="11fd268f-baad-4eea-9ba5-0530e2d57825"  />
-    </Grid.GestureRecognizers>
-    
-    <Rock:Icon IconClass="circle" 
-        FontSize="100"
-        HorizontalOptions="Center"
-        StyleClass="text-secondary"
-        VerticalOptions="Center"
-        IconFamily="FontAwesomeSolid"
-        Grid.Column="0"
-         Grid.Row="0" />
-
-    <Rock:Icon IconClass="user" 
-        FontSize="50" 
-        StyleClass="text-primary"
-        HorizontalOptions="Center"
-        VerticalOptions="Center"
-        IconFamily="FontAwesomeRegular"
-        Grid.Column="0"
-        Grid.Row="0"/> 
-
-    
-    <Label Text="Create Profile" 
-        StyleClass="text-title,text-primary" 
-        HorizontalOptions="Center" 
-        Grid.Column="0"
-        Grid.Row="1" />
-
-</Grid>
-
- <Label Text="Please use your MyPathfinder Account here or Register for one above!" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Dark}" HorizontalTextAlignment="Center"  />
-<Grid  Margin="0,25,0,0">
-    <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
@@ -68,23 +28,30 @@
         VerticalOptions="Center"
         IconFamily="FontAwesomeSolid"
         Grid.Column="0"
-         Grid.Row="0" />
+        Grid.Row="0" 
+        Grid.ColumnSpan="2"/>
 
-    <Rock:Icon IconClass="sign-in-alt" 
+    <Rock:Icon IconClass="user" 
         FontSize="50" 
         StyleClass="text-primary"
         HorizontalOptions="Center"
         VerticalOptions="Center"
-        IconFamily="FontAwesomeSolid"
+        IconFamily="FontAwesomeRegular"
         Grid.Column="0"
-        Grid.Row="0"/> 
-
-    
-    <Label Text="Login" 
-        StyleClass="text-title,text-primary" 
-        HorizontalOptions="Center" 
+        Grid.Row="0" 
+        Grid.ColumnSpan="2"/> 
+    <Button Text="Create Profile" 
+        StyleClass="btn, btn-primary, p-3" 
+        HorizontalOptions="FillAndExpand" 
         Grid.Column="0"
-        Grid.Row="1" />
-
+        Grid.Row="1" 
+        Grid.ColumnSpan="1"/>
+    <Button Text="Login" 
+        StyleClass="btn, btn-primary, p-3"
+        HorizontalOptions="FillAndExpand" 
+        Grid.Column="1"
+        Grid.Row="1" 
+        Grid.ColumnSpan="1"/>
 </Grid>
+ <Label Text="Please use your MyPathfinder Account here or Register for one above!" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Dark}" HorizontalTextAlignment="Center"  />
 </StackLayout>
