@@ -13,7 +13,7 @@
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
         <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
+        <RowDefinition Height="50" />
     </Grid.RowDefinitions>
 
      <Grid.GestureRecognizers>
@@ -48,13 +48,13 @@
 </Grid>
 
  <Label Text="Please use your MyPathfinder Account here or Register for one above!" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Dark}" HorizontalTextAlignment="Center"  />
-<Grid>
+<Grid  Margin="0,25,0,0">
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
         <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
+        <RowDefinition Height="50" />
     </Grid.RowDefinitions>
 
      <Grid.GestureRecognizers>
