@@ -8,7 +8,7 @@
                 "Id": {{ item.Id| ToJSON }},
                 "Title": {{ item.Value | ToJSON }},
                 "ImageId": {{ item | Attribute:'TopicButtonImage','RawValue' | ToJSON }},
-                "DetailLink": "63217172-6ef2-4c36-b258-a18ce6eafcef?ItemId={{item.Id}}"
+                "DetailLink": "63217172-6ef2-4c36-b258-a18ce6eafcef?DefinedValueId={{item.Id}}"
             {% if forloop.last %}{{ closeCurly -}}{% else %}{{ closeCurly | Append:', ' -}}{%- endif -%}
             {%- endfor -%}
         ]

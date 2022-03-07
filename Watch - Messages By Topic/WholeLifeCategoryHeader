@@ -1,0 +1,9 @@
+{% assign definedValueId = PageParameter.DefinedValueId %}
+{% if definedValueId and definedValueId != null %}
+    {% definedvalue id:'{{definedValueId}}' securityenabled:'false' %}
+    {% assign imageId = definedvalue | Attribute:'TopicButtonImage','RawValue' %}
+    {% enddefinedvalue %}
+    <StackLayout>
+    <Rock:Image HeightRequest="220" Source="{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Guid={{imageId}}" Aspect="AspectFill" VerticalOptions="CenterAndExpand"/>
+    </StackLayout>
+{% endif %}
