@@ -1,12 +1,16 @@
+{% if CurrentPerson %}
 <StackLayout Orientation="Vertical"
     Padding="10,40,10,0" 
     HorizontalOptions="FillAndExpand" >
-
-
+    <Rock:Image Source="https://staff.pathfinderstl.org/Content/MobileApp/Pathfinder_Logo_RGB_3_5_19.png" Margin="20,0,20,20" />
+    <Label Text="Welcome back {{CurrentPerson.NickName}}!" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Dark}" HorizontalOptions="Center"  />
+</StackLayout>
+{%else%}
+<StackLayout Orientation="Vertical"
+    Padding="10,40,10,0" 
+    HorizontalOptions="FillAndExpand" >
     <Rock:Image Source="https://staff.pathfinderstl.org/Content/MobileApp/Pathfinder_Logo_RGB_3_5_19.png" Margin="20,0,20,20" />
     <Label Text="Welcome!" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Dark}" HorizontalOptions="Center"  />
-
-
 <Grid>
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
@@ -23,6 +27,7 @@
     
     <Rock:Icon IconClass="circle" 
         FontSize="100"
+        Margin="0,20,0,20"
         HorizontalOptions="Center"
         StyleClass="text-secondary"
         VerticalOptions="Center"
@@ -42,16 +47,19 @@
         Grid.ColumnSpan="2"/> 
     <Button Text="Create Profile" 
         StyleClass="btn, btn-primary, p-3" 
+        Command="{Binding PushPage}" CommandParameter="11fd268f-baad-4eea-9ba5-0530e2d57825"
         HorizontalOptions="FillAndExpand" 
         Grid.Column="0"
         Grid.Row="1" 
         Grid.ColumnSpan="1"/>
     <Button Text="Login" 
         StyleClass="btn, btn-primary, p-3"
+        Command="{Binding PushPage}" CommandParameter="7261c51f-b545-4401-85af-26233d9707b1"
         HorizontalOptions="FillAndExpand" 
         Grid.Column="1"
         Grid.Row="1" 
         Grid.ColumnSpan="1"/>
 </Grid>
- <Label Text="Please use your MyPathfinder Account here or Register for one above!" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Dark}" HorizontalTextAlignment="Center"  />
+ <Label Text="Please use your MyPathfinder Account here or Register for one above!" StyleClass="text-sm" Margin="0,20,0,20" TextColor="{Rock:PaletteColor App-Dark}" HorizontalTextAlignment="Center" />
 </StackLayout>
+{%endif%}
