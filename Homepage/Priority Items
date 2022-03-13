@@ -1,0 +1,69 @@
+{% assign itemId = 80 %}
+<StackLayout>
+{% if itemId and itemId != null %}
+{% contentchannelitem id:'{{itemId}}' securityenabled:'false' sort:'Order' %}
+    {% assign childItems = contentchannelitem.ChildItems %}
+    {% for childItemAssociation in contentchannelitem.ChildItems %}
+        {% assign item = childItemAssociation.ChildContentChannelItem %}
+        {% assign currentCount = 1 %}
+        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+                    CornerRadius="5,5,5,5"
+                    BorderColor="{Rock:PaletteColor App-Secondary}"
+                    HeightRequest="80"
+                    BorderThickness="1"
+                    HasShadow="true"
+                    Elevation="2"
+                    Margin="15,5,15,5"
+                    HorizontalOptions="FillAndExpand">
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="591490d1-3d0d-43e3-b572-bc3575260a5c?ItemId={{item.Id}}" />
+                    </Grid.GestureRecognizers>
+                    <Rock:Icon IconClass="car" IconFamily="FontAwesomeSolid" FontSize="32"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start"
+                        Margin="10,0,0,0"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.RowSpan="2"/>
+                    <Label Text="{{item.Title}}"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start"
+                        Margin="0,10,0,0"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        StyleClass="text-md" />
+                    <Label Text="{{item | Attribute:'TagLine'}}"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start"
+                        Margin="10,-25,0,0"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        StyleClass="text-sm" />
+                    <Rock:Icon IconClass="angle-right" IconFamily="FontAwesomeSolid" FontSize="28"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="End"
+                        Margin="0,0,10,0"
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Grid.RowSpan="2"/>
+                </Grid>
+            </StackLayout>
+        </Rock:StyledView>
+    {%- endfor -%}
+{% endcontentchannelitem %}
+{% endif %}
+</StackLayout>
