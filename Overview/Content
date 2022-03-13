@@ -30,6 +30,6 @@
                 Command="{Binding PushPage}"
                 CommandParameter="7945cc85-bdcf-4d8c-8b49-47b0eb493ade" >
                 </Button>
-        </Rock:StyledView > 
+        </Rock:StyledView >
     </StackLayout>
 </StackLayout>
