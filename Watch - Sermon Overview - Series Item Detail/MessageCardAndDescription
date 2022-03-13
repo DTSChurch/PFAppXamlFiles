@@ -21,14 +21,14 @@
         <Label Text="{{item.Title}}"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Start"
-            Margin="10,10,0,0"
+            Margin="25,10,0,0"
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="2"
             StyleClass="text-lg" />
         
         <Label Text="Speaker: {{item | Attribute:'Speaker'}}"
-            Margin="20,50,0,0"
+            Margin="40,50,0,0"
                 HorizontalTextAlignment="Start"
                 VerticalTextAlignment="End"
                 Grid.Row="0"
@@ -47,10 +47,51 @@
             Margin="0,20,30,0"
             HorizontalTextAlignment="Right"
             VerticalTextAlignment="Start" />
+
+    </Grid>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Rock:Icon IconClass="sticky-note" IconFamily="FontAwesomeSolid" FontSize="24"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            Margin="45,0,0,0"
+            Grid.Row="0" 
+            Grid.Column="0"/> 
+        <Rock:Icon IconClass="play" IconFamily="FontAwesomeSolid" FontSize="24"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            Margin="0,0,0,0"
+            Grid.Row="0" 
+            Grid.Column="1"/>
+        <Rock:Icon IconClass="share" IconFamily="FontAwesomeSolid" FontSize="24"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            Margin="0,0,45,0"
+            Grid.Row="0" 
+            Grid.Column="2"/>
+    </Grid>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <BoxView Color="{Rock:PaletteColor App-Dark}"
             Margin="10,10,10,0"
             HeightRequest="1"
-            Grid.Row="1"
+            Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="3"
             VerticalOptions="Center"
