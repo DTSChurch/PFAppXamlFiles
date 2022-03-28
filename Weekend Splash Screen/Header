@@ -4,7 +4,7 @@
     	<Rock:EntranceTransition Duration="50" />
     </StackLayout.Behaviors>
 
-    <Rock:Image Source="https://staff.pathfinderstl.org/Content/MobileApp/Pathfinder_Logo_RGB_3_5_19.png" Margin="20,0,20,20" HeightRequest="60" />
+    <Rock:Image Source="https://res.cloudinary.com/pathfinderstl/image/upload/c_scale,h_250/v1646772686/AppFiles/PFFullLogoYellowWhite_mylfqt.png" Margin="20,0,20,20" HeightRequest="60" />
     <Label Text="Welcome!" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
 
     <Grid StyleClass="px-16, py-16">
