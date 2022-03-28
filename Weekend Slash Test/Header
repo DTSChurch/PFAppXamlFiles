@@ -1,0 +1,39 @@
+<StackLayout Orientation="Vertical" Padding="10,20,10,0" HorizontalOptions="FillAndExpand">
+
+    <Rock:Image Source="https://res.cloudinary.com/pathfinderstl/image/upload/c_scale,h_250/v1646772686/AppFiles/PFFullLogoYellowWhite_mylfqt.png" Margin="20,0,20,20" HeightRequest="60" />
+    <Label Text="Welcome!" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Info}" HorizontalOptions="Center"  />
+
+    <Grid StyleClass="px-16, py-16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Button Text="IN-PERSON"
+            x:Name="overviewButton"
+            StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+            HorizontalOptions="FillAndExpand"
+            Grid.Column="0"
+            Command="{Binding PushPage}"
+            CommandParameter="b41d997a-7206-490a-9f25-e96dbeff575d" />
+        <Button Text="ONLINE"
+            StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+                HorizontalOptions="FillAndExpand"
+                Grid.Column="1"
+                Command="{Binding PushPage}"
+                CommandParameter="9bbc8b74-0204-4744-a082-1e1c05b3eab3" />
+    </Grid>
+    <StackLayout StyleClass="px-64, py-16">
+        <Button Text="KIDS MINISTRY"
+            StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+            Command="{Binding OpenBrowser}"
+        CommandParameter="https://pathfinderstl.org/kids/?rckipid=" />
+    </StackLayout>
+
+    <Label Text="Today's Message" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Info}" HorizontalOptions="Center"  />
+    <StackLayout StyleClass="px-32, py-16">
+        {[ scheduledcontent scheduleid:'3' showwhen:'both' ]}
+            <Rock:Countdown StartDateTime="{{ NextOccurrenceDateTime }}"
+                HorizontalOptions="Center"/>
+        {[ endscheduledcontent ]}
+    </StackLayout>
+</StackLayout>
