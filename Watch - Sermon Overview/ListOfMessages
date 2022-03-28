@@ -7,9 +7,9 @@
     {% assign childItemCount = contentchannelitem.ChildItems | Size%}
     {% endcontentchannelitem %}
 {% endif %}
-<Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Light}"
+<Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
                 CornerRadius="9,9,9,9"
-                BorderColor="{Rock:PaletteColor App-Brand}"
+                BorderColor="{Rock:PaletteColor App-Secondary}"
                 BorderThickness="1"
                 HasShadow="true"
                 Elevation="3"
@@ -17,7 +17,7 @@
                 HorizontalOptions="FillAndExpand" >
 <StackLayout>
 
-<Label Text="{{channelTitle}} Series" StyleClass="text-title" HorizontalOptions="Center"
+<Label Text="{{channelTitle}}" StyleClass="text-title" HorizontalOptions="Center"
             Margin="0,15,0,0" 
             Grid.Row="0"
             Grid.Column="0"
@@ -29,11 +29,65 @@
             Grid.Column="0"
             Grid.ColumnSpan="3"/>
     {% if itemId and itemId != null %}
-        {% contentchannelitem id:'{{itemId}}' securityenabled:'false' sort:'StartDateTime desc' %}
+        {% contentchannelitem id:'{{itemId}}' securityenabled:'false' sort:'StartDateTime asc' %}
             {% assign childItems = contentchannelitem.ChildItems %}
                 {% for childItemAssociation in contentchannelitem.ChildItems %}
                 {% assign item = childItemAssociation.ChildContentChannelItem %}
                 {% assign currentCount = 1 %}
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="591490d1-3d0d-43e3-b572-bc3575260a5c?ItemId={{item.Id}}" />
+                    </Grid.GestureRecognizers>    
+                    <BoxView Color="{Rock:PaletteColor App-Light}"
+                        Margin="10,-45,10,0"
+                        HeightRequest="1"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand" />
+                    <Label Text="{{item.Title}}"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start"
+                        Margin="20,10,0,0"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        StyleClass="text-lg" />
+
+                    <Label Text="{{item | Attribute:'Speaker'}} | {{item.StartDateTime | Date:'MMM d, yy'}}"
+                    Margin="30,55,0,0"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="End"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        StyleClass="heading4" />
+
+                    <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
+                        EntityId="{{ item.Id }}"
+                        FontSize="22"
+                        IsFollowed="{{ item | IsFollowed }}"
+                        FollowingIconColor="{Rock:PaletteColor App-Light}"
+                        NotFollowingIconColor="{Rock:PaletteColor App-Light}"
+                        HorizontalTextAlignment="Right"
+                        VerticalTextAlignment="Start"                    
+                        Margin="0,25,15,15"                    
+                        Grid.Row="0"
+                        Grid.Column="2" />                
+                </Grid>
+                {%- endfor -%}
+        {% endcontentchannelitem %}
+    {% endif %}
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -43,51 +97,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
-        <Grid.GestureRecognizers>
-            <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="591490d1-3d0d-43e3-b572-bc3575260a5c?ItemId={{item.Id}}" />
-        </Grid.GestureRecognizers>    
-                <BoxView Color="{Rock:PaletteColor App-Dark}"
-                    Margin="10,-40,10,0"
-                    HeightRequest="1"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3"
-                    VerticalOptions="Center"
-                    HorizontalOptions="FillAndExpand" />
-                <Label Text="{{item.Title}}"
-                    VerticalTextAlignment="Center"
-                    HorizontalTextAlignment="Start"
-                    Margin="10,10,0,0"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    StyleClass="text-lg" />
-
-                <Label Text="Speaker: {{item | Attribute:'Speaker'}}"
-                Margin="20,50,0,0"
-                    HorizontalTextAlignment="Start"
-                    VerticalTextAlignment="End"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    StyleClass="heading4" />
-
-                <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
-                    EntityId="{{ item.Id }}"
-                    FontSize="22"
-                    IsFollowed="{{ item | IsFollowed }}"
-                    FollowingIconColor="{Rock:PaletteColor App-Dark}"
-                    NotFollowingIconColor="{Rock:PaletteColor App-Dark}"
-                    HorizontalTextAlignment="Right"
-                    VerticalTextAlignment="Start"                    
-                    Margin="0,25,15,15"                    
-                    Grid.Row="0"
-                    Grid.Column="2" />                
+        <Label Text=" "
+            Margin="20,0,0,0"
+            HorizontalTextAlignment="Start"
+            VerticalTextAlignment="End"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            StyleClass="heading4" />
     </Grid>
-    {% assign currentRowCount = currentRowCount | Plus:1 %}
-                {%- endfor -%}
-        {% endcontentchannelitem %}
-    {% endif %}
 </StackLayout>
 </Rock:StyledView>
