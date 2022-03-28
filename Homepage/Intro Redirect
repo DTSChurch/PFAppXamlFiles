@@ -1,0 +1,12 @@
+<StackLayout>
+     
+{% assign skipIntro = AppValues.SkipIntro %}
+ {% if skipIntro == 'No' %}
+    <Rock:Redirect PageGuid="1396ec1e-17ce-492c-980b-9829bab3939d" />
+{% endif %}
+
+{% if skipIntro or skipIntro == 'Yes' %}
+    {% setappvalue 'SkipIntro','Yes' %}
+{% endif %}
+</StackLayout>
+

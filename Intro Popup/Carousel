@@ -1,0 +1,66 @@
+<StackLayout>
+    {% assign itemId = 111 %}
+{% contentchannelitem id:'{{itemId}}' securityenabled:'false' sort:'Order' %}
+ {% assign childItems = contentchannelitem.ChildItems %}
+    {% assign closeCurly = '}' -%}
+    {%- capture introJSON -%}
+        [
+            {% for childItemAssociation in contentchannelitem.ChildItems %}
+            {% assign item = childItemAssociation.ChildContentChannelItem %}
+            {
+                "Id": {{ item.Id| ToJSON }},
+                "Title": {{ item.Title | ToJSON }},
+                "ImageId": {{ item | Attribute:'HeroImage','RawValue' | ToJSON }}
+            {% if forloop.last %}{{ closeCurly -}}{% else %}{{ closeCurly | Append:', ' -}}{%- endif -%}
+            {%- endfor -%}
+        ]
+    {%- endcapture -%}
+
+{% endcontentchannelitem %}
+    <StackLayout.Resources>
+        <Rock:FromJson x:Key="Intro">
+            {}{{ introJSON | XamlWrap }}
+        </Rock:FromJson>
+    </StackLayout.Resources>
+    <StackLayout.Behaviors>
+    	<Rock:EntranceTransition Duration="300" />
+    </StackLayout.Behaviors>
+    <CarouselView
+        ItemsSource="{StaticResource Intro}"
+        HeightRequest="900"
+        PeekAreaInsets="0,0,30,0"
+        Loop="False"
+         x:Name="CarouselView" >
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout WidthRequest="250" >
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Path=BindingContext.PushPage, Source={x:Reference Name=CarouselView}}" CommandParameter="{Binding DetailLink}" />
+                    </StackLayout.GestureRecognizers>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Rock:StyledView
+                            CornerRadius="9"
+                            Margin="10,10,10,5"
+                            HeightRequest="800"
+                            Grid.ColumnSpan="2"
+                            HasShadow="true"
+                            Elevation="3"
+                            HorizontalOptions="FillAndExpand">
+                            <Rock:Image HeightRequest="800" Source="{Binding ImageId, StringFormat='{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Guid={0}'}"
+                                Aspect="AspectFill" VerticalOptions="CenterAndExpand">
+                            </Rock:Image>
+                        </Rock:StyledView>
+                    </Grid>
+                </StackLayout>
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+    </CarouselView>
+</StackLayout>
