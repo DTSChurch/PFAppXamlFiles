@@ -2,7 +2,7 @@
     <ParallaxView Source="{x:Bind ForegroundElement}" VerticalShift="50"> 
     
         <!-- Background element --> 
-                <Rock:Image x:Name="BackgroundImage" Source="https://staff.pathfinderstl.org/Content/MobileApp/Pathfinder_Logo_RGB_3_5_19.png" Margin="20,0,20,20" />
+                <Rock:Image x:Name="BackgroundImage" Source="https://res.cloudinary.com/pathfinderstl/image/upload/v1646772686/AppFiles/PFFullLogoYellowWhite_mylfqt.png" Margin="20,0,20,20" />
     </ParallaxView>
     
     <!-- Foreground element -->
