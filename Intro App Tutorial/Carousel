@@ -10,7 +10,8 @@
             {
                 "Id": {{ item.Id| ToJSON }},
                 "Title": {{ item.Title | ToJSON }},
-                "ImageId": {{ item | Attribute:'HeroImage','RawValue' | ToJSON }}
+                "ImageId": {{ item | Attribute:'HeroImage','RawValue' | ToJSON }},
+                "DetailLink": {% if forloop.last %}"a9ccef18-c471-4810-9152-4c0bd2f35e72"{% else %}""{% endif %}
             {% if forloop.last %}{{ closeCurly -}}{% else %}{{ closeCurly | Append:', ' -}}{%- endif -%}
             {%- endfor -%}
         ]
@@ -22,12 +23,8 @@
             {}{{ introJSON | XamlWrap }}
         </Rock:FromJson>
     </StackLayout.Resources>
-    <StackLayout.Behaviors>
-    	<Rock:EntranceTransition Duration="300" />
-    </StackLayout.Behaviors>
     <CarouselView
         ItemsSource="{StaticResource Intro}"
-        HeightRequest="900"
         PeekAreaInsets="0,0,30,0"
         Loop="False"
          x:Name="CarouselView" >
@@ -44,17 +41,15 @@
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Rock:StyledView
                             CornerRadius="9"
                             Margin="10,10,10,5"
-                            HeightRequest="800"
                             Grid.ColumnSpan="2"
                             HasShadow="true"
                             Elevation="3"
                             HorizontalOptions="FillAndExpand">
-                            <Rock:Image HeightRequest="800" Source="{Binding ImageId, StringFormat='{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Guid={0}'}"
+                            <Rock:Image  Source="{Binding ImageId, StringFormat='{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Guid={0}'}"
                                 Aspect="AspectFill" VerticalOptions="CenterAndExpand">
                             </Rock:Image>
                         </Rock:StyledView>
