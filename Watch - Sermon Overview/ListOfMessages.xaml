@@ -3,7 +3,7 @@
 {% if itemId and itemId != null %}
     {% contentchannelitem id:'{{itemId}}' securityenabled:'false' %}
     {% assign imageId = contentchannelitem | Attribute:'SeriesImage','RawValue' %}
-    {% assign channelTitle = contentchannelitem.Title %}    
+    {% assign channelTitle = contentchannelitem.Title %}
     {% assign childItemCount = contentchannelitem.ChildItems | Size%}
     {% endcontentchannelitem %}
 {% endif %}
@@ -18,11 +18,11 @@
 <StackLayout>
 
 <Label Text="{{channelTitle}}" StyleClass="text-title" HorizontalOptions="Center"
-            Margin="0,15,0,0" 
+            Margin="0,15,0,0"
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="3"/>
-        <Label Text="Sermons: {{childItemCount}}" StyleClass="text-sm" 
+        <Label Text="Sermons: {{childItemCount}}" StyleClass="text-sm"
             HorizontalTextAlignment="End"
             Margin="15,0,15,0"
             Grid.Row="0"
@@ -46,7 +46,7 @@
 
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="591490d1-3d0d-43e3-b572-bc3575260a5c?ItemId={{item.Id}}" />
-                    </Grid.GestureRecognizers>    
+                    </Grid.GestureRecognizers>
                     <BoxView Color="{Rock:PaletteColor App-Light}"
                         Margin="10,-45,10,0"
                         HeightRequest="1"
@@ -80,10 +80,10 @@
                         FollowingIconColor="{Rock:PaletteColor App-Light}"
                         NotFollowingIconColor="{Rock:PaletteColor App-Light}"
                         HorizontalTextAlignment="Right"
-                        VerticalTextAlignment="Start"                    
-                        Margin="0,25,15,15"                    
+                        VerticalTextAlignment="Start"
+                        Margin="0,25,15,15"
                         Grid.Row="0"
-                        Grid.Column="2" />                
+                        Grid.Column="2" />
                 </Grid>
                 {%- endfor -%}
         {% endcontentchannelitem %}
