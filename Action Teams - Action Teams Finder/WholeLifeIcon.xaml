@@ -1,8 +1,8 @@
-{% assign definedValueId = PageParameter.DefinedValueId %}
-{% if definedValueId != null and definedValueId != "" %}
+{% assign definedValueGuid = PageParameter.DefinedValueGuid %}
+{% if definedValueGuid != null and definedValueGuid != "" %}
 
 
-{% definedvalue id:'{{definedValueId}}' securityenabled:'false' %}
+{% definedvalue where:'Guid == "{{definedValueGuid}}"' securityenabled:'false' %}
 <Grid Margin="0,10,0,0" HorizontalOptions="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -21,9 +21,6 @@
     <StackLayout Grid.Row="0" Grid.Column="0">
 
         <Grid Margin="10">
-        <Grid.Behaviors>
-            <Rock:EntranceTransition Duration="300" />
-        </Grid.Behaviors>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>

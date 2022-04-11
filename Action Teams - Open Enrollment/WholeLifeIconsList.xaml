@@ -34,7 +34,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.GestureRecognizers>
-            <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="6a344a77-0862-412f-9973-42bdea0730c9?DefinedValueId={{item.Id}}" />
+            <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="6a344a77-0862-412f-9973-42bdea0730c9?DefinedValueGuid={{item.Guid}}" />
         </Grid.GestureRecognizers>
 
             <Rock:Image HeightRequest="75"

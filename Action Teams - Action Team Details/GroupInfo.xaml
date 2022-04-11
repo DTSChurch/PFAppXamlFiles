@@ -1,0 +1,132 @@
+{% assign groupGuid = PageParameter.GroupGuid %}
+<StackLayout>
+{% if groupGuid != null and groupGuid != "" %}
+
+{% group where:'Guid == "{{groupGuid}}"' securityenabled:'false' %}
+
+    {% assign wholeLifeCategory = group | Attribute:'WholeLifeCategory','Object' %}
+    {% assign wholeLifeCategoryImageId = wholeLifeCategory | Attribute:'Image','Id' %}
+    {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
+
+     <Grid RowSpacing="0" ColumnSpacing="0" Margin="0,0,0,10" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+
+
+
+            <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+                CornerRadius="0,15,0,15"
+                HasShadow="true"
+                Elevation="3"
+                HorizontalOptions="FillAndExpand"
+                HeightRequest="100"
+                Grid.Row="0"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="4" />
+
+            <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Info}"
+                CornerRadius="15,0,0,0"
+                HasShadow="true"
+                Elevation="3"
+                HorizontalOptions="FillAndExpand"
+                Margin="0,0,0,0"
+                HeightRequest="100"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.RowSpan="2" />
+
+            <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Secondary}"
+                CornerRadius="0,0,15,0"
+                HasShadow="true"
+                Elevation="3"
+                HorizontalOptions="FillAndExpand"
+                Margin="0,0,0,0"
+                HeightRequest="100"
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.RowSpan="2" />
+
+            <Label Text="{{ group.Name | Escape }}"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Start"
+                Margin="20,20,20,0"
+                Grid.Row="0"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                StyleClass="text-lg" />
+
+             <Label Text="{{ group.Description | TruncateWords:15 | Escape }}"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Start"
+                Margin="20"
+                Grid.Row="1"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="2"
+                StyleClass="text" />
+
+            {% assign scheduleAttribute = group | Attribute:'Schedule1' %}
+            {% if scheduleAttribute != null %}
+            <Label Text="{{ scheduleAttribute }}"
+                Margin="30"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.RowSpan="2"
+                StyleClass="text" />
+            {% endif %}
+
+
+            {% if wholeLifeCategory != empty %}
+            <StackLayout Grid.Row="2"
+                Grid.Column="0"
+                Grid.RowSpan="2"
+                Orientation="Vertical"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" >
+
+                <Rock:Image HeightRequest="50"
+                Source="{{wholeLifeCategoryImageLink}}"
+                Aspect="AspectFit"
+                VerticalOptions="Center" />
+
+                <Label Text="{{ wholeLifeCategory.Value | Escape }}"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                StyleClass="heading4" />
+            </StackLayout>
+
+            {% endif %}
+
+            <Rock:FollowingIcon EntityTypeId="16"
+                EntityId="{{ group.Id }}"
+                FontSize="22"
+                IsFollowed="{{ group | IsFollowed }}"
+                FollowingIconColor="{Rock:PaletteColor App-Info}"
+                NotFollowingIconColor="{Rock:PaletteColor App-Info}"
+                HorizontalTextAlignment="Right"
+                VerticalTextAlignment="Center"
+                 Margin="0,0,20,10"
+                Grid.Row="3"
+                Grid.Column="3" />
+
+        </Grid>
+
+{% endgroup %}
+
+{% endif %}
+
+</StackLayout>
