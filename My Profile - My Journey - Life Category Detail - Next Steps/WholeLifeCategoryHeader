@@ -1,5 +1,5 @@
-{% assign definedValueId = PageParameter.DefinedValueId %}
-{% definedvalue id:'{{definedValueId}}' securityenabled:'false' %}
+{% assign definedValueGuid = PageParameter.DefinedValueGuid %}
+{% definedvalue where:'Guid == "{{definedValueGuid}}"' securityenabled:'false' %}
 
     {%- assign item = definedvalue -%}
 

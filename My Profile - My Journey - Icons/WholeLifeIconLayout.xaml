@@ -10,21 +10,19 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-    
+
         {% assign rowNum = 0 %}
         {% assign colNum = 0 %}
         {%- for item in definedvalueItems -%}
-    
+
         {% assign wholeLifeCategoryValue = item.Value %}
         {% assign wholeLifeCategoryImageId = item | Attribute:'Image','Id' %}
         {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
-    
+
         <StackLayout Grid.Row="{{rowNum | Modulo:3}}" Grid.Column="{{colNum | Modulo:2}}">
-    
+
             <Grid>
-            <Grid.Behaviors>
-                <Rock:EntranceTransition Duration="300" />
-            </Grid.Behaviors>
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
@@ -35,11 +33,11 @@
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="85bfcfc5-f1f4-469a-8a99-7c67e4a6b537?DefinedValueId={{item.Id}}" />
             </Grid.GestureRecognizers>
-            
 
-            <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Light}"
-                CornerRadius="15,15,15,15"
-                BorderColor="{Rock:PaletteColor App-Brand}"
+
+            <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+                CornerRadius="9,9,9,9"
+                BorderColor="{Rock:PaletteColor App-Light}"
                 BorderThickness="1"
                 HasShadow="true"
                 Elevation="3"
@@ -50,13 +48,14 @@
                 Grid.ColumnSpan="1"
                 Grid.RowSpan="2" />
 
-                <Rock:Image HeightRequest="150"
+                <Rock:Image HeightRequest="100"
+                    Margin="0,30,0,0"
                     Source="{{wholeLifeCategoryImageLink}}"
                     Aspect="AspectFit"
                     VerticalOptions="StartAndExpand"
                     Grid.Row="0"
                     Grid.Column="0" />
-    
+
                 <Label Text="{{wholeLifeCategoryValue}}"
                     StyleClass="text-lg"
                     Margin="0,0,0,30"
@@ -65,15 +64,14 @@
                     HorizontalTextAlignment="Center"
                     Grid.Row="1"
                     Grid.Column="0" />
-    
+
             </Grid>
-    
+
         </StackLayout>
-    
+
             {% assign rowNum = rowNum | Plus:1 %}
             {% assign colNum = colNum | Plus:1 %}
         {%- endfor -%}
         </Grid>
     {% enddefinedvalue %}
     </StackLayout>
-    

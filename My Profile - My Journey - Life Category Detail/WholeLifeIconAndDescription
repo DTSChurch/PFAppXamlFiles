@@ -18,9 +18,7 @@
     <StackLayout Grid.Row="0" Grid.Column="0">
 
         <Grid Margin="10">
-        <Grid.Behaviors>
-            <Rock:EntranceTransition Duration="300" />
-        </Grid.Behaviors>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
 
@@ -57,7 +55,7 @@
                 FontSize="28"
                 Margin="20,0,20,0"
                 Command="{Binding PushPage}"
-                CommandParameter="d29ed247-7898-45f2-bf80-63869a6292cb?DefinedValueId={{item.Id}}"
+                CommandParameter="d29ed247-7898-45f2-bf80-63869a6292cb?DefinedValueGuid={{item.Guid}}"
                 Grid.Row="3"
                 Grid.Column="0" />
 
