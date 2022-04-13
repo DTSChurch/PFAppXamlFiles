@@ -3,11 +3,11 @@
     {% if itemId and itemId != null %}
     {% contentchannelitem id:'{{itemId}}' securityenabled:'false' %}
     {% assign item = contentchannelitem %}
-
-    <StackLayout.Behaviors>
-    	<Rock:EntranceTransition Duration="150" />
-    </StackLayout.Behaviors>
-
+    {% assign seriesItem = item.ParentItems | First %}
+    {% assign seriesTitle = "" %}
+    {% if seriesItem %}
+        {% assign seriesTitle = seriesItem.ContentChannelItem.Title %}
+    {% endif %}
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -26,7 +26,7 @@
             Grid.Column="0"
             Grid.ColumnSpan="2"
             StyleClass="text-lg" />
-        
+
         <Label Text="Speaker: {{item | Attribute:'Speaker'}}"
             Margin="40,50,0,0"
                 HorizontalTextAlignment="Start"
@@ -35,21 +35,7 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 StyleClass="heading4" />
-
-        <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
-            EntityId="{{ item.Id }}"
-            FontSize="22"
-            IsFollowed="{{ item | IsFollowed }}"
-            FollowingIconColor="{Rock:PaletteColor App-Dark}"
-            NotFollowingIconColor="{Rock:PaletteColor App-Dark}"
-            Grid.Row="0"
-            Grid.Column="2"
-            Margin="0,20,30,0"
-            HorizontalTextAlignment="Right"
-            VerticalTextAlignment="Start" />
-
     </Grid>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -59,26 +45,45 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Rock:Icon IconClass="sticky-note" IconFamily="FontAwesomeSolid" FontSize="24"
+        <Rock:Icon IconClass="headphones" IconFamily="FontAwesomeSolid" FontSize="32"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"
             Margin="45,0,0,0"
-            Grid.Row="0" 
-            Grid.Column="0"/> 
-        <Rock:Icon IconClass="play" IconFamily="FontAwesomeSolid" FontSize="24"
+            Grid.Row="0"
+            Grid.Column="0"
+            Command="{Binding PlayAudio}"
+            CommandParameter="{{item | Attribute:'AudioLink'}}"
+            />
+
+        <Rock:Icon IconClass="share" IconFamily="FontAwesomeSolid" FontSize="32"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"
             Margin="0,0,0,0"
-            Grid.Row="0" 
-            Grid.Column="1"/>
-        <Rock:Icon IconClass="share" IconFamily="FontAwesomeSolid" FontSize="24"
+            Grid.Row="0"
+            Command="{Binding ShareContent}"
+            Grid.Column="1">
+
+            <Rock:Icon.CommandParameter>
+                <Rock:ShareContentParameters Title="{{seriesTitle}} - {{item.Title}}"
+                                            Text="Share {{seriesTitle}} - {{item.Title}}"
+                                            Uri="{{item | Attribute:'VideoLink'}}" />
+            </Rock:Icon.CommandParameter>
+
+        </Rock:Icon>
+
+
+        <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
+            EntityId="{{ item.Id }}"
+            FontSize="32"
+            IsFollowed="{{ item | IsFollowed }}"
+            FollowingIconColor="{Rock:PaletteColor App-Light}"
+            NotFollowingIconColor="{Rock:PaletteColor App-Light}"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"
             Margin="0,0,45,0"
-            Grid.Row="0" 
-            Grid.Column="2"/>
+            Grid.Row="0"
+            Grid.Column="2" />
     </Grid>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -97,10 +102,7 @@
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand" />
     </Grid>
-    
-
     <Rock:Html Text="{{item.Content | Escape}}" Margin="15,20,15,10" StyleClass="text-lg"/>
-
     {% endcontentchannelitem %}
     {% endif %}
 
