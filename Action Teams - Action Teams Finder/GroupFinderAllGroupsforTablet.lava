@@ -43,6 +43,7 @@
                 <Label Text="{{ item.Value | Escape }}"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"
+                 TextColor="{Rock:PaletteColor App-Primary}"
                 StyleClass="heading4" />
 
                 <Rock:Divider />
