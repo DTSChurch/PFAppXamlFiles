@@ -1,12 +1,12 @@
 <StackLayout Margin="20">
 
         <Rock:FieldContainer>
-            <Rock:TextBox x:Name="SearchTerm" Label="Search"  />
+            <Rock:TextBox x:Name="SearchTerm" Label=""  />
         </Rock:FieldContainer>
 
 
     <Button Text="Search"
-            StyleClass="btn, btn-primary"
+            StyleClass="btn, btn-secondary"
             Command="{Binding Callback}">
         <Button.CommandParameter>
             <Rock:CallbackParameters Name="Search">
