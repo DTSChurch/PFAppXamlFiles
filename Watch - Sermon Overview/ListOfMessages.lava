@@ -80,8 +80,8 @@
                         FollowingIconColor="{Rock:PaletteColor App-Light}"
                         NotFollowingIconColor="{Rock:PaletteColor App-Light}"
                         HorizontalTextAlignment="Right"
-                        VerticalTextAlignment="Start"
-                        Margin="0,25,15,15"
+                        VerticalTextAlignment="Center"
+                        Margin="0,35,15,0"
                         Grid.Row="0"
                         Grid.Column="2" />
                 </Grid>
