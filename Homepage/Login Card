@@ -5,78 +5,31 @@
     <Label Text="Welcome back {{CurrentPerson.NickName}}!" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Light}" HorizontalOptions="Center"  />
 </StackLayout>
 {%else%}
-<Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
-                CornerRadius="9,9,9,9"
-                BorderColor="{Rock:PaletteColor App-Secondary}"
-                BorderThickness="0"
-                HasShadow="true"
-                Elevation="2"
-                Margin="15,10,15,5"
-                HorizontalOptions="FillAndExpand" >
-    <StackLayout Orientation="Vertical"
-        HorizontalOptions="FillAndExpand" >
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+<StackLayout Orientation="Vertical"
+    Padding="10,20,10,0" 
+    HorizontalOptions="FillAndExpand" >
+    
 
-        <Grid.GestureRecognizers>
-            <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="11fd268f-baad-4eea-9ba5-0530e2d57825"  />
-        </Grid.GestureRecognizers>
-        
-        <Rock:Icon IconClass="circle" 
-            FontSize="100"
-            Margin="10,10,10,10"
-            HorizontalOptions="Center"
-            StyleClass="text-secondary"
-            VerticalOptions="Center"
-            IconFamily="FontAwesomeSolid"
-            Grid.Column="0"
-            Grid.Row="0" 
-            Grid.RowSpan="2"/>
+<Grid>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
 
-        <Rock:Icon IconClass="user" 
-            FontSize="50" 
-            StyleClass="text-primary"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            IconFamily="FontAwesomeRegular"
-            Grid.Column="0"
-            Grid.Row="0" 
-            Grid.RowSpan="2"/>
-        <Button Text="Login" 
-            StyleClass="btn, btn-link, p-2"
-            Margin="0,-18,0,0"
-            Command="{Binding PushPage}" CommandParameter="7261c51f-b545-4401-85af-26233d9707b1"
-            HorizontalOptions="FillAndExpand" 
-            Grid.Column="0"
-            Grid.Row="1" />
-        
-        <Label Text="We see that you are not logged in.  To enrich your experience, Please login or create a My Pathfinder account today!" StyleClass="text-sm" 
-            Margin="0,10,5,0" 
-            TextColor="{Rock:PaletteColor App-Light}" 
-            HorizontalTextAlignment="Center" 
-            Grid.Column="1"
-            Grid.Row="0" 
-            Grid.ColumnSpan="2"/>
-        
-        <Button Text="Create Profile >" 
-            StyleClass="btn, btn-link, p-2" 
-            Margin="0,0,10,10" 
-            Command="{Binding PushPage}" CommandParameter="11fd268f-baad-4eea-9ba5-0530e2d57825"
-            HorizontalOptions="End"
-            VerticalOptions="End"
-            Grid.Column="1"
-            Grid.Row="1" 
-            Grid.ColumnSpan="2"/>
-        
-    </Grid>
-    </StackLayout>
-</Rock:StyledView>
+     <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="11fd268f-baad-4eea-9ba5-0530e2d57825"  />
+    </Grid.GestureRecognizers>
+
+    
+
+   <Rock:Image 
+    Source="resource://Rock.Mobile.Resources.icon-person-not-logged-in.svg" 
+    Margin="70,70,70,10"
+    Grid.Column="0"/>
+
+    
+
+</Grid>
+
+    <Label Text="Create Profile" StyleClass="text-title,text-primary" HorizontalOptions="Center"  />
+</StackLayout>
 {%endif%}
