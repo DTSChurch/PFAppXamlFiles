@@ -8,14 +8,13 @@
 {% endgroup %}
 
 {% unless Groups == "" %}
-    <Rock:Divider Margin="20" />
-    <StackLayout Margin="20" >
+    {%comment%}<Rock:Divider Margin="5" />{%endcomment%}
+    <StackLayout Margin="10" >
     {% for group in Groups %}
         {% assign wholeLifeCategory = group | Attribute:'WholeLifeCategory','Object' %}
         {% if wholeLifeCategory.Id == wholeLifeCategoryIdPage or wholeLifeCategoryIdPage == null %}
         {% assign wholeLifeCategoryImageId = wholeLifeCategory | Attribute:'Image','Id' %}
         {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
-
 
         <Grid RowSpacing="0" ColumnSpacing="0" Margin="0,0,0,10" >
             <Grid.ColumnDefinitions>
@@ -25,45 +24,42 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="60"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-
-
-
             <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
-                CornerRadius="0,0,15,15"
+                CornerRadius="0,0,9,9"
                 HasShadow="true"
                 Elevation="3"
                 HorizontalOptions="FillAndExpand"
-                HeightRequest="100"
+                HeightRequest="60"
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
                 Grid.RowSpan="4" />
 
             <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Info}"
-                CornerRadius="15,0,0,0"
+                CornerRadius="9,0,0,0"
                 HasShadow="true"
                 Elevation="3"
                 HorizontalOptions="FillAndExpand"
                 Margin="0,0,0,0"
-                HeightRequest="100"
+                HeightRequest="60"
                 Grid.Row="0"
                 Grid.Column="0"
                 Grid.ColumnSpan="2" />
 
             <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Secondary}"
-                CornerRadius="0,15,0,0"
+                CornerRadius="0,9,0,0"
                 HasShadow="true"
                 Elevation="3"
                 HorizontalOptions="FillAndExpand"
                 Margin="0,0,0,0"
-                HeightRequest="100"
+                HeightRequest="60"
                 Grid.Row="0"
                 Grid.Column="2"
                 Grid.ColumnSpan="2" />
@@ -71,7 +67,7 @@
             <Label Text="{{ group.Name | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
-                Margin="20,20,20,0"
+                Margin="20,0,20,0"
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
@@ -80,11 +76,11 @@
              <Label Text="{{ group.Description | TruncateWords:15 | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
-                Margin="20"
+                Margin="20,0,20,0"
                 Grid.Row="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
-                Grid.RowSpan="2"
+                Grid.RowSpan="1"
                 StyleClass="text" />
 
             {% if groupPage != null %}
@@ -99,10 +95,19 @@
                     CommandParameter="{{ groupPage }}?GroupGuid={{ group.Guid }}" />
             {% endif %}
 
-            {% assign scheduleAttribute = group | Attribute:'Schedule1' %}
-            {% if scheduleAttribute != null %}
-            <Label Text="{{ scheduleAttribute }}"
-                Margin="30"
+            {% assign scheduleDayAttribute = group | Attribute:'Day' %}
+            {% assign scheduleTimeAttribute = group | Attribute:'Time' %}
+            {% if scheduleDayAttribute != null or scheduleTimeAttribute != null %}
+            <Label Text="{{ scheduleDayAttribute }}"
+                Margin="10,-20,10,0"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                StyleClass="text" />
+            <Label Text="{{ scheduleTimeAttribute }}"
+                Margin="10,20,10,0"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"
                 Grid.Row="0"
@@ -125,11 +130,11 @@
                 Aspect="AspectFit"
                 VerticalOptions="Center" />
 
-                <Label Text="{{ wholeLifeCategory.Value | Escape }}"
+                {%comment%}<Label Text="{{ wholeLifeCategory.Value | Escape }}"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"
                 TextColor="{Rock:PaletteColor App-Primary}"
-                StyleClass="heading4" />
+                StyleClass="heading4" />{%endcomment%}
             </StackLayout>
 
             {% endif %}
