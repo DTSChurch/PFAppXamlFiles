@@ -1,8 +1,8 @@
 {% contentchannelitem where:'ContentChannelId == 5' securityenabled:'false' sort:'StartDateTime desc' limit:'1' %}
 <StackLayout>
-    <Label Text="This Week's Message" StyleClass="text-title" HorizontalOptions="Center" Margin="0,10,0,0"  />
+    <Label Text="Watch Latest Message" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center" Margin="0,10,0,0"  />
 
-    <Grid  
+    <Grid
         HorizontalOptions="Center"
         VerticalOptions="Center">
 
@@ -25,15 +25,15 @@
         Grid.Row="0"
         Grid.Column="0" />
 
-        <Rock:Icon IconClass="arrow-circle-right" 
+        <Rock:Icon IconClass="arrow-circle-right"
             FontSize="20"
-            Grid.Row="0" 
+            Grid.Row="0"
             Grid.Column="1" />
     </Grid>
 
-    <Rock:WebView Source="{{contentchannelitem | Attribute:'VideoLink'}}" 
+    <Rock:WebView Source="{{contentchannelitem | Attribute:'VideoLink'}}"
     HeightRequest="250"
     Margin="0,10,0,10" />
-    
+
 </StackLayout>
 {% endcontentchannelitem %}

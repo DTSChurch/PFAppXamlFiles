@@ -1,9 +1,5 @@
 <StackLayout Orientation="Vertical" Padding="10,20,10,0" HorizontalOptions="FillAndExpand">
 
-    <StackLayout.Behaviors>
-    	<Rock:EntranceTransition Duration="50" />
-    </StackLayout.Behaviors>
-
     <Rock:Image Source="https://res.cloudinary.com/pathfinderstl/image/upload/c_scale,h_250/v1646772686/AppFiles/PFFullLogoYellowWhite_mylfqt.png" Margin="20,0,20,20" HeightRequest="60" />
     <Label Text="Welcome!" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
 
@@ -33,7 +29,7 @@
         CommandParameter="https://pathfinderstl.org/kids/?rckipid=" />
     </StackLayout>
 
-    <Label Text="Today's Message" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
+    <Label Text="Livestream Starts in..." StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
     <StackLayout StyleClass="px-32, py-16">
         {[ scheduledcontent scheduleid:'3' showwhen:'both' ]}
             <Rock:Countdown StartDateTime="{{ NextOccurrenceDateTime }}"
