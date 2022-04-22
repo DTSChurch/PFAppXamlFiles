@@ -24,7 +24,7 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="55"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -65,7 +65,7 @@
             <Label Text="{{ group.Name | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
-                Margin="20,-30,10,0"
+                Margin="20,-10,10,0"
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
@@ -75,16 +75,17 @@
             <Label Text="{{ groupSubTitle | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
-                Margin="20,10,10,0"
+                Margin="20,30,10,0"
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
-                StyleClass="text-sm" />
+                StyleClass="text-sm font-italic" />
 
-             <Label Text="{{ group.Description | TruncateWords:15 | Escape }}"
+             <Label Text="{{ group.Description | TruncateWords:30 | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
-                Margin="20,-10,20,10"
+                Margin="20,0,20,10"
+                HeightRequest="65"
                 Grid.Row="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
@@ -116,7 +117,7 @@
                 StyleClass="text" />
 
             <Label Text="{{ scheduleTimeAttribute }}"
-                Margin="10,10,10,0"
+                Margin="10,15,10,0"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"
                 Grid.Row="0"
