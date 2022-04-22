@@ -1,0 +1,109 @@
+<StackLayout>
+{% assign favoriteType = PageParameter.FavoriteType %}
+{% if favoriteType == "Sermons" %}
+{% assign personAliasId = CurrentPerson.PrimaryAliasId %}
+{% following where:'PersonAliasId == {{personAliasId}} && EntityTypeId == 208' securityenabled:'false' %}
+{% comment %}EntityTypeId == 270 is EventCalendarItem{% endcomment %}
+{% assign size = followingItems | Size %}
+{% if size > 0 %}
+    {% for follow in followingItems %}
+    {% contentchannelitem id:'{{follow.EntityId}}' sort:'StartDateTime desc' securityenabled:'false' %}
+    {% assign item = contentchannelitem %}
+    {% assign wholeLifeCategoryGuid = contentchannelitem | Attribute:'WholeLifeCategory','RawValue' %}
+    {% definedvalue where:'Guid == "{{wholeLifeCategoryGuid}}"' securityenabled:'false' %}
+{% assign wholeLifeCategoryImageId = definedvalue | Attribute:'Image','Id' %}
+{% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
+    {% enddefinedvalue %}
+
+             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="591490d1-3d0d-43e3-b572-bc3575260a5c?ItemId={{item.Id}}" />
+                </Grid.GestureRecognizers>
+
+                <Label Text="{{item.Title}}"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Start"
+                    Margin="20,10,0,0"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    StyleClass="text-lg" />
+
+                <Label Text="{{item | Attribute:'Speaker'}} | {{item.StartDateTime | Date:'MMM d, yy'}} {{wholeLifeCategory}}"
+                Margin="30,55,0,0"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    StyleClass="heading4" />
+
+
+                <Rock:Image HeightRequest="25"
+                            Source="{{wholeLifeCategoryImageLink}}"
+                            Aspect="AspectFit"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"
+                            Margin="0,35,0,0"
+                    Grid.Row="0"
+                    Grid.Column="2" />
+
+                <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
+                    EntityId="{{ item.Id }}"
+                    FontSize="22"
+                    IsFollowed="{{ item | IsFollowed }}"
+                    FollowingIconColor="{Rock:PaletteColor App-Light}"
+                    NotFollowingIconColor="{Rock:PaletteColor App-Light}"
+                    HorizontalTextAlignment="Right"
+                    VerticalTextAlignment="Center"
+                    Margin="0,35,15,0"
+                    Grid.Row="0"
+                    Grid.Column="2" />
+                </Grid>
+                <Rock:Divider />
+    {% endcontentchannelitem %}
+
+    {% endfor %}
+
+{% else %}
+    <Grid MarginTop="20">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <Label Text="No Sermons Saved yet!"
+        TextColor="{Rock:PaletteColor App-Primary}"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Center"
+        Grid.Row="0"
+        Grid.Column="0"
+        StyleClass="text-lg" />
+
+    <Rock:Icon IconClass="star"
+        FontSize="32"
+        Grid.Row="0"
+        Grid.Column="1"
+        HorizontalTextAlignment="End"
+        VerticalTextAlignment="Center"
+        MarginRight="30"
+        TextColor="{Rock:PaletteColor App-Primary}" />
+
+</Grid>
+
+{% endif %}
+{% endfollowing %}
+{% endif %}
+</StackLayout>
