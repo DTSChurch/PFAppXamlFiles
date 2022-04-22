@@ -28,7 +28,7 @@
             StyleClass="text-lg" />
 
         <Label Text="Speaker: {{item | Attribute:'Speaker'}}"
-            Margin="40,50,0,0"
+            Margin="25,50,0,0"
                 HorizontalTextAlignment="Start"
                 VerticalTextAlignment="End"
                 Grid.Row="0"
