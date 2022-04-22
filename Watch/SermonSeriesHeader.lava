@@ -1,3 +1,5 @@
+<StackLayout>
+<Rock:Divider StyleClass="mx-24"/>
 <Grid>
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
@@ -9,8 +11,9 @@
 
     <Label Text="Sermon Series"
         StyleClass="text-subtitle"
-        Margin="10,0,0,0"
+        Margin="25,0,0,0"
         HorizontalOptions="Start"
+        VerticalOptions="Center"
         Grid.Column="0"  />
 
     <Rock:Icon IconClass="search"
@@ -25,3 +28,5 @@
 
 
 </Grid>
+
+</StackLayout>

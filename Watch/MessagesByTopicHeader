@@ -1,1 +1,14 @@
-<Label Text="Messages By Topic" StyleClass="text-subtitle" Margin="10,0,0,0" HorizontalOptions="Start"  />
+<Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+    <Label Text="Messages By Topic" 
+    StyleClass="text-subtitle" 
+    Margin="25,0,0,10" 
+    HorizontalOptions="Start" 
+    VerticalOptions="Center"  />
+</Grid>

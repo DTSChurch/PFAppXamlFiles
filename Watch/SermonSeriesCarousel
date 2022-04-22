@@ -24,14 +24,11 @@
             {}{{ seriesJSON | XamlWrap }}
         </Rock:FromJson>
     </StackLayout.Resources>
-    <StackLayout.Behaviors>
-    	<Rock:EntranceTransition Duration="50" />
-    </StackLayout.Behaviors>
 
 
     <CarouselView
         ItemsSource="{StaticResource Series}"
-        HeightRequest="210"
+        HeightRequest="170"
         PeekAreaInsets="0,0,30,0"
         Loop="False"
          x:Name="CarouselView" >
@@ -43,18 +40,15 @@
                     </StackLayout.GestureRecognizers>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Rock:StyledView
                             CornerRadius="9"
-                            Margin="10,10,10,5"
+                            Margin="10,5,10,5"
                             HeightRequest="150"
-                            Grid.ColumnSpan="2"
                             HasShadow="true"
                             Elevation="3"
                             HorizontalOptions="FillAndExpand">
