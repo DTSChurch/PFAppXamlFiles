@@ -1,0 +1,16 @@
+<StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+     <Button Text="Sermons"
+       StyleClass="btn,btn-outline-primary,overview-button"
+            Command="{Binding ReplacePage}"
+            CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=Sermons" />
+
+             <Button Text="Pop-Up Events"
+       StyleClass="btn,btn-outline-primary,overview-button"
+            Command="{Binding ReplacePage}"
+            CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=PopUpEvents" />
+
+             <Button Text="Action Teams"
+       StyleClass="btn,btn-outline-primary,overview-button"
+            Command="{Binding ReplacePage}"
+            CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=ActionTeams" />
+</StackLayout>

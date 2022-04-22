@@ -1,0 +1,100 @@
+{% assign favoriteType = PageParameter.FavoriteType %}
+<StackLayout>
+{% if favoriteType == "PopUpEvents" %}
+{% assign personAliasId = CurrentPerson.PrimaryAliasId %}
+{% following where:'PersonAliasId == {{personAliasId}} && EntityTypeId == 270 || EntityTypeId == 236' securityenabled:'false' %}
+{% comment %}EntityTypeId == 270 is EventCalendarItem{% endcomment %}
+{% assign size = followingItems | Size %}
+{% if size > 0 %}
+    {% for follow in followingItems %}
+    {% eventcalendaritem id:'{{follow.EntityId}}' sort:'StartDateTime desc' securityenabled:'false' %}
+    {% assign item = eventcalendaritem %}
+{% assign eventItem = eventcalendaritem.EventItem %}
+{% assign wholeLifeCategory = eventItem | Attribute:'WholeLifeCategory','Object' %}
+{% assign wholeLifeCategoryValue = wholeLifeCategory.Value %}
+{% assign wholeLifeCategoryImageId = wholeLifeCategory | Attribute:'Image','Id' %}
+{% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
+
+
+             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="63839327-b59a-439d-93aa-65bc09821143?ItemId={{item.Id}}" />
+                </Grid.GestureRecognizers>
+
+                <Label Text="{{item.EventItem.Name | Escape}}"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Start"
+                    Margin="20,0,0,0"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    StyleClass="text-lg" />
+
+
+                <Rock:Image HeightRequest="25"
+                            Source="{{wholeLifeCategoryImageLink}}"
+                            Aspect="AspectFit"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"
+                    Grid.Row="0"
+                    Grid.Column="2" />
+
+                <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
+                    EntityId="{{ item.Id }}"
+                    FontSize="22"
+                    IsFollowed="{{ item | IsFollowed }}"
+                    FollowingIconColor="{Rock:PaletteColor App-Light}"
+                    NotFollowingIconColor="{Rock:PaletteColor App-Light}"
+                    HorizontalTextAlignment="Right"
+                    VerticalTextAlignment="Center"
+                    Margin="0,0,15,0"
+                    Grid.Row="0"
+                    Grid.Column="2" />
+                </Grid>
+                <Rock:Divider />
+    {% endeventcalendaritem %}
+
+    {% endfor %}
+
+{% else %}
+    <Grid MarginTop="20">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <Label Text="No Pop-Up Events Saved yet!"
+        TextColor="{Rock:PaletteColor App-Primary}"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Center"
+        Grid.Row="0"
+        Grid.Column="0"
+        StyleClass="text-lg" />
+
+    <Rock:Icon IconClass="star"
+        FontSize="32"
+        Grid.Row="0"
+        Grid.Column="1"
+        HorizontalTextAlignment="End"
+        VerticalTextAlignment="Center"
+        MarginRight="30"
+        TextColor="{Rock:PaletteColor App-Primary}" />
+
+</Grid>
+
+{% endif %}
+{% endfollowing %}
+{% endif %}
+</StackLayout>
