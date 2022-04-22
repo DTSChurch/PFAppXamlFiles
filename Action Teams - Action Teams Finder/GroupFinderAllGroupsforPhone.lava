@@ -9,9 +9,6 @@
     {% endgroup %}
     {% unless Groups == "" %}
 
-
-
-        <Rock:Divider Margin="20" />
         <StackLayout Margin="20" >
 
         {% definedvalue where:'DefinedTypeId == 108' securityenabled:'false' %}
@@ -33,20 +30,16 @@
                 VerticalOptions="Center"
                 HorizontalOptions="Center" >
 
-                <Rock:Divider />
-
                 <Rock:Image HeightRequest="50"
                 Source="{{wholeLifeCategoryImageLinkHeader}}"
                 Aspect="AspectFit"
-                VerticalOptions="Center" />
+                VerticalOptions="Start" />
 
                 <Label Text="{{ item.Value | Escape }}"
                 HorizontalTextAlignment="Center"
-                VerticalTextAlignment="Center"
+                VerticalTextAlignment="End"
                  TextColor="{Rock:PaletteColor App-Primary}"
-                StyleClass="heading4" />
-
-                <Rock:Divider />
+                StyleClass="heading4"/>
 
             </StackLayout>
 
