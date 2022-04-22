@@ -1,35 +1,43 @@
 {% if CurrentPerson %}
 <StackLayout Orientation="Vertical"
-    Padding="10,15,10,0" 
+    Padding="10,0,10,0" 
     HorizontalOptions="FillAndExpand" >
     <Label Text="Welcome back {{CurrentPerson.NickName}}!" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Light}" HorizontalOptions="Center"  />
 </StackLayout>
 {%else%}
 <StackLayout Orientation="Vertical"
-    Padding="10,20,10,0" 
+    Padding="10,10,10,0" 
     HorizontalOptions="FillAndExpand" >
-    
-
 <Grid>
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
-
      <Grid.GestureRecognizers>
         <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="11fd268f-baad-4eea-9ba5-0530e2d57825"  />
-    </Grid.GestureRecognizers>
-
-    
-
+    </Grid.GestureRecognizers>  
    <Rock:Image 
     Source="resource://Rock.Mobile.Resources.icon-person-not-logged-in.svg" 
-    Margin="70,70,70,10"
-    Grid.Column="0"/>
-
-    
-
+    WidthRequest="200"
+    Grid.Column="0"/> 
 </Grid>
-
-    <Label Text="Create Profile" StyleClass="text-title,text-primary" HorizontalOptions="Center"  />
+    <Grid StyleClass="px-16, py-16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Button Text="I'M NEW"
+            x:Name="overviewButton"
+            StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+            HorizontalOptions="FillAndExpand"
+            Grid.Column="0"
+            Command="{Binding PushPage}"
+            CommandParameter="11fd268f-baad-4eea-9ba5-0530e2d57825" />
+        <Button Text="LOGIN"
+            StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+                HorizontalOptions="FillAndExpand"
+                Grid.Column="1"
+                Command="{Binding PushPage}"
+                CommandParameter="7261c51f-b545-4401-85af-26233d9707b1" />
+    </Grid>
 </StackLayout>
 {%endif%}
