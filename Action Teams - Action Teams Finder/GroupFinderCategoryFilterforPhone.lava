@@ -1,8 +1,4 @@
-{% definedvalue where:'Id == {{PageParameter.ItemId}}' securityenabled:'false' %}
-    {%- for item in definedvalueItems -%}
-    {% assign wholeLifeCategoryGuidPage = item.Guid %}
-    {%- endfor -%}
-{%enddefinedvalue%}
+{% assign wholeLifeCategoryGuidPage = PageParameter.DefinedValueGuid %}
 {% assign groupPage = "79dc4186-5c1e-45ce-b5ef-f3c60363cc8a" %}
 {% assign Groups = "" %}
 <StackLayout>
@@ -12,7 +8,6 @@
 {% endgroup %}
 
 {% unless Groups == "" %}
-    {%comment%}<Rock:Divider Margin="5" />{%endcomment%}
     <StackLayout Margin="10" >
     {% for group in Groups %}
         {% assign wholeLifeCategory = group | Attribute:'WholeLifeCategory','Object' %}
@@ -29,6 +24,7 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -69,17 +65,17 @@
             <Label Text="{{ group.Name | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
-                Margin="20,0,20,0"
+                Margin="20,-30,10,0"
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
                 StyleClass="text-lg" />
 
-            {% assign groupDescription = group | Attribute:'SubTitle' %}
-            <Label Text="{{ groupDescription | Escape }}"
+            {% assign groupSubTitle = group | Attribute:'SubTitle' %}
+            <Label Text="{{ groupSubTitle | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
-                Margin="20,45,20,0"
+                Margin="20,10,10,0"
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
@@ -88,7 +84,7 @@
              <Label Text="{{ group.Description | TruncateWords:15 | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
-                Margin="20,10,20,10"
+                Margin="20,-10,20,10"
                 Grid.Row="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
@@ -120,7 +116,7 @@
                 StyleClass="text" />
 
             <Label Text="{{ scheduleTimeAttribute }}"
-                Margin="10,20,10,0"
+                Margin="10,10,10,0"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"
                 Grid.Row="0"
@@ -142,12 +138,6 @@
                 Source="{{wholeLifeCategoryImageLink}}"
                 Aspect="AspectFit"
                 VerticalOptions="Center" />
-
-                {%comment%}<Label Text="{{ wholeLifeCategory.Value | Escape }}"
-                HorizontalTextAlignment="Center"
-                VerticalTextAlignment="Center"
-                TextColor="{Rock:PaletteColor App-Primary}"
-                StyleClass="heading4" />{%endcomment%}
             </StackLayout>
 
             {% endif %}
