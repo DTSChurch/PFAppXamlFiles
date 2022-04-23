@@ -6,11 +6,7 @@
 {% assign actionTeamsPageGuid = "efdb6313-f5f0-4974-86a7-8a3d9b1c0deb" %}
 {% endif %}
 
-<StackLayout Orientation="Vertical" Padding="10,40,10,0" HorizontalOptions="FillAndExpand">
-    <StackLayout.Behaviors>
-    	<Rock:EntranceTransition Duration="300" />
-    </StackLayout.Behaviors>
-    
+<StackLayout Orientation="Vertical" Padding="10,40,10,0" HorizontalOptions="FillAndExpand">    
     <StackLayout StyleClass="px-32, py-16">
         <Button Text="My Journey"
         StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
