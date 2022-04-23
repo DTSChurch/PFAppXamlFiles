@@ -15,37 +15,69 @@
 {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
 
 
-             <Grid>
+             <Grid RowSpacing="0" ColumnSpacing="0" Margin="0,0,0,20" >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="80"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="80"/>
                 </Grid.RowDefinitions>
 
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="79dc4186-5c1e-45ce-b5ef-f3c60363cc8a?GroupGuid={{item.Guid}}" />
                 </Grid.GestureRecognizers>
 
+                <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Info}"
+                    CornerRadius="9,0,9,0"
+                    HasShadow="true"
+                    Elevation="3"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,0,0,0"
+                    HeightRequest="60"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1" />
+
+                <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+                    CornerRadius="0,9,0,9"
+                    HasShadow="true"
+                    Elevation="3"
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="50"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2" />
+
+                <Rock:Image HeightRequest="50"
+                            Source="{{wholeLifeCategoryImageLink}}"
+                            Aspect="AspectFit"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,0"
+                    Grid.Row="0"
+                    Grid.Column="0" />
+
                 <Label Text="{{item.Name | Escape}}"
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Start"
                     Margin="20,0,0,0"
                     Grid.Row="0"
-                    Grid.Column="0"
+                    Grid.Column="1"
                     Grid.ColumnSpan="2"
                     StyleClass="text-lg" />
 
-
-                <Rock:Image HeightRequest="25"
-                            Source="{{wholeLifeCategoryImageLink}}"
-                            Aspect="AspectFit"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Start"
+                {% assign groupSubTitle = item | Attribute:'SubTitle' %}
+                <Label Text="{{ groupSubTitle | Escape }}"
+                    Margin="30,35,0,0"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Start"
                     Grid.Row="0"
-                    Grid.Column="2" />
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    StyleClass="heading4" />
+
 
                 <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
                     EntityId="{{ item.Id }}"
