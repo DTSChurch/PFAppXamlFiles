@@ -1,5 +1,13 @@
+{% if CurrentPerson %}
+<StackLayout Orientation="Vertical"
+    Padding="10,20,10,0" 
+    HorizontalOptions="FillAndExpand" >
+    <Rock:Image Source="https://res.cloudinary.com/pathfinderstl/image/upload/c_scale,h_200,w_126/v1650691235/AppFiles/Pathfinder_Lantern_White_d2saex.png" Margin="20,0,20,20" HeightRequest="100"/>
+</StackLayout>
+{%else%}
 <StackLayout Orientation="Vertical"
     Padding="10,20,10,0" 
     HorizontalOptions="FillAndExpand" >
     <Rock:Image Source="https://res.cloudinary.com/pathfinderstl/image/upload/c_scale,h_250/v1646772686/AppFiles/PFFullLogoYellowWhite_mylfqt.png" Margin="20,0,20,20" HeightRequest="60"/>
 </StackLayout>
+{%endif%}

@@ -2,7 +2,27 @@
 <StackLayout Orientation="Vertical"
     Padding="10,0,10,0" 
     HorizontalOptions="FillAndExpand" >
-    <Label Text="Welcome back {{CurrentPerson.NickName}}!" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Light}" HorizontalOptions="Center"  />
+    <Label Text="Welcome back, {{CurrentPerson.NickName}}!" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Light}" HorizontalOptions="Center"  />
+        <Button Text="My Journey"
+        StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+            Command="{Binding PushPage}"
+            CommandParameter="b41d997a-7206-490a-9f25-e96dbeff575d"
+            Margin="20,30,20,10" />
+        <Button Text="Watch"
+            StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+            Command="{Binding PushPage}"
+            CommandParameter="9bbc8b74-0204-4744-a082-1e1c05b3eab3"
+            Margin="20,10,20,10" />
+        <Button Text="Pop-Up Events"
+            StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+            Command="{Binding PushPage}"
+            CommandParameter="70909791-34ec-46a5-9d6d-8fcf2cdf1704"
+            Margin="20,10,20,10" />
+        <Button Text="Action Teams"
+            StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+            Command="{Binding PushPage}"
+            CommandParameter="7945cc85-bdcf-4d8c-8b49-47b0eb493ade"
+            Margin="20,10,20,10" />
 </StackLayout>
 {%else%}
 <StackLayout Orientation="Vertical"
