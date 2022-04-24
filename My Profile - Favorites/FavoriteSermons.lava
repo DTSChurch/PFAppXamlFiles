@@ -1,6 +1,6 @@
 <StackLayout>
 {% assign favoriteType = PageParameter.FavoriteType %}
-{% if favoriteType == "Sermons" %}
+{% if favoriteType == "Sermons" or favoriteType == null %}
 {% assign personAliasId = CurrentPerson.PrimaryAliasId %}
 {% following where:'PersonAliasId == {{personAliasId}} && EntityTypeId == 208' securityenabled:'false' %}
 {% comment %}EntityTypeId == 270 is EventCalendarItem{% endcomment %}
@@ -15,7 +15,7 @@
 {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
     {% enddefinedvalue %}
 
-             <Grid RowSpacing="0" ColumnSpacing="0" Margin="0,0,0,20" >
+             <Grid RowSpacing="0" ColumnSpacing="0" Margin="10,0,10,10" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="80"/>
                     <ColumnDefinition Width="*"/>

@@ -16,37 +16,67 @@
 {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
 
 
-             <Grid>
+             <Grid RowSpacing="0" ColumnSpacing="0" Margin="10,0,10,10" >
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="60"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="80"/>
                 </Grid.RowDefinitions>
 
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="63839327-b59a-439d-93aa-65bc09821143?ItemId={{item.Id}}" />
                 </Grid.GestureRecognizers>
 
-                <Label Text="{{item.EventItem.Name | Escape}}"
-                    VerticalTextAlignment="Center"
-                    HorizontalTextAlignment="Start"
-                    Margin="20,0,0,0"
+                <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Info}"
+                    CornerRadius="9,0,9,0"
+                    HasShadow="true"
+                    Elevation="3"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,0,0,0"
+                    HeightRequest="60"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    StyleClass="text-lg" />
+                    Grid.ColumnSpan="1" />
 
+                <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+                    CornerRadius="0,9,0,9"
+                    HasShadow="true"
+                    Elevation="3"
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="50"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2" />
 
-                <Rock:Image HeightRequest="25"
+                <Rock:Image HeightRequest="50"
                             Source="{{wholeLifeCategoryImageLink}}"
                             Aspect="AspectFit"
                             VerticalOptions="Center"
-                            HorizontalOptions="Start"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,0"
                     Grid.Row="0"
-                    Grid.Column="2" />
+                    Grid.Column="0" />
+
+                <Label Text="{{item.EventItem.Name | Escape}}"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Start"
+                    Margin="10,-25,0,0"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    StyleClass="text-md" />
+
+                <Label Text="{{ item.EventItem.Summary  | Truncate:30,'...'  | Escape }}"
+                    Margin="20,30,0,0"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Center"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    StyleClass="text-sm" />
 
                 <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
                     EntityId="{{ item.Id }}"
@@ -60,7 +90,6 @@
                     Grid.Row="0"
                     Grid.Column="2" />
                 </Grid>
-                <Rock:Divider />
     {% endeventcalendaritem %}
 
     {% endfor %}

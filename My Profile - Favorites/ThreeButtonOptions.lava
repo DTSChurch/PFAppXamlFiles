@@ -1,16 +1,82 @@
+{% assign favoriteType = PageParameter.FavoriteType %}
+
 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+
+{% if favoriteType == "Sermons" or favoriteType == null  %}
+     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+          CornerRadius="0,0,0,0"
+          IsClippedToBounds="true"
+          HorizontalOptions="FillAndExpand"
+          HeightRequest="30" >
      <Button Text="Sermons"
-       StyleClass="btn,btn-outline-primary,overview-button"
-            Command="{Binding ReplacePage}"
-            CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=Sermons" />
+          StyleClass="btn,page-menu-active"
+          Margin="0"
+          Command="{Binding ReplacePage}"
+          CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=Sermons" />
+     </Rock:StyledView>
+{%else%}
+     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+          CornerRadius="0,0,0,0"
+          IsClippedToBounds="true"
+          HorizontalOptions="FillAndExpand"
+          HeightRequest="30" >
+     <Button Text="Sermons"
+          StyleClass="btn,page-menu"
+          Margin="0"
+          Command="{Binding ReplacePage}"
+          CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=Sermons" />
+     </Rock:StyledView>
+{%endif%}
 
-             <Button Text="Pop-Up Events"
-       StyleClass="btn,btn-outline-primary,overview-button"
-            Command="{Binding ReplacePage}"
-            CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=PopUpEvents" />
+{% if favoriteType == "PopUpEvents" %}
+     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+          CornerRadius="0,0,0,0"
+          IsClippedToBounds="true"
+          HorizontalOptions="FillAndExpand"
+          HeightRequest="30" >
+     <Button Text="Pop-Up Events"
+          StyleClass="btn,page-menu-active"
+          Margin="0"
+          Command="{Binding ReplacePage}"
+          CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=PopUpEvents" />
+     </Rock:StyledView>
+{%else%}
+     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+          CornerRadius="0,0,0,0"
+          IsClippedToBounds="true"
+          HorizontalOptions="FillAndExpand"
+          HeightRequest="30" >
+     <Button Text="Pop-Up Events"
+          StyleClass="btn,page-menu"
+          Margin="0"
+          Command="{Binding ReplacePage}"
+          CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=PopUpEvents" />
+     </Rock:StyledView>
+{%endif%}
 
-             <Button Text="Action Teams"
-       StyleClass="btn,btn-outline-primary,overview-button"
-            Command="{Binding ReplacePage}"
-            CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=ActionTeams" />
+{% if favoriteType == "ActionTeams" %}
+     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+          CornerRadius="0,0,0,0"
+          IsClippedToBounds="true"
+          HorizontalOptions="FillAndExpand"
+          HeightRequest="30" >
+     <Button Text="Action Teams"
+          StyleClass="btn,page-menu-active"
+          Margin="0"
+          Command="{Binding ReplacePage}"
+          CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=ActionTeams" />
+     </Rock:StyledView>
+{%else%}
+     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+          CornerRadius="0,0,0,0"
+          IsClippedToBounds="true"
+          HorizontalOptions="FillAndExpand"
+          HeightRequest="30" >
+     <Button Text="ActionTeams"
+          StyleClass="btn,page-menu"
+          Margin="0"
+          Command="{Binding ReplacePage}"
+          CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=ActionTeams" />
+     </Rock:StyledView>
+{%endif%}
 </StackLayout>

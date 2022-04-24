@@ -15,11 +15,11 @@
 {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
 
 
-             <Grid RowSpacing="0" ColumnSpacing="0" Margin="0,0,0,20" >
+             <Grid RowSpacing="0" ColumnSpacing="0" Margin="10,0,10,10" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="80"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="60"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
@@ -62,7 +62,7 @@
                 <Label Text="{{item.Name | Escape}}"
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Start"
-                    Margin="20,0,0,0"
+                    Margin="10,-25,0,0"
                     Grid.Row="0"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
@@ -70,9 +70,9 @@
 
                 {% assign groupSubTitle = item | Attribute:'SubTitle' %}
                 <Label Text="{{ groupSubTitle | Escape }}"
-                    Margin="30,35,0,0"
+                    Margin="20,30,0,0"
                     HorizontalTextAlignment="Start"
-                    VerticalTextAlignment="Start"
+                    VerticalTextAlignment="Center"
                     Grid.Row="0"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
@@ -91,7 +91,6 @@
                     Grid.Row="0"
                     Grid.Column="2" />
                 </Grid>
-                <Rock:Divider />
     {% endgroup %}
 
     {% endfor %}
