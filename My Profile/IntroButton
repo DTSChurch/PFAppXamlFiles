@@ -10,11 +10,13 @@
         <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
-    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
-        CornerRadius="10,10,10,10"
+    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+        CornerRadius="9,9,9,9"
+        BorderThickness="2"
+        BorderColor="{Rock:PaletteColor App-Primary}"
         IsClippedToBounds="true"
         HorizontalOptions="FillAndExpand"
-        Margin="10"
+        Margin="5"
         HeightRequest="50"
         Grid.Row="0"
         Grid.Column="0"
