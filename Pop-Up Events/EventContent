@@ -36,7 +36,6 @@
 
                 <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
                     CornerRadius="9,0,0,0"
-                    HasShadow="true"
                     Margin="0,0,0,0"
                     HeightRequest="80"
                     Grid.Row="0"
@@ -48,21 +47,18 @@
 
                 <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
                     CornerRadius="0,0,9,0"
-                    HasShadow="true"
                     Margin="0,0,0,0"
                     HeightRequest="80"
                     Grid.Row="1"
                     Grid.Column="0">
                     <Rock:Image HeightRequest="60"
                         Source="{{wholeLifeCategoryImageLink}}"
-                        Aspect="AspectFit"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"/>
                 </Rock:StyledView>
 
                 <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Secondary}"
                     CornerRadius="0,9,0,9"
-                    HasShadow="true"
                     Margin="0,0,0,0"
                     Grid.Row="0"
                     Grid.Column="1"

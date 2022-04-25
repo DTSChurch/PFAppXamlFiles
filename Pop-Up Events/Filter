@@ -1,9 +1,7 @@
 <StackLayout>
-
 <Rock:Expander>
     <Rock:Expander.Header>
-
-    <Grid>
+    <Grid Margin="0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -36,24 +34,17 @@
             Margin="110,0,0,0"
             HorizontalOptions="Center"
             VerticalOptions="Center"/>
-
     </Grid>
-
     </Rock:Expander.Header>
     <StackLayout>
-       {% definedtype id:'108' securityenabled:'false' %}
-
-{% for dv in definedtype.DefinedValues %}
-
-    <Button Text="{{dv.Value}}"
-        StyleClass="btn,btn-primary"
-        Margin="20,0,20,0"
-        HorizontalOptions="FillAndExpand" Command="{Binding PushPage}" CommandParameter="3ae0cf1c-e49a-4b3a-bec7-b66700ff0891?DefinedValueGuid={{dv.Guid}}"  />
-
-{% endfor %}
-
-{% enddefinedtype %}
-
+        {% definedtype id:'108' securityenabled:'false' %}
+            {% for dv in definedtype.DefinedValues %}
+            <Button Text="{{dv.Value}}"
+                StyleClass="btn,btn-primary"
+                Margin="20,0,20,0"
+                HorizontalOptions="FillAndExpand" Command="{Binding PushPage}" CommandParameter="3ae0cf1c-e49a-4b3a-bec7-b66700ff0891?DefinedValueGuid={{dv.Guid}}"  />
+            {% endfor %}
+        {% enddefinedtype %}
     </StackLayout>
 </Rock:Expander>
 </StackLayout>

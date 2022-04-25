@@ -36,7 +36,7 @@
             >
             <CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout WidthRequest="180">
+                    <StackLayout>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Path=BindingContext.PushPage, Source={x:Reference Name=CarouselView}}" CommandParameter="{Binding DetailLink}" />
                             </StackLayout.GestureRecognizers>
