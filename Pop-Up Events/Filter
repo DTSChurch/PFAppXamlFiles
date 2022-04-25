@@ -10,10 +10,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Rock:StyledView BackgroundColor="#fff" 
+        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Light}" 
             BorderColor="#e1e1e1"
             BorderThickness="2"
-            CornerRadius="10,10,10,10"
+            CornerRadius="9,9,9,9"
             IsClippedToBounds="true"
             HorizontalOptions="FillAndExpand"
             Margin="5"
@@ -28,6 +28,14 @@
             Grid.Row="0"
             Grid.Column="0"
             StyleClass="text-lg" />
+        <Rock:Icon IconClass="chevron-down" 
+            TextColor="{Rock:PaletteColor App-Dark}"
+            IconFamily="FontAwesomeSolid" FontSize="32"
+            Grid.Row="0"
+            Grid.Column="0" 
+            Margin="110,0,0,0"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
 
     </Grid>
 
