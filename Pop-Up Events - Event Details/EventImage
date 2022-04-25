@@ -1,7 +1,9 @@
 {% assign itemId = PageParameter.ItemId %}
 {% if itemId and itemId != null %}
 {% eventcalendaritem id:'{{itemId}}' securityenabled:'false' %}
+{% assign photoSize = eventcalendaritem.EventItem.PhotoId | Size %}
 {% capture link %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ eventcalendaritem.EventItem.PhotoId }}{% endcapture %}
+{%if photoSize >1 %}
  <Rock:StyledView
     CornerRadius="15"
     HasShadow="True"
@@ -11,5 +13,14 @@
     IsClippedToBounds="True">
     <Rock:Image MarginBottom="-64" HeightRequest="220" Source="{{link}}" Aspect="AspectFill" VerticalOptions="CenterAndExpand"/>
 </Rock:StyledView>
+{%else%}
+<Rock:StyledView
+CornerRadius="15"
+Elevation="1"
+Padding="0"
+Margin="0"
+IsClippedToBounds="True">
+</Rock:StyledView>
+{% endif %}
 {% endeventcalendaritem %}
 {% endif %}

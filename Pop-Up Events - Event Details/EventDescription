@@ -9,15 +9,8 @@
 {% assign wholeLifeCategoryImageId = wholeLifeCategory | Attribute:'Image','Id' %}
 {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
 
-
 <StackLayout>
-
- <StackLayout.Behaviors>
-    	<Rock:EntranceTransition Duration="150" />
-    </StackLayout.Behaviors>
-
-<Rock:Html Text="{{eventcalendaritem.EventItem.Description | Escape}}" Margin="10" />
-
+    <Rock:Html Text="{{eventcalendaritem.EventItem.Description | Escape}}" Margin="10" />
 </StackLayout>
 {% endeventcalendaritem %}
 {% endif %}

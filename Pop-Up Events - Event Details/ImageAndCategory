@@ -9,27 +9,43 @@
 {% assign wholeLifeCategoryImageId = wholeLifeCategory | Attribute:'Image','Id' %}
 {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
 
+{% assign nextStartDate = ""%}
+{% assign nextStartTime = ""%}
 
+{% eventscheduledinstance eventid:'{{itemId}}' maxoccurrences:'5'  daterange:'6m' %}
+    {% for item in EventScheduledInstances %}
+        {% assign nextStartDate = item.Date%}
+        {% assign nextStartTime = item.Time%}
+        {% assign firstLinkage = item.EventItemOccurrence.Linkages %}
+        {% assign registrationInstanceId = firstLinkage | Where:'RegistrationInstanceId', 0, 'notequal' | Select:'RegistrationInstanceId' | Last  %}
+        {% capture registrationInstanceLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/registration?registrationinstanceid={{ registrationInstanceId }}{% endcapture %}
+    {% endfor %}
+{% endeventscheduledinstance %}
+
+
+{% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
 <StackLayout>
-
- <StackLayout.Behaviors>
-    	<Rock:EntranceTransition Duration="300" />
-    </StackLayout.Behaviors>
-
-
-
+    <Rock:Image HeightRequest="80"
+        Margin="10,10,10,10"
+        Source="{{wholeLifeCategoryImageLink}}"
+        VerticalOptions="Start"
+        Aspect="AspectFit" />
     <Label Text="{{wholeLifeCategoryValue}}"
         StyleClass="text-lg"
+        Margin="0,0,0,0"
         TextColor="{Rock:PaletteColor App-Primary}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center" />
-
-    <Rock:Image HeightRequest="150"
-        Margin="10,0,10,10"
-        Source="{{wholeLifeCategoryImageLink}}"
-        Aspect="AspectFit" />
-
-
+    <Label Text="When:" TextColor="{Rock:PaletteColor App-Light}" Grid.Row="0" Grid.Column="0" Margin="0,0,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="text-lg, leading-none, text-bold"/>
+    <Label Text="{{nextStartDate}}" TextColor="{Rock:PaletteColor App-Light}" Grid.Row="0" Grid.Column="0" Margin="0,0,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="text-md, leading-none, text-bold"/>
+    <Label Text="{{nextStartTime}}" TextColor="{Rock:PaletteColor App-Light}" Grid.Row="0" Grid.Column="0" Margin="0,0,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="text-md, leading-none, text-bold"/>
+    <Button Text="Sign Up"
+        StyleClass="btn,btn-outline-primary"
+        TextColor="{Rock:PaletteColor App-Light}"
+        HeightRequest="50"
+        Margin="10,10,10,10"
+        Command="{Binding OpenBrowser}"
+        CommandParameter="{{registrationInstanceLink}}" />
 </StackLayout>
 {% endeventcalendaritem %}
 {% endif %}
