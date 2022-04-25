@@ -1,7 +1,4 @@
 <StackLayout>
-    <StackLayout.Behaviors>
-    	<Rock:EntranceTransition Duration="300" />
-    </StackLayout.Behaviors>
 
 <Rock:Expander>
     <Rock:Expander.Header>
@@ -19,8 +16,8 @@
             CornerRadius="10,10,10,10"
             IsClippedToBounds="true"
             HorizontalOptions="FillAndExpand"
-            Margin="10"
-            HeightRequest="50"
+            Margin="5"
+            HeightRequest="40"
             Grid.Row="0"
             Grid.Column="0" />
 
