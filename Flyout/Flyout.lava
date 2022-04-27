@@ -1,49 +1,41 @@
-<ListView SeparatorVisibility="None"
-    HasUnevenRows="true"
-    ItemsSource="{Binding MenuItems}">
-    <ListView.Header>
-        <StackLayout VerticalOptions="FillAndExpand"
+
+<StackLayout BackgroundColor="#424242" >
+    <StackLayout.Effects>
+        <Rock:SafeAreaPaddingEffect Edges="Top" />
+    </StackLayout.Effects>
+    <StackLayout VerticalOptions="FillAndExpand"
             Orientation="Vertical">
-            <BoxView HeightRequest="1"
-                HorizontalOptions="FillAndExpand"/>
             <Rock:LoginStatus
                 StyleClass="login-status"
                 NotLoggedInColor="{Rock:PaletteColor App-Light}"
                 NoProfileIconColor="{Rock:PaletteColor App-Primary}"
                 TitleTextColor="{Rock:PaletteColor App-Light}"
                 SubTitleTextColor="{Rock:PaletteColor App-Light}" />
-        </StackLayout>
-    </ListView.Header>
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <Rock:ViewCell SelectedBackgroundColor="#424242">
-                <StackLayout VerticalOptions="FillAndExpand"
-                    Orientation="Vertical">
-                    <ContentView StyleClass="pt-16, pb-12">
-                        <Label StyleClass="ml-32, flyout-menu-item"
-                            Text="{Binding Title}"
-                            VerticalOptions="Center"
-                            HorizontalOptions="FillAndExpand" />
-                    </ContentView>
-                </StackLayout>
-            </Rock:ViewCell>
-        </DataTemplate>
-    </ListView.ItemTemplate>
-     <ListView.Footer>
-        <StackLayout VerticalOptions="FillAndExpand"
+    </StackLayout>
+    <StackLayout>
+        <Button StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Home" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding ShowPage}" CommandParameter="a9ccef18-c471-4810-9152-4c0bd2f35e72" />
+        <Button StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="My Journey" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="b41d997a-7206-490a-9f25-e96dbeff575d" />
+        <Button StyleClass="ml-32, flyout-menu-item" BackgroundColor="#424242" Text="Action Teams" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="7945cc85-bdcf-4d8c-8b49-47b0eb493ade" />
+        <Button StyleClass="ml-32, flyout-menu-item" BackgroundColor="#424242" Text="Pop-Up Events" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="70909791-34ec-46a5-9d6d-8fcf2cdf1704" />
+
+    </StackLayout>
+    <Rock:Divider />
+    <StackLayout>
+        <Button StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Messages" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="9bbc8b74-0204-4744-a082-1e1c05b3eab3" />
+        <Button StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Contact Us" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="96af6f15-b5c1-41c5-b4b9-c57eaad57bd4" />
+    </StackLayout>
+    <StackLayout VerticalOptions="FillAndExpand"
             Orientation="Vertical">
+        <Rock:Image Source="https://res.cloudinary.com/pathfinderstl/image/upload/c_scale,w_500/v1646772686/AppFiles/PFFullLogoYellowWhite_mylfqt.png" Margin="30,30,30,30" Aspect="AspectFit" />
 
-            <Rock:Image Source="https://res.cloudinary.com/pathfinderstl/image/upload/c_scale,w_500/v1646772686/AppFiles/PFFullLogoYellowWhite_mylfqt.png" Margin="30,30,30,30" Aspect="AspectFit" />
-
-             <Rock:Icon IconClass="info-circle"
-                FontSize="28"
-                TextColor="{Rock:PaletteColor App-Light}"
-                StyleClass="btn,btn-primary"
-                Margin="0,20,30,0"
-                Command="{Binding PushPage}"
-                CommandParameter="82d4474c-e5a7-425f-92a8-5b0b2132e94a"
-                HorizontalOptions="End"
-                 />
-        </StackLayout>
-    </ListView.Footer>
-</ListView>
+            <Rock:Icon IconClass="info-circle"
+            FontSize="28"
+            TextColor="{Rock:PaletteColor App-Light}"
+            StyleClass="btn,btn-primary"
+            Margin="0,20,30,0"
+            Command="{Binding PushPage}"
+            CommandParameter="82d4474c-e5a7-425f-92a8-5b0b2132e94a"
+            HorizontalOptions="End"
+                />
+    </StackLayout>
+</StackLayout>
