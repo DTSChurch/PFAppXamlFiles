@@ -8,8 +8,7 @@
 {% endgroup %}
 
 {% unless Groups == "" %}
-    <Rock:Divider Margin="20" />
-    <StackLayout Margin="20" >
+    <StackLayout Margin="10" >
     {% for group in Groups %}
         {% assign wholeLifeCategory = group | Attribute:'WholeLifeCategory','Object' %}
         {% if wholeLifeCategory.Id == wholeLifeCategoryIdPage or wholeLifeCategoryIdPage == null %}
@@ -24,45 +23,41 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="55"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-
-
-
             <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
-                CornerRadius="0,0,15,15"
+                CornerRadius="0,0,9,9"
                 HasShadow="true"
                 Elevation="3"
                 HorizontalOptions="FillAndExpand"
-                HeightRequest="100"
+                HeightRequest="60"
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
-                Grid.RowSpan="4" />
+                Grid.RowSpan="3" />
 
             <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Info}"
-                CornerRadius="15,0,0,0"
+                CornerRadius="9,0,0,0"
                 HasShadow="true"
                 Elevation="3"
                 HorizontalOptions="FillAndExpand"
                 Margin="0,0,0,0"
-                HeightRequest="100"
+                HeightRequest="60"
                 Grid.Row="0"
                 Grid.Column="0"
                 Grid.ColumnSpan="2" />
 
             <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Secondary}"
-                CornerRadius="0,15,0,0"
+                CornerRadius="0,9,0,0"
                 HasShadow="true"
                 Elevation="3"
                 HorizontalOptions="FillAndExpand"
                 Margin="0,0,0,0"
-                HeightRequest="100"
+                HeightRequest="60"
                 Grid.Row="0"
                 Grid.Column="2"
                 Grid.ColumnSpan="2" />
@@ -70,38 +65,59 @@
             <Label Text="{{ group.Name | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
-                Margin="20,20,20,0"
+                Margin="20,-10,10,0"
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
                 StyleClass="text-lg" />
 
-             <Label Text="{{ group.Description | TruncateWords:15 | Escape }}"
+            {% assign groupSubTitle = group | Attribute:'SubTitle' %}
+            <Label Text="{{ groupSubTitle | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
-                Margin="20"
+                Margin="20,30,10,0"
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                StyleClass="text-sm font-italic" />
+
+             <Label Text="{{ group.Description | TruncateWords:30 | Escape }}"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Start"
+                Margin="20,0,20,10"
+                HeightRequest="65"
                 Grid.Row="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
-                Grid.RowSpan="2"
                 StyleClass="text" />
 
             {% if groupPage != null %}
                 <Button Text="Team Info"
-                    StyleClass="btn,btn-primary"
+                    StyleClass="btn,btn-outline-primary"
                     TextColor="{Rock:PaletteColor App-Light}"
-                    Margin="10,0,0,10"
-                    Grid.Row="4"
+                    HeightRequest="30"
+                    Margin="10,10,10,10"
+                    Grid.Row="3"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     Command="{Binding PushPage}"
                     CommandParameter="{{ groupPage }}?GroupGuid={{ group.Guid }}" />
             {% endif %}
 
-            {% assign scheduleAttribute = group | Attribute:'Schedule1' %}
-            {% if scheduleAttribute != null %}
-            <Label Text="{{ scheduleAttribute }}"
-                Margin="30"
+            {% assign scheduleDayAttribute = group | Attribute:'Day' %}
+            {% assign scheduleTimeAttribute = group | Attribute:'Time' %}
+            {% if scheduleDayAttribute != null or scheduleTimeAttribute != null %}
+            <Label Text="{{ scheduleDayAttribute }}"
+                Margin="10,-20,10,0"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                StyleClass="text" />
+
+            <Label Text="{{ scheduleTimeAttribute }}"
+                Margin="10,15,10,0"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"
                 Grid.Row="0"
@@ -118,17 +134,10 @@
                 Orientation="Vertical"
                 VerticalOptions="Center"
                 HorizontalOptions="Center" >
-
                 <Rock:Image HeightRequest="50"
                 Source="{{wholeLifeCategoryImageLink}}"
                 Aspect="AspectFit"
                 VerticalOptions="Center" />
-
-                <Label Text="{{ wholeLifeCategory.Value | Escape }}"
-                HorizontalTextAlignment="Center"
-                VerticalTextAlignment="Center"
-                TextColor="{Rock:PaletteColor App-Primary}"
-                StyleClass="heading4" />
             </StackLayout>
 
             {% endif %}
@@ -142,7 +151,7 @@
                 HorizontalTextAlignment="Right"
                 VerticalTextAlignment="Center"
                 Margin="0,0,20,10"
-                Grid.Row="4"
+                Grid.Row="3"
                 Grid.Column="3" />
 
         </Grid>

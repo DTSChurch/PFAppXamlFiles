@@ -93,7 +93,7 @@
 
             {% if groupPage != null %}
                 <Button Text="Team Info"
-                    StyleClass="btn,btn-primary"
+                    StyleClass="btn,btn-outline-primary"
                     TextColor="{Rock:PaletteColor App-Light}"
                     HeightRequest="30"
                     Margin="10,10,10,10"
@@ -134,7 +134,6 @@
                 Orientation="Vertical"
                 VerticalOptions="Center"
                 HorizontalOptions="Center" >
-
                 <Rock:Image HeightRequest="50"
                 Source="{{wholeLifeCategoryImageLink}}"
                 Aspect="AspectFit"
