@@ -1,4 +1,3 @@
-
 <StackLayout BackgroundColor="#424242" >
     <StackLayout.Effects>
         <Rock:SafeAreaPaddingEffect Edges="Top" />
@@ -13,16 +12,16 @@
                 SubTitleTextColor="{Rock:PaletteColor App-Light}" />
     </StackLayout>
     <StackLayout>
-        <Button StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" HeightRequest="50" Text="Home" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding ShowPage}" CommandParameter="a9ccef18-c471-4810-9152-4c0bd2f35e72" />
-        <Button StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" HeightRequest="50" Text="My Journey" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="b41d997a-7206-490a-9f25-e96dbeff575d" />
-        <Button StyleClass="ml-32, flyout-menu-item" BackgroundColor="#424242" HeightRequest="50" Text="Action Teams" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="7945cc85-bdcf-4d8c-8b49-47b0eb493ade" />
-        <Button StyleClass="ml-32, flyout-menu-item" BackgroundColor="#424242" HeightRequest="50" Text="Pop-Up Events" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="70909791-34ec-46a5-9d6d-8fcf2cdf1704" />
+        <Button StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Home" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding ShowPage}" CommandParameter="a9ccef18-c471-4810-9152-4c0bd2f35e72" />
+        <Button StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="My Journey" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="b41d997a-7206-490a-9f25-e96dbeff575d" />
+        <Button StyleClass="ml-32, flyout-menu-item" BackgroundColor="#424242" Text="Action Teams" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="7945cc85-bdcf-4d8c-8b49-47b0eb493ade" />
+        <Button StyleClass="ml-32, flyout-menu-item" BackgroundColor="#424242" Text="Pop-Up Events" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="70909791-34ec-46a5-9d6d-8fcf2cdf1704" />
 
     </StackLayout>
     <Rock:Divider />
     <StackLayout>
-        <Button StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" HeightRequest="50" Text="Messages" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="9bbc8b74-0204-4744-a082-1e1c05b3eab3" />
-        <Button StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" HeightRequest="50" Text="Contact Us" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="96af6f15-b5c1-41c5-b4b9-c57eaad57bd4" />
+        <Button StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Messages" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="9bbc8b74-0204-4744-a082-1e1c05b3eab3" />
+        <Button StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Contact Us" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="96af6f15-b5c1-41c5-b4b9-c57eaad57bd4" />
     </StackLayout>
     <StackLayout VerticalOptions="FillAndExpand"
             Orientation="Vertical">
