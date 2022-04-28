@@ -24,7 +24,7 @@
                 </StackLayout.GestureRecognizers>
             <Grid RowSpacing="0" ColumnSpacing="0" Margin="0,0,0,10">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="60"/>
@@ -35,21 +35,21 @@
                 </Grid.RowDefinitions>
 
                 <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
-                    CornerRadius="9,0,0,0"
-                    Margin="0,0,0,0"
-                    HeightRequest="80"
-                    Grid.Row="0"
-                    Grid.Column="0">
-                </Rock:StyledView>
-
-                <Label Text="{{nextStartDate}}" TextColor="{Rock:PaletteColor App-Secondary}" Grid.Row="0" Grid.Column="0" Margin="0,-20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
-                <Label Text="{{nextStartTime}}" TextColor="{Rock:PaletteColor App-Secondary}" Grid.Row="0" Grid.Column="0" Margin="0,20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
-
-                <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
                     CornerRadius="0,0,9,0"
                     Margin="0,0,0,0"
                     HeightRequest="80"
                     Grid.Row="1"
+                    Grid.Column="0">
+                </Rock:StyledView>
+
+                <Label Text="{{nextStartDate}}" TextColor="{Rock:PaletteColor App-Secondary}" Grid.Row="1" Grid.Column="0" Margin="0,-20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
+                <Label Text="{{nextStartTime}}" TextColor="{Rock:PaletteColor App-Secondary}" Grid.Row="1" Grid.Column="0" Margin="0,20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
+
+                <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+                    CornerRadius="9,0,0,0"
+                    Margin="0,0,0,0"
+                    HeightRequest="80"
+                    Grid.Row="0"
                     Grid.Column="0">
                     <Rock:Image HeightRequest="60"
                         Source="{{wholeLifeCategoryImageLink}}"
