@@ -1,5 +1,6 @@
 <StackLayout>
     {% assign definedValueGuid = PageParameter.DefinedValueGuid %}
+    {% assign totalCount = 0 %}
     {%- eventcalendaritem where:'EventCalendarId == 1' sort:'StartDateTime desc' securityenabled:'false' -%}
         {%- for item in eventcalendaritemItems -%}
         {% assign wholeLifeCategory = item | Attribute:'WholeLifeCategory','Guid' %}
@@ -20,13 +21,14 @@
             {% endfor %}
         {% endeventscheduledinstance %}
         {% if wholeLifeCategory == definedValueGuid %} 
+        {% assign totalCount = totalCount | Plus:1 %}
             <StackLayout>
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="63839327-b59a-439d-93aa-65bc09821143?ItemId={{ item.Id}}" />
                     </StackLayout.GestureRecognizers>
                 <Grid RowSpacing="0" ColumnSpacing="0" Margin="0,0,0,10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="60"/>
@@ -98,4 +100,9 @@
         {%endif%}
         {%- endfor -%}
     {%- endeventcalendaritem -%}
+    {% if totalCount == 0 %}
+    <StackLayout Margin="10,20,10,10">
+        <Label Text="No Pop-Up Events at this time.  Please check back soon." StyleClass="text-md" HorizontalOptions="Center" VerticalOptions="Center" />
+    </StackLayout>
+    {%endif%}
     </StackLayout>
