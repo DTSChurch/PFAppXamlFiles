@@ -26,13 +26,13 @@
     </StackLayout>
     <StackLayout VerticalOptions="FillAndExpand"
             Orientation="Vertical">
-        <Rock:Image Source="https://res.cloudinary.com/pathfinderstl/image/upload/c_scale,w_500/v1646772686/AppFiles/PFFullLogoYellowWhite_mylfqt.png" Margin="30,30,30,30" Aspect="AspectFit" />
+        <Rock:Image Source="https://res.cloudinary.com/pathfinderstl/image/upload/c_scale,w_500/v1646772686/AppFiles/PFFullLogoYellowWhite_mylfqt.png" Margin="30,30,30,10" Aspect="AspectFit" />
 
             <Rock:Icon IconClass="info-circle"
             FontSize="28"
             TextColor="{Rock:PaletteColor App-Light}"
-            StyleClass="btn,btn-primary"
-            Margin="0,20,30,0"
+            StyleClass="btn"
+            Margin="0,5,30,0"
             Command="{Binding PushPage}"
             CommandParameter="82d4474c-e5a7-425f-92a8-5b0b2132e94a"
             HorizontalOptions="End"
