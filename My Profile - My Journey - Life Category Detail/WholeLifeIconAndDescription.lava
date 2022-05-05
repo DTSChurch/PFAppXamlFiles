@@ -47,7 +47,7 @@
                 Grid.Row="2"
                 Grid.Column="0" />
 
-            <Button Text="Next Steps"
+            <Button FontFamily="Raleway-Medium" Text="Next Steps"
                 StyleClass="btn,btn-outline-primary"
                 BackgroundColor="{Rock:PaletteColor App-Primary}"
                 FontSize="28"

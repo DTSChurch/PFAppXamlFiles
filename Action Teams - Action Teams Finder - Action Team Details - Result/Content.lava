@@ -2,9 +2,9 @@
     <StackLayout.Behaviors>
     	<Rock:EntranceTransition Duration="300" />
     </StackLayout.Behaviors>
-    
+
     <StackLayout StyleClass="px-32, py-16">
-        <Button Text="My Journey"
+        <Button FontFamily="Raleway-Medium" Text="My Journey"
         StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
             Command="{Binding PushPage}"
             CommandParameter="b41d997a-7206-490a-9f25-e96dbeff575d" />

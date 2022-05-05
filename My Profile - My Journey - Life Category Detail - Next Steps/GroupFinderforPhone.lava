@@ -92,7 +92,7 @@
                 StyleClass="text" />
 
             {% if groupPage != null %}
-                <Button Text="Team Info"
+                <Button FontFamily="Raleway-Medium" Text="Team Info"
                     StyleClass="btn,btn-outline-primary"
                     TextColor="{Rock:PaletteColor App-Light}"
                     HeightRequest="30"

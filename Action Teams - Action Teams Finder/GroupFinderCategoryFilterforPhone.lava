@@ -62,7 +62,7 @@
                 Grid.Column="2"
                 Grid.ColumnSpan="2" />
 
-            <Label FontFamily="Raleway-Medium" Text="{{ group.Name | Escape }}"
+            <Label FontFamily="Raleway-Bold" Text="{{ group.Name | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
                 Margin="20,-10,10,0"
@@ -92,7 +92,7 @@
                 StyleClass="text" />
 
             {% if groupPage != null %}
-                <Button Text="Team Info"
+                <Button FontFamily="Raleway-Medium" Text="Team Info"
                     StyleClass="btn,btn-outline-primary"
                     TextColor="{Rock:PaletteColor App-Light}"
                     HeightRequest="30"

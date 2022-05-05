@@ -72,7 +72,7 @@
         {%- endfor -%}
         </Grid>
         <StackLayout StyleClass="px-32, py-16">
-        <Button Text="View All Teams"
+        <Button FontFamily="Raleway-Medium" Text="View All Teams"
             StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
             Command="{Binding PushPage}"
             CommandParameter="6a344a77-0862-412f-9973-42bdea0730c9" />
