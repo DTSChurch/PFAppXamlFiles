@@ -1,5 +1,4 @@
 <StackLayout>
-    <Label Text="Pop-Up Events" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Light}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="10,10,10,25"/>
     {% assign definedValueGuid = PageParameter.DefinedValueGuid %}
     {% assign totalCount = 0 %}
     {%- eventcalendaritem where:'EventCalendarId == 1' sort:'StartDateTime desc' securityenabled:'false' -%}
@@ -21,13 +20,13 @@
                 {% assign nextStartTime = item.Time%}
             {% endfor %}
         {% endeventscheduledinstance %}
-        {% if wholeLifeCategory == definedValueGuid %} 
+        {% if wholeLifeCategory == definedValueGuid %}
         {% assign totalCount = totalCount | Plus:1 %}
             <StackLayout>
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="63839327-b59a-439d-93aa-65bc09821143?ItemId={{ item.Id}}" />
                     </StackLayout.GestureRecognizers>
-                <Grid RowSpacing="0" ColumnSpacing="0" Margin="10,0,10,10">
+                <Grid RowSpacing="0" ColumnSpacing="0" Margin="0,0,0,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="*"/>
@@ -38,7 +37,7 @@
                         <RowDefinition Height="AUTO"/>
                         <RowDefinition Height="AUTO"/>
                     </Grid.RowDefinitions>
-    
+
                     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
                         CornerRadius="0,0,9,0"
                         Margin="0,0,0,0"
@@ -46,10 +45,10 @@
                         Grid.Row="1"
                         Grid.Column="0">
                     </Rock:StyledView>
-    
-                    <Label Text="{{nextStartDate}}" TextColor="{Rock:PaletteColor App-Secondary}" Grid.Row="1" Grid.Column="0" Margin="0,-20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
-                    <Label Text="{{nextStartTime}}" TextColor="{Rock:PaletteColor App-Secondary}" Grid.Row="1" Grid.Column="0" Margin="0,20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
-    
+
+                    <Label FontFamily="Raleway-Medium" Text="{{nextStartDate}}" TextColor="{Rock:PaletteColor App-Secondary}" Grid.Row="1" Grid.Column="0" Margin="0,-20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
+                    <Label FontFamily="Raleway-Medium" Text="{{nextStartTime}}" TextColor="{Rock:PaletteColor App-Secondary}" Grid.Row="1" Grid.Column="0" Margin="0,20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
+
                     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
                         CornerRadius="9,0,0,0"
                         Margin="0,0,0,0"
@@ -61,7 +60,7 @@
                             VerticalOptions="Center"
                             HorizontalOptions="Center"/>
                     </Rock:StyledView>
-    
+
                     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Secondary}"
                         CornerRadius="0,9,0,9"
                         Margin="0,0,0,0"
@@ -69,33 +68,33 @@
                         Grid.Column="1"
                         Grid.RowSpan="2"
                         Grid.ColumnSpan="3">
-                        
+
                     </Rock:StyledView>
-                    
-                    <Label Text="{{item.EventItem.Name | Escape}}" Margin="10,5,10,5" Grid.Row="0"
+
+                    <Label FontFamily="Raleway-Medium" Text="{{item.EventItem.Name | Escape}}" Margin="10,5,10,5" Grid.Row="0"
                         Grid.Column="1"
                         Grid.ColumnSpan="3" StyleClass="text-body, leading-none, text-bold"/>
-                    <Label Text="{{itemSummary | Trim | Escape}}" Margin="10,30,10,0" 
+                    <Label FontFamily="Raleway-Medium" Text="{{itemSummary | Trim | Escape}}" Margin="10,30,10,0"
                         Grid.Row="0"
                         Grid.RowSpan="2"
                         Grid.Column="1"
-                        Grid.ColumnSpan="3" 
+                        Grid.ColumnSpan="3"
                         HeightRequest="80"
                         StyleClass="heading4, leading-none"/>
-                        
+
                     <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
                         EntityId="{{ item.Id }}"
                         HeightRequest="60"
                         FontSize="25"
                         IsFollowed="{{ item | IsFollowed }}"
                         FollowingIconColor="{Rock:PaletteColor App-Primary}"
-                        NotFollowingIconColor="{Rock:PaletteColor App-Primary}" 
+                        NotFollowingIconColor="{Rock:PaletteColor App-Primary}"
                         Grid.Row="1"
                         Grid.Column="3"
                         Margin="0,30,10,0"
                         HorizontalTextAlignment="Right"
                         VerticalTextAlignment="Center" />
-    
+
                 </Grid>
             </StackLayout>
         {%endif%}
@@ -103,7 +102,7 @@
     {%- endeventcalendaritem -%}
     {% if totalCount == 0 %}
     <StackLayout Margin="10,20,10,10">
-        <Label Text="No Pop-Up Events at this time.  Please check back soon." StyleClass="text-md" HorizontalOptions="Center" VerticalOptions="Center" />
+        <Label FontFamily="Raleway-Medium" Text="No Pop-Up Events at this time.  Please check back soon." StyleClass="text-md" HorizontalOptions="Center" VerticalOptions="Center" />
     </StackLayout>
     {%endif%}
     </StackLayout>

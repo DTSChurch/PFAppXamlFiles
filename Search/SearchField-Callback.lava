@@ -47,7 +47,7 @@
                     <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="591490d1-3d0d-43e3-b572-bc3575260a5c?ItemId={{item.Id}}" />
                 </Grid.GestureRecognizers>
 
-                <Label Text="{{item.Title}}"
+                <Label FontFamily="Raleway-Medium" Text="{{item.Title}}"
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Start"
                     Margin="20,10,0,0"
@@ -56,7 +56,7 @@
                     Grid.ColumnSpan="2"
                     StyleClass="text-lg" />
 
-                <Label Text="{{item | Attribute:'Speaker'}} | {{item.StartDateTime | Date:'MMM d, yy'}}"
+                <Label FontFamily="Raleway-Medium" Text="{{item | Attribute:'Speaker'}} | {{item.StartDateTime | Date:'MMM d, yy'}}"
                 Margin="30,55,0,0"
                     HorizontalTextAlignment="Start"
                     VerticalTextAlignment="End"
@@ -82,7 +82,7 @@
 
                 {% endfor %}
             {% else %}
-             <Label Text="No Messages Found"
+             <Label FontFamily="Raleway-Medium" Text="No Messages Found"
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"
                     StyleClass="text-lg" />

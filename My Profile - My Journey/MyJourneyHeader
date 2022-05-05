@@ -1,12 +1,12 @@
 <StackLayout>
 
 
-<Label Text="My Journey" StyleClass="text-title" HorizontalOptions="Center"  />
-
- <StackLayout StyleClass="px-32, py-16">
-        <Button Text="Pick Category"
-        StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
-            Command="{Binding PushPage}"
-            CommandParameter="f6ce6dad-a12b-4b53-b63c-c3d83a91a7c2" />
+    <Label FontFamily="Raleway-Medium" Text="My Journey" StyleClass="text-title" HorizontalOptions="Center"  />
+    
+     <StackLayout StyleClass="px-32, py-16">
+            <Button Text="Pick Category"
+            StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+                Command="{Binding PushPage}"
+                CommandParameter="f6ce6dad-a12b-4b53-b63c-c3d83a91a7c2" />
+        </StackLayout>
     </StackLayout>
-</StackLayout>

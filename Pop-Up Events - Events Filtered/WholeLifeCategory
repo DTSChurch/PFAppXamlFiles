@@ -29,7 +29,7 @@
             Grid.Row="0"
             Grid.Column="0" />
 
-        <Label Text="{{wholeLifeCategoryValue}}"
+        <Label FontFamily="Raleway-Medium" Text="{{wholeLifeCategoryValue}}"
             StyleClass="text-lg"
             TextColor="{Rock:PaletteColor App-Primary}"
             VerticalTextAlignment="Center"

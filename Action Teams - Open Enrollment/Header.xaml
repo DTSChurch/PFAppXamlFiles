@@ -6,7 +6,7 @@
     	 <Rock:EntranceTransition Duration="250" />
     </StackLayout.Behaviors>
 
-    <Label Text="Action Teams" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
+    <Label FontFamily="Raleway-Medium" Text="Action Teams" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
 
    
 

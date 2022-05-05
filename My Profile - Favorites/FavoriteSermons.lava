@@ -59,7 +59,7 @@
                     Grid.Row="0"
                     Grid.Column="0" />
 
-                <Label Text="{{item.Title}}"
+                <Label FontFamily="Raleway-Medium" Text="{{item.Title}}"
                     VerticalTextAlignment="Start"
                     HorizontalTextAlignment="Start"
                     Margin="20,10,0,0"
@@ -68,7 +68,7 @@
                     Grid.ColumnSpan="2"
                     StyleClass="text-lg" />
 
-                <Label Text="{{item | Attribute:'Speaker'}} | {{item.StartDateTime | Date:'MMM d, yy'}} {{wholeLifeCategory}}"
+                <Label FontFamily="Raleway-Medium" Text="{{item | Attribute:'Speaker'}} | {{item.StartDateTime | Date:'MMM d, yy'}} {{wholeLifeCategory}}"
                 Margin="30,35,0,0"
                     HorizontalTextAlignment="Start"
                     VerticalTextAlignment="Start"
@@ -103,7 +103,7 @@
         <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
-    <Label Text="No Messages Saved yet!"
+    <Label FontFamily="Raleway-Medium" Text="No Messages Saved yet!"
         TextColor="{Rock:PaletteColor App-Primary}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"

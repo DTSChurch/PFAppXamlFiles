@@ -30,7 +30,7 @@
 				Grid.Column="0"
 				Grid.ColumnSpan="3" />
 
-			<Label Text="{{item.Name | Escape}}"
+			<Label FontFamily="Raleway-Medium" Text="{{item.Name | Escape}}"
 				TextColor="{Rock:PaletteColor App-Light}"
 				VerticalTextAlignment="Center"
 				HorizontalTextAlignment="Center"
@@ -39,7 +39,7 @@
 				Grid.ColumnSpan="2"
 				StyleClass="text-md" />
 
-			<Label Text="Speaker: {{item | Attribute:'Frequency'}}"
+			<Label FontFamily="Raleway-Medium" Text="Speaker: {{item | Attribute:'Frequency'}}"
 				TextColor="{Rock:PaletteColor App-Light}"
 				Margin="0,0,20,20"
 				HorizontalTextAlignment="Right"

@@ -1,4 +1,4 @@
-<Label Text="You Did It!"
+<Label FontFamily="Raleway-Medium" Text="You Did It!"
                 StyleClass="text-title"
                 TextColor="{Rock:PaletteColor App-Primary}"
                 VerticalTextAlignment="Center"

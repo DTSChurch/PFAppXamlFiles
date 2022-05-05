@@ -23,7 +23,7 @@
 </Grid.RowDefinitions>
 
 
-    <Label Text="{{wholeLifeCategoryValue}}"
+    <Label FontFamily="Raleway-Medium" Text="{{wholeLifeCategoryValue}}"
         StyleClass="text-title" 
         TextColor="{Rock:PaletteColor App-Primary}"
         VerticalTextAlignment="Center"

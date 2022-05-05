@@ -16,12 +16,12 @@
 {% endattributevalue %}
 
 {% if answer and answer != "" %}
-    <Label Text="What do you want to get out of the team?"
+    <Label FontFamily="Raleway-Medium" Text="What do you want to get out of the team?"
             StyleClass="text-lg"
                 TextColor="{Rock:PaletteColor App-Primary}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Center" />
-           <Label Text="{{answer}}"
+           <Label FontFamily="Raleway-Medium" Text="{{answer}}"
             StyleClass="text-md"
                 TextColor="White"
                 VerticalTextAlignment="Center"

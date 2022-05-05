@@ -1,6 +1,6 @@
 {% assign itemId = PageParameter.ItemId %}
 {% if itemId and itemId != null %}
 {% eventcalendaritem id:'{{itemId}}' securityenabled:'false' %}
-<Label Text="{{eventcalendaritem.EventItem.Name | Escape}}" StyleClass="text-title" HorizontalOptions="Center"/>
+<Label FontFamily="Raleway-Medium" Text="{{eventcalendaritem.EventItem.Name | Escape}}" StyleClass="text-title" HorizontalOptions="Center"/>
 {% endeventcalendaritem %}
 {% endif %}

@@ -22,7 +22,7 @@
         Grid.Column="0"
          Grid.ColumnSpan="2" />
 
-    <Label Text="Favorites"
+    <Label FontFamily="Raleway-Medium" Text="Favorites"
         TextColor="{Rock:PaletteColor App-Light}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"

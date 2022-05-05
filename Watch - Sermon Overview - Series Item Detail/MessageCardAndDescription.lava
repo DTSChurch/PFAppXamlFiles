@@ -18,7 +18,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Label Text="{{item.Title}}"
+        <Label FontFamily="Raleway-Medium" Text="{{item.Title}}"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Start"
             Margin="25,10,0,0"
@@ -27,7 +27,7 @@
             Grid.ColumnSpan="2"
             StyleClass="text-lg" />
 
-        <Label Text="Speaker: {{item | Attribute:'Speaker'}}"
+        <Label FontFamily="Raleway-Medium" Text="Speaker: {{item | Attribute:'Speaker'}}"
             Margin="25,50,0,0"
                 HorizontalTextAlignment="Start"
                 VerticalTextAlignment="End"
@@ -57,7 +57,7 @@
             CommandParameter="{{item | Attribute:'AudioLink'}}"
             />
 
-        <Label Text="Audio"
+        <Label FontFamily="Raleway-Medium" Text="Audio"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"
                  Margin="45,-10,0,0"
@@ -81,7 +81,7 @@
             </Rock:Icon.CommandParameter>
 
         </Rock:Icon>
-            <Label Text="Share"
+            <Label FontFamily="Raleway-Medium" Text="Share"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"
                  Margin="0,-10,0,0"
@@ -101,7 +101,7 @@
             Grid.Row="0"
             Grid.Column="2" />
 
-            <Label Text="Save"
+            <Label FontFamily="Raleway-Medium" Text="Save"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"
                 Margin="0,-10,45,0"

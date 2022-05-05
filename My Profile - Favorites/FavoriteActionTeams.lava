@@ -60,7 +60,7 @@
                     Grid.Row="0"
                     Grid.Column="0" />
 
-                <Label Text="{{item.Name | Escape}}"
+                <Label FontFamily="Raleway-Medium" Text="{{item.Name | Escape}}"
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Start"
                     Margin="10,-25,0,0"
@@ -70,7 +70,7 @@
                     StyleClass="text-lg" />
 
                 {% assign groupSubTitle = item | Attribute:'SubTitle' %}
-                <Label Text="{{ groupSubTitle | Escape }}"
+                <Label FontFamily="Raleway-Medium" Text="{{ groupSubTitle | Escape }}"
                     Margin="20,30,0,0"
                     HorizontalTextAlignment="Start"
                     VerticalTextAlignment="Center"
@@ -109,7 +109,7 @@
         <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
-    <Label Text="No Action Teams Saved yet!"
+    <Label FontFamily="Raleway-Medium" Text="No Action Teams Saved yet!"
         TextColor="{Rock:PaletteColor App-Primary}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"

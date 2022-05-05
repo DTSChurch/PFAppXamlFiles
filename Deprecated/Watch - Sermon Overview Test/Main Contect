@@ -28,12 +28,12 @@
         <Grid.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="591490d1-3d0d-43e3-b572-bc3575260a5c?ItemId={{item.Id}}" />
         </Grid.GestureRecognizers>
-        <Label Text="{{channelTitle}} Series" StyleClass="text-title" HorizontalOptions="Center"
+        <Label FontFamily="Raleway-Medium" Text="{{channelTitle}} Series" StyleClass="text-title" HorizontalOptions="Center"
             Margin="0,15,0,0" 
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="3"/>
-        <Label Text="Sermons: {{childItemCount}}" StyleClass="text-sm" 
+        <Label FontFamily="Raleway-Medium" Text="Sermons: {{childItemCount}}" StyleClass="text-sm" 
             HorizontalTextAlignment="End"
             Margin="15,45,15,0"
             Grid.Row="0"
@@ -53,7 +53,7 @@
                     Grid.ColumnSpan="3"
                     VerticalOptions="Center"
                     HorizontalOptions="FillAndExpand" />
-                <Label Text="{{item.Title}}"
+                <Label FontFamily="Raleway-Medium" Text="{{item.Title}}"
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Start"
                     Margin="10,10,0,10"
@@ -62,7 +62,7 @@
                     Grid.ColumnSpan="2"
                     StyleClass="text-lg" />
 
-                <Label Text="Speaker: {{item | Attribute:'Speaker'}}"
+                <Label FontFamily="Raleway-Medium" Text="Speaker: {{item | Attribute:'Speaker'}}"
                     Margin="25,65,0,10"
                     HorizontalTextAlignment="Start"
                     VerticalTextAlignment="End"

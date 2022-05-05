@@ -1,6 +1,6 @@
 {% contentchannelitem where:'ContentChannelId == 5' securityenabled:'false' sort:'StartDateTime desc' limit:'1' %}
 <StackLayout>
-    <Label Text="This Week's Message" StyleClass="text-title" HorizontalOptions="Center" Margin="0,10,0,0"  />
+    <Label FontFamily="Raleway-Medium" Text="This Week's Message" StyleClass="text-title" HorizontalOptions="Center" Margin="0,10,0,0"  />
 
     <Grid  
         HorizontalOptions="Center"
@@ -17,7 +17,7 @@
             <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="591490d1-3d0d-43e3-b572-bc3575260a5c?ItemId={{ contentchannelitem.Id }}" />
         </Grid.GestureRecognizers>
 
-    <Label Text="{{contentchannelitem.Title | Escape}}"
+    <Label FontFamily="Raleway-Medium" Text="{{contentchannelitem.Title | Escape}}"
         TextColor="{Rock:PaletteColor App-Light}"
         StyleClass="font-italic, text-underline"
         HorizontalOptions="Center"

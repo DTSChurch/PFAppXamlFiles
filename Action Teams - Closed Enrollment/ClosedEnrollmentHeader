@@ -3,6 +3,6 @@
     <StackLayout.Behaviors>
     	<Rock:EntranceTransition Duration="250" />
     </StackLayout.Behaviors>
-    <Label Text="Enrollment is" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
-     <Label Text=" currently closed." StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
+    <Label FontFamily="Raleway-Medium" Text="Enrollment is" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
+     <Label FontFamily="Raleway-Medium" Text=" currently closed." StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
 </StackLayout>

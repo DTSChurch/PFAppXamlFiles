@@ -8,11 +8,11 @@
 {% endconnectionopportunity %}
 
 <StackLayout>
-        <Label Text="Frequncy: {{frequency}}" 
+        <Label FontFamily="Raleway-Medium" Text="Frequncy: {{frequency}}" 
             TextColor="{Rock:PaletteColor App-Primary}"
             TextTransform="Uppercase" />
         {% if ministry and ministry != '' %}
-        <Label Text="Ministry Area:"
+        <Label FontFamily="Raleway-Medium" Text="Ministry Area:"
             TextColor="{Rock:PaletteColor App-Primary}"
             TextTransform="Uppercase" />
         {%endif%}

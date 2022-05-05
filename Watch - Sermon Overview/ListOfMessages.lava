@@ -17,12 +17,12 @@
                 HorizontalOptions="FillAndExpand" >
 <StackLayout>
 
-<Label Text="{{channelTitle}}" StyleClass="text-title" HorizontalOptions="Center"
+<Label FontFamily="Raleway-Medium" Text="{{channelTitle}}" StyleClass="text-title" HorizontalOptions="Center"
             Margin="0,15,0,0"
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="3"/>
-        <Label Text="Messages: {{childItemCount}}" StyleClass="text-sm"
+        <Label FontFamily="Raleway-Medium" Text="Messages: {{childItemCount}}" StyleClass="text-sm"
             HorizontalTextAlignment="End"
             Margin="15,0,15,0"
             Grid.Row="0"
@@ -55,7 +55,7 @@
                         Grid.ColumnSpan="3"
                         VerticalOptions="Center"
                         HorizontalOptions="FillAndExpand" />
-                    <Label Text="{{item.Title}}"
+                    <Label FontFamily="Raleway-Medium" Text="{{item.Title}}"
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Start"
                         Margin="20,10,0,0"
@@ -64,7 +64,7 @@
                         Grid.ColumnSpan="2"
                         StyleClass="text-lg" />
 
-                    <Label Text="{{item | Attribute:'Speaker'}} | {{item.StartDateTime | Date:'M/d/yyyy'}}"
+                    <Label FontFamily="Raleway-Medium" Text="{{item | Attribute:'Speaker'}} | {{item.StartDateTime | Date:'M/d/yyyy'}}"
                     Margin="30,55,0,0"
                         HorizontalTextAlignment="Start"
                         VerticalTextAlignment="End"
@@ -97,7 +97,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Label Text=" "
+        <Label FontFamily="Raleway-Medium" Text=" "
             Margin="20,0,0,0"
             HorizontalTextAlignment="Start"
             VerticalTextAlignment="End"

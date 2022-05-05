@@ -74,7 +74,7 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="4" />
 
-            <Label Text="{{ group.Name | Escape }}"
+            <Label FontFamily="Raleway-Medium" Text="{{ group.Name | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
                 Margin="20,10,20,0"
@@ -82,7 +82,7 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
                 StyleClass="text-lg" />
-            <Label Text="{{ group | Attribute:'SubTitle' | Escape }}"
+            <Label FontFamily="Raleway-Medium" Text="{{ group | Attribute:'SubTitle' | Escape }}"
                 VerticalTextAlignment="Start"
                 HorizontalTextAlignment="Start"
                 StyleClass="text"
@@ -91,7 +91,7 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="4"/>
 
-            <Label Text="Location: {{ group | Attribute:'Location' | Escape }}"
+            <Label FontFamily="Raleway-Medium" Text="Location: {{ group | Attribute:'Location' | Escape }}"
                 VerticalTextAlignment="Start"
                 HorizontalTextAlignment="Start"
                 StyleClass="text"
@@ -100,7 +100,7 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="4" />
 
-            <Label Text="{{ group.Description | Escape }}"
+            <Label FontFamily="Raleway-Medium" Text="{{ group.Description | Escape }}"
                 VerticalTextAlignment="Start"
                 HorizontalTextAlignment="Start"
                 StyleClass="text"
@@ -126,7 +126,7 @@
             {% assign scheduleDayAttribute = group | Attribute:'Day' %}
             {% assign scheduleTimeAttribute = group | Attribute:'Time' %}
             {% if scheduleDayAttribute != null or scheduleTimeAttribute != null %}
-            <Label Text="{{ scheduleDayAttribute }}"
+            <Label FontFamily="Raleway-Medium" Text="{{ scheduleDayAttribute }}"
                 Margin="10,-20,10,0"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"
@@ -135,7 +135,7 @@
                 Grid.ColumnSpan="2"
                 StyleClass="text" />
 
-            <Label Text="{{ scheduleTimeAttribute }}"
+            <Label FontFamily="Raleway-Medium" Text="{{ scheduleTimeAttribute }}"
                 Margin="10,15,10,0"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"

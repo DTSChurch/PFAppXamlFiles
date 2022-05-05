@@ -6,7 +6,7 @@
         <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
 
-    <Label Text="Messages By Topic" 
+    <Label FontFamily="Raleway-Medium" Text="Messages By Topic" 
     StyleClass="text-subtitle" 
     Margin="25,0,0,10" 
     HorizontalOptions="Start" 

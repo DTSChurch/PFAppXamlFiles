@@ -26,7 +26,7 @@
         Grid.Column="0"
          Grid.ColumnSpan="2" />
 
-    <Label Text="Messages"
+    <Label FontFamily="Raleway-Medium" Text="Messages"
         TextColor="{Rock:PaletteColor App-Info}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"
@@ -60,7 +60,7 @@
         Grid.Column="0"
          Grid.ColumnSpan="2" />
 
-    <Label Text="Sermons"
+    <Label FontFamily="Raleway-Medium" Text="Sermons"
         TextColor="{Rock:PaletteColor App-Info}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"
@@ -96,7 +96,7 @@
         Grid.Column="0"
          Grid.ColumnSpan="2" />
 
-    <Label Text="Events"
+    <Label FontFamily="Raleway-Medium" Text="Events"
         TextColor="{Rock:PaletteColor App-Info}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"
@@ -130,7 +130,7 @@
         Grid.Column="0"
          Grid.ColumnSpan="2" />
 
-    <Label Text="Events"
+    <Label FontFamily="Raleway-Medium" Text="Events"
         TextColor="{Rock:PaletteColor App-Info}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"
@@ -166,7 +166,7 @@
         Grid.Column="0"
          Grid.ColumnSpan="2" />
 
-    <Label Text="Action Teams"
+    <Label FontFamily="Raleway-Medium" Text="Action Teams"
         TextColor="{Rock:PaletteColor App-Info}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"
@@ -200,7 +200,7 @@
         Grid.Column="0"
          Grid.ColumnSpan="2" />
 
-    <Label Text="Action Teams"
+    <Label FontFamily="Raleway-Medium" Text="Action Teams"
         TextColor="{Rock:PaletteColor App-Info}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"

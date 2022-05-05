@@ -1,1 +1,1 @@
-<Label Text="My Journey" StyleClass="text-title" HorizontalOptions="Center"  />
+<Label FontFamily="Raleway-Medium" Text="My Journey" StyleClass="text-title" HorizontalOptions="Center"  />

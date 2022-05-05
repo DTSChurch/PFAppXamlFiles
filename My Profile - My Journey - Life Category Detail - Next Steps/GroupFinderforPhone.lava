@@ -62,7 +62,7 @@
                 Grid.Column="2"
                 Grid.ColumnSpan="2" />
 
-            <Label Text="{{ group.Name | Escape }}"
+            <Label FontFamily="Raleway-Medium" Text="{{ group.Name | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
                 Margin="20,-10,10,0"
@@ -72,7 +72,7 @@
                 StyleClass="text-lg" />
 
             {% assign groupSubTitle = group | Attribute:'SubTitle' %}
-            <Label Text="{{ groupSubTitle | Escape }}"
+            <Label FontFamily="Raleway-Medium" Text="{{ groupSubTitle | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
                 Margin="20,30,10,0"
@@ -81,7 +81,7 @@
                 Grid.ColumnSpan="4"
                 StyleClass="text-sm font-italic" />
 
-             <Label Text="{{ group.Description | TruncateWords:30 | Escape }}"
+             <Label FontFamily="Raleway-Medium" Text="{{ group.Description | TruncateWords:30 | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
                 Margin="20,0,20,10"
@@ -107,7 +107,7 @@
             {% assign scheduleDayAttribute = group | Attribute:'Day' %}
             {% assign scheduleTimeAttribute = group | Attribute:'Time' %}
             {% if scheduleDayAttribute != null or scheduleTimeAttribute != null %}
-            <Label Text="{{ scheduleDayAttribute }}"
+            <Label FontFamily="Raleway-Medium" Text="{{ scheduleDayAttribute }}"
                 Margin="10,-20,10,0"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"
@@ -116,7 +116,7 @@
                 Grid.ColumnSpan="2"
                 StyleClass="text" />
 
-            <Label Text="{{ scheduleTimeAttribute }}"
+            <Label FontFamily="Raleway-Medium" Text="{{ scheduleTimeAttribute }}"
                 Margin="10,15,10,0"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"

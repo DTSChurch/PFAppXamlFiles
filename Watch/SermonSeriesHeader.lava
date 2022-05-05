@@ -9,7 +9,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Label Text="Message Series"
+        <Label FontFamily="Raleway-Medium" Text="Message Series"
             StyleClass="text-subtitle"
             Margin="25,0,0,0"
             HorizontalOptions="Start"

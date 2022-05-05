@@ -56,7 +56,7 @@
                     Grid.Row="0"
                     Grid.Column="0" />
 
-                <Label Text="{{wholeLifeCategoryValue}}"
+                <Label FontFamily="Raleway-Medium" Text="{{wholeLifeCategoryValue}}"
                     StyleClass="text-lg"
                     Margin="0,0,0,30"
                     TextColor="{Rock:PaletteColor App-Primary}"

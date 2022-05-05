@@ -1,8 +1,8 @@
 {% if CurrentPerson %}
 <StackLayout Orientation="Vertical"
-    Padding="10,0,10,0" 
+    Padding="10,0,10,0"
     HorizontalOptions="FillAndExpand" >
-    <Label Text="Welcome back, {{CurrentPerson.NickName}}!" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Light}" HorizontalOptions="Center"  />
+    <Label FontFamily="Raleway-Medium" Text="Welcome back, {{CurrentPerson.NickName}}!" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Light}" HorizontalOptions="Center"  />
         <Button Text="My Journey"
         StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
             Command="{Binding PushPage}"
@@ -26,7 +26,7 @@
 </StackLayout>
 {%else%}
 <StackLayout Orientation="Vertical"
-    Padding="10,10,10,0" 
+    Padding="10,10,10,0"
     HorizontalOptions="FillAndExpand" >
 <Grid>
     <Grid.ColumnDefinitions>
@@ -34,11 +34,11 @@
     </Grid.ColumnDefinitions>
      <Grid.GestureRecognizers>
         <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="11fd268f-baad-4eea-9ba5-0530e2d57825"  />
-    </Grid.GestureRecognizers>  
-   <Rock:Image 
-    Source="resource://Rock.Mobile.Resources.icon-person-not-logged-in.svg" 
+    </Grid.GestureRecognizers>
+   <Rock:Image
+    Source="resource://Rock.Mobile.Resources.icon-person-not-logged-in.svg"
     WidthRequest="200"
-    Grid.Column="0"/> 
+    Grid.Column="0"/>
 </Grid>
     <Grid StyleClass="px-16, py-16">
         <Grid.ColumnDefinitions>
@@ -47,12 +47,14 @@
         </Grid.ColumnDefinitions>
         <Button Text="I'M NEW"
             x:Name="overviewButton"
+            FontFamily="Raleway-Bold"
             StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
             HorizontalOptions="FillAndExpand"
             Grid.Column="0"
             Command="{Binding PushPage}"
             CommandParameter="11fd268f-baad-4eea-9ba5-0530e2d57825" />
         <Button Text="LOGIN"
+            FontFamily="Raleway-LightItalic"
             StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
                 HorizontalOptions="FillAndExpand"
                 Grid.Column="1"
