@@ -18,7 +18,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Label FontFamily="Raleway-Medium" Text="{{item.Title}}"
+        <Label FontFamily="Raleway-Medium" Text="{{item.Title | Escape}}"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Start"
             Margin="25,10,0,0"
@@ -75,8 +75,8 @@
             Grid.Column="1">
 
             <Rock:Icon.CommandParameter>
-                <Rock:ShareContentParameters Title="{{seriesTitle}} - {{item.Title}}"
-                                            Text="Share {{seriesTitle}} - {{item.Title}}"
+                <Rock:ShareContentParameters Title="{{seriesTitle | Escape}} - {{item.Title}}"
+                                            Text="Share {{seriesTitle | Escape}} - {{item.Title}}"
                                             Uri="{{item | Attribute:'VideoLink'}}" />
             </Rock:Icon.CommandParameter>
 

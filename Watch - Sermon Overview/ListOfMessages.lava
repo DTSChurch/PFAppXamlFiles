@@ -17,7 +17,7 @@
                 HorizontalOptions="FillAndExpand" >
 <StackLayout>
 
-<Label FontFamily="Raleway-Medium" Text="{{channelTitle}}" StyleClass="text-title" HorizontalOptions="Center"
+<Label FontFamily="Raleway-Medium" Text="{{channelTitle | Escape}}" StyleClass="text-title" HorizontalOptions="Center"
             Margin="0,15,0,0"
             Grid.Row="0"
             Grid.Column="0"
@@ -55,7 +55,7 @@
                         Grid.ColumnSpan="3"
                         VerticalOptions="Center"
                         HorizontalOptions="FillAndExpand" />
-                    <Label FontFamily="Raleway-Medium" Text="{{item.Title}}"
+                    <Label FontFamily="Raleway-Medium" Text="{{item.Title | Escape}}"
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Start"
                         Margin="20,10,0,0"
