@@ -5,7 +5,7 @@
         </Rock:FieldContainer>
 
 
-    <Button Text="Search"
+    <Button FontFamily="Raleway-Medium" Text="Search"
             StyleClass="btn, btn-secondary"
             Command="{Binding Callback}">
         <Button.CommandParameter>
