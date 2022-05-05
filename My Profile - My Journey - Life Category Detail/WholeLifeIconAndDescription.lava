@@ -43,6 +43,7 @@
                 Grid.Column="0" />
 
             <Rock:Html Text="{{wholeLifeDescription | Escape}}"
+            Margin="20,0,20,0"
                 Grid.Row="2"
                 Grid.Column="0" />
 

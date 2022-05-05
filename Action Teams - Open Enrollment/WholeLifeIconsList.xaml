@@ -37,8 +37,6 @@
 
             <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
                 CornerRadius="9,9,9,9"
-                BorderColor="{Rock:PaletteColor App-Light}"
-                BorderThickness="1"
                 HasShadow="true"
                 Elevation="3"
                 Margin="10"

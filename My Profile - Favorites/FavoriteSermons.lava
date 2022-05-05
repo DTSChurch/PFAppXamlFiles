@@ -103,7 +103,7 @@
         <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
-    <Label Text="No Sermons Saved yet!"
+    <Label Text="No Messages Saved yet!"
         TextColor="{Rock:PaletteColor App-Primary}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"

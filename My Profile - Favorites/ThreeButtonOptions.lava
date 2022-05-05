@@ -26,7 +26,7 @@
         Grid.Column="0"
          Grid.ColumnSpan="2" />
 
-    <Label Text="Sermons"
+    <Label Text="Messages"
         TextColor="{Rock:PaletteColor App-Info}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"

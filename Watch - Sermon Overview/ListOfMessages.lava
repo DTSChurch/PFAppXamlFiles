@@ -22,7 +22,7 @@
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="3"/>
-        <Label Text="Sermons: {{childItemCount}}" StyleClass="text-sm"
+        <Label Text="Messages: {{childItemCount}}" StyleClass="text-sm"
             HorizontalTextAlignment="End"
             Margin="15,0,15,0"
             Grid.Row="0"
@@ -64,7 +64,7 @@
                         Grid.ColumnSpan="2"
                         StyleClass="text-lg" />
 
-                    <Label Text="{{item | Attribute:'Speaker'}} | {{item.StartDateTime | Date:'MMM d, yy'}}"
+                    <Label Text="{{item | Attribute:'Speaker'}} | {{item.StartDateTime | Date:'M/d/yyyy'}}"
                     Margin="30,55,0,0"
                         HorizontalTextAlignment="Start"
                         VerticalTextAlignment="End"
