@@ -1,4 +1,4 @@
-
+ {% assign answer = "" %}
  <StackLayout StyleClass="px-32, py-16">
 {% if CurrentPerson.Id != null %}
 {% attributevalue where:'AttributeId == 7285' securityenabled:'false' sort:'CreatedDateTime' %}
@@ -15,7 +15,7 @@
 {% endfor %}
 {% endattributevalue %}
 
-
+{% if answer and answer != "" %}
     <Label Text="What do you want to get out of the team?"
             StyleClass="text-lg"
                 TextColor="{Rock:PaletteColor App-Primary}"
@@ -26,5 +26,6 @@
                 TextColor="White"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Center" />
+{% endif%}
 {% endif %}
 </StackLayout>
