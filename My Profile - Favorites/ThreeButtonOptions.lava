@@ -1,82 +1,215 @@
-{% assign favoriteType = PageParameter.FavoriteType %}
+{%- assign favoriteType = PageParameter.FavoriteType  -%}
 
-<StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+<StackLayout Orientation="Horizontal" HorizontalOptions="Center" HeightRequest="75"  >
 
-{% if favoriteType == "Sermons" or favoriteType == null  %}
-     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
-          CornerRadius="0,0,0,0"
-          IsClippedToBounds="true"
-          HorizontalOptions="FillAndExpand"
-          HeightRequest="30" >
-     <Button Text="Sermons"
-          StyleClass="btn,page-menu-active"
-          Margin="0"
-          Command="{Binding ReplacePage}"
-          CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=Sermons" />
-     </Rock:StyledView>
-{%else%}
-     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
-          CornerRadius="0,0,0,0"
-          IsClippedToBounds="true"
-          HorizontalOptions="FillAndExpand"
-          HeightRequest="30" >
-     <Button Text="Sermons"
-          StyleClass="btn,page-menu"
-          Margin="0"
-          Command="{Binding ReplacePage}"
-          CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=Sermons" />
-     </Rock:StyledView>
-{%endif%}
 
-{% if favoriteType == "PopUpEvents" %}
-     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
-          CornerRadius="0,0,0,0"
-          IsClippedToBounds="true"
-          HorizontalOptions="FillAndExpand"
-          HeightRequest="30" >
-     <Button Text="Pop-Up Events"
-          StyleClass="btn,page-menu-active"
-          Margin="0"
-          Command="{Binding ReplacePage}"
-          CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=PopUpEvents" />
-     </Rock:StyledView>
-{%else%}
-     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
-          CornerRadius="0,0,0,0"
-          IsClippedToBounds="true"
-          HorizontalOptions="FillAndExpand"
-          HeightRequest="30" >
-     <Button Text="Pop-Up Events"
-          StyleClass="btn,page-menu"
-          Margin="0"
-          Command="{Binding ReplacePage}"
-          CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=PopUpEvents" />
-     </Rock:StyledView>
-{%endif%}
+{%- if favoriteType == "Sermons" or favoriteType == null   -%}
+     <Grid>
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding ReplacePage}" CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=Sermons" />
+    </Grid.GestureRecognizers>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
 
-{% if favoriteType == "ActionTeams" %}
-     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
-          CornerRadius="0,0,0,0"
-          IsClippedToBounds="true"
-          HorizontalOptions="FillAndExpand"
-          HeightRequest="30" >
-     <Button Text="Action Teams"
-          StyleClass="btn,page-menu-active"
-          Margin="0"
-          Command="{Binding ReplacePage}"
-          CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=ActionTeams" />
-     </Rock:StyledView>
-{%else%}
-     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
-          CornerRadius="0,0,0,0"
-          IsClippedToBounds="true"
-          HorizontalOptions="FillAndExpand"
-          HeightRequest="30" >
-     <Button Text="ActionTeams"
-          StyleClass="btn,page-menu"
-          Margin="0"
-          Command="{Binding ReplacePage}"
-          CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=ActionTeams" />
-     </Rock:StyledView>
-{%endif%}
+    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+        BorderThickness="2"
+        BorderColor="{Rock:PaletteColor App-Primary}"
+        IsClippedToBounds="true"
+        HorizontalOptions="FillAndExpand"
+        Margin="5"
+        HeightRequest="50"
+        Grid.Row="0"
+        Grid.Column="0"
+         Grid.ColumnSpan="2" />
+
+    <Label Text="Sermons"
+        TextColor="{Rock:PaletteColor App-Info}"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Center"
+        Margin="10"
+        Grid.Row="0"
+        Grid.Column="0"
+        Grid.ColumnSpan="2"
+        StyleClass="text-lg" />
+
+</Grid>
+{%- else -%}
+     <Grid>
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding ReplacePage}" CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=Sermons" />
+    </Grid.GestureRecognizers>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+        BorderThickness="2"
+        BorderColor="{Rock:PaletteColor App-Primary}"
+        IsClippedToBounds="true"
+        HorizontalOptions="FillAndExpand"
+        Margin="5"
+        HeightRequest="50"
+        Grid.Row="0"
+        Grid.Column="0"
+         Grid.ColumnSpan="2" />
+
+    <Label Text="Sermons"
+        TextColor="{Rock:PaletteColor App-Info}"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Center"
+        Margin="10"
+        Grid.Row="0"
+        Grid.Column="0"
+        Grid.ColumnSpan="2"
+        StyleClass="text-lg" />
+
+</Grid>
+{%- endif -%}
+
+{%- if favoriteType == "PopUpEvents"  -%}
+         <Grid>
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding ReplacePage}" CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=PopUpEvents" />
+    </Grid.GestureRecognizers>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+        BorderThickness="2"
+        BorderColor="{Rock:PaletteColor App-Primary}"
+        IsClippedToBounds="true"
+        HorizontalOptions="FillAndExpand"
+        Margin="5"
+        HeightRequest="50"
+        Grid.Row="0"
+        Grid.Column="0"
+         Grid.ColumnSpan="2" />
+
+    <Label Text="Events"
+        TextColor="{Rock:PaletteColor App-Info}"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Center"
+        Margin="10"
+        Grid.Row="0"
+        Grid.Column="0"
+        Grid.ColumnSpan="2"
+        StyleClass="text-lg" />
+
+</Grid>
+{%- else -%}
+ <Grid>
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding ReplacePage}" CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=PopUpEvents" />
+    </Grid.GestureRecognizers>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+        BorderThickness="2"
+        BorderColor="{Rock:PaletteColor App-Primary}"
+        IsClippedToBounds="true"
+        HorizontalOptions="FillAndExpand"
+        Margin="5"
+        HeightRequest="50"
+        Grid.Row="0"
+        Grid.Column="0"
+         Grid.ColumnSpan="2" />
+
+    <Label Text="Events"
+        TextColor="{Rock:PaletteColor App-Info}"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Center"
+        Margin="10"
+        Grid.Row="0"
+        Grid.Column="0"
+        Grid.ColumnSpan="2"
+        StyleClass="text-lg" />
+
+</Grid>
+{%- endif -%}
+
+{%- if favoriteType == "ActionTeams"  -%}
+          <Grid>
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding ReplacePage}" CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=ActionTeams" />
+    </Grid.GestureRecognizers>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+        BorderThickness="2"
+        BorderColor="{Rock:PaletteColor App-Primary}"
+        IsClippedToBounds="true"
+        HorizontalOptions="FillAndExpand"
+        Margin="5"
+        HeightRequest="50"
+        Grid.Row="0"
+        Grid.Column="0"
+         Grid.ColumnSpan="2" />
+
+    <Label Text="Action Teams"
+        TextColor="{Rock:PaletteColor App-Info}"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Center"
+        Margin="10"
+        Grid.Row="0"
+        Grid.Column="0"
+        Grid.ColumnSpan="2"
+        StyleClass="text-lg" />
+
+</Grid>
+{%- else -%}
+      <Grid>
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding ReplacePage}" CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=ActionTeams" />
+    </Grid.GestureRecognizers>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+        BorderThickness="2"
+        BorderColor="{Rock:PaletteColor App-Primary}"
+        IsClippedToBounds="true"
+        HorizontalOptions="FillAndExpand"
+        Margin="5"
+        HeightRequest="50"
+        Grid.Row="0"
+        Grid.Column="0"
+         Grid.ColumnSpan="2" />
+
+    <Label Text="Action Teams"
+        TextColor="{Rock:PaletteColor App-Info}"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Center"
+        Margin="10"
+        Grid.Row="0"
+        Grid.Column="0"
+        Grid.ColumnSpan="2"
+        StyleClass="text-lg" />
+
+</Grid>
+{%- endif -%}
 </StackLayout>

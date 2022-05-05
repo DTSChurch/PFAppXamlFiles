@@ -8,11 +8,12 @@
 {% if size > 0 %}
     {% for follow in followingItems %}
     {% group id:'{{follow.EntityId}}' sort:'StartDateTime desc' securityenabled:'false' %}
-    {% assign item = group %}
-{% assign wholeLifeCategory = item | Attribute:'WholeLifeCategory','Object' %}
-{% assign wholeLifeCategoryValue = wholeLifeCategory.Value %}
-{% assign wholeLifeCategoryImageId = wholeLifeCategory | Attribute:'Image','Id' %}
-{% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
+        {% if group %}
+        {% assign item = group %}
+        {% assign wholeLifeCategory = item | Attribute:'WholeLifeCategory','Object' %}
+        {% assign wholeLifeCategoryValue = wholeLifeCategory.Value %}
+        {% assign wholeLifeCategoryImageId = wholeLifeCategory | Attribute:'Image','Id' %}
+        {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
 
 
              <Grid RowSpacing="0" ColumnSpacing="0" Margin="10,0,10,10" >
@@ -51,11 +52,11 @@
                     Grid.ColumnSpan="2" />
 
                 <Rock:Image HeightRequest="50"
-                            Source="{{wholeLifeCategoryImageLink}}"
-                            Aspect="AspectFit"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Center"
-                            Margin="0,0,0,0"
+                    Source="{{wholeLifeCategoryImageLink}}"
+                    Aspect="AspectFit"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Margin="0,0,0,0"
                     Grid.Row="0"
                     Grid.Column="0" />
 
@@ -79,8 +80,8 @@
                     StyleClass="heading4" />
 
 
-                <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
-                    EntityId="{{ item.Id }}"
+                <Rock:FollowingIcon EntityTypeId="16"
+                    EntityId="{{ follow.EntityId }}"
                     FontSize="22"
                     IsFollowed="{{ item | IsFollowed }}"
                     FollowingIconColor="{Rock:PaletteColor App-Light}"
@@ -90,13 +91,16 @@
                     Margin="0,0,15,0"
                     Grid.Row="0"
                     Grid.Column="2" />
+
+
                 </Grid>
+        {% endif %}
     {% endgroup %}
 
     {% endfor %}
 
 {% else %}
-    <Grid MarginTop="20">
+    <Grid Margin="0,20,0,0">
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*"/>
         <ColumnDefinition Width="*"/>
