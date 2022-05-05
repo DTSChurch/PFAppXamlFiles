@@ -67,16 +67,16 @@
 
                 </Rock:StyledView>
 
-                <Label FontFamily="Raleway-Medium" Text="{{item.EventItem.Name | Escape}}" Margin="10,5,10,5" Grid.Row="0"
+                <Label FontFamily="Raleway-Bold" Text="{{item.EventItem.Name | Escape}}" Margin="10,5,10,5" Grid.Row="0"
                     Grid.Column="1"
-                    Grid.ColumnSpan="3" StyleClass="text-body, leading-none, text-bold"/>
+                    Grid.ColumnSpan="3" StyleClass="text-md"/>
                 <Label FontFamily="Raleway-Medium" Text="{{itemSummary | Trim | Escape}}" Margin="10,30,10,0"
                     Grid.Row="0"
                     Grid.RowSpan="2"
                     Grid.Column="1"
                     Grid.ColumnSpan="3"
                     HeightRequest="80"
-                    StyleClass="heading4, leading-none"/>
+                    StyleClass="leading-none"/>
 
                 <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
                     EntityId="{{ item.Id }}"

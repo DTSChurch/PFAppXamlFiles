@@ -6,13 +6,7 @@
 {% assign actionTeamsPageGuid = "efdb6313-f5f0-4974-86a7-8a3d9b1c0deb" %}
 {% endif %}
 
-<StackLayout Orientation="Vertical" Padding="10,40,10,0" HorizontalOptions="FillAndExpand">    
-    <StackLayout StyleClass="px-32, py-16">
-        <Button Text="My Journey"
-        StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
-            Command="{Binding PushPage}"
-            CommandParameter="b41d997a-7206-490a-9f25-e96dbeff575d" />
-    </StackLayout>
+<StackLayout Orientation="Vertical" Padding="10,40,10,0" HorizontalOptions="FillAndExpand">
     <StackLayout StyleClass="px-32, py-16">
         <Button Text="Action Teams"
             StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
