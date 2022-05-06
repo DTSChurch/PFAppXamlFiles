@@ -1,0 +1,94 @@
+/* Navigation Bar  */
+.navigation-bar {
+    -xf-bar-background-color: #212121;/*?color-secondary;*/
+    -rock-ios-hide-navigation-bar-separator: true;
+}
+NavigationPage {
+  -rock-status-bar-text: light;
+}
+.bars-background {
+    /*background: ?color-secondary;*/
+}
+.rounded-corners {
+    border-radius: 22;
+}
+/* Buttons */
+.overview-button {
+    color: ?color-light;
+    background: ?color-secondary;
+    border-color: ?color-dark;
+}
+.btn-outline-primary {
+    /*background: ?color-heading;*/
+    background: transparent;
+    border-color: ?color-primary;
+}
+.btn-primary {
+    background: ?color-dark;
+    border-color: ?color-primary;
+    border:1px solid;
+}
+.page-menu {
+    color: ?color-light;
+    border-bottom-style: solid;
+    border-color: ?color-primary;
+    font-size:18;
+    font-weight:600;
+}
+.page-menu-active {
+    color: ?color-dark;
+    border-bottom-style: solid;
+    border-color: ?color-primary;
+    font-size:18;
+    font-weight:600;
+}
+
+/* fieldstack */
+.fieldstack {
+    border-color: ?color-dark;
+}
+fieldstack {
+    color: ?color-light;
+    background: ?color-secondary;
+    border-color: ?color-dark;
+    
+}
+/* Form Fields */
+.formfield .title {
+    color:?color-light;
+}
+
+/* flyout */
+.flyout-menu-item {
+    color: ?color-light;
+    font-size:24;
+    font-weight:700;
+}
+TextBlock{
+    border-color: #003 !important;
+}
+TextBox{
+    border-color: #000 !important;
+}
+.btn-icon{
+    background: transparent;
+    background-color: transparent;
+    color: ?color-primary;
+}
+.card-header{
+    margin:0;
+    padding: 0;
+}
+.card{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 5px;
+}
+
+.communicationlist-item-name {
+    color: ?color-light;
+    
+}
+.communicationlist-item-description {
+    color: ?color-light;
+    
+}
