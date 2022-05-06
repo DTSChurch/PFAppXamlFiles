@@ -1,10 +1,8 @@
- {% contentchannelitem id:'120' securityenabled:'false' %}
-{% assign item = contentchannelitem %}
-{% assign actionteamvideo = item | Attribute:'ActionTeamVideoCloudinary','RawValue' %}
-
+{% contentchannelitem id:'120' securityenabled:'false' %}
+    {% assign item = contentchannelitem %}
+    {% assign contentVideo = item | Attribute:'WholeLifeVideo','RawValue' %}
 {% endcontentchannelitem %}
 
 <StackLayout>
-<Rock:MediaPlayer Source="{{actionteamvideo | Escape}}"
-                  AutoPlay="false" />
+    <Rock:MediaPlayer Source="{{contentVideo | Escape}}" AutoPlay="false" />
 </StackLayout>

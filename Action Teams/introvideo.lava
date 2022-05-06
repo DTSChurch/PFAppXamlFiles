@@ -1,1 +1,8 @@
-<Rock:WebView HeightRequest="250" Source="https://www.youtube.com/embed/JuAE_FuR7K8"  />
+{% contentchannelitem id:'120' securityenabled:'false' %}
+    {% assign item = contentchannelitem %}
+    {% assign contentVideo = item | Attribute:'ActionTeamVideo','RawValue' %}
+{% endcontentchannelitem %}
+
+<StackLayout>
+    <Rock:MediaPlayer Source="{{contentVideo | Escape}}" AutoPlay="false" />
+</StackLayout>
