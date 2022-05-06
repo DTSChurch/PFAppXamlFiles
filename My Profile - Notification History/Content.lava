@@ -1,25 +1,8 @@
-<StackLayout StyleClass="mx-24" >
-
 <!-- if -->
-<StackLayout IsVisible="{Binding AppValues.core_PushNotificationHasBeenRequested, Converter={Rock:InverseBooleanConverter}}">
+<StackLayout IsVisible="{Binding AppValues.core_PushNotificationHasBeenRequested, Converter={Rock:InverseBooleanConverter}}" >
     <Label Text="Would you like to enable push notifications?" />
     <Button StyleClass="btn,btn-primary"
         Text="Enable Notification"
         Command="{Binding EnablePushNotifications}" />
 </StackLayout>
 
-<!-- elseif -->
-<StackLayout IsVisible="{Binding AppValues.core_PushNotificationHasBeenRequested}">
-    <StackLayout IsVisible="{Binding AppValues.core_NotificationsAreEnabled, Converter={Rock:InverseBooleanConverter}}">
-        <Label Text="Your notifications are disabled, would you like to fix that?" />
-        <Button StyleClass="btn,btn-primary"
-            Text="Settings"
-            Command="{Binding OpenAppSettings}" />
-    </StackLayout>
-
-    <!-- else -->
-    <StackLayout IsVisible="{Binding AppValues.core_NotificationsAreEnabled}">
-        <Label Text="You'll be hearing from us." />
-    </StackLayout>
-</StackLayout>
-</StackLayout>

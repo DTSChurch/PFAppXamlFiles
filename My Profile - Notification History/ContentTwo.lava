@@ -1,0 +1,20 @@
+<!-- elseif -->
+<StackLayout IsVisible="{Binding AppValues.core_PushNotificationHasBeenRequested}">
+    <StackLayout IsVisible="{Binding AppValues.core_NotificationsAreEnabled, Converter={Rock:InverseBooleanConverter}}">
+        <Label Text="Your notifications are disabled, would you like to fix that?" />
+        <Button StyleClass="btn,btn-primary"
+            Text="Settings"
+            Command="{Binding OpenAppSettings}" />
+    </StackLayout>
+
+    <!-- else -->
+    <StackLayout IsVisible="{Binding AppValues.core_NotificationsAreEnabled}">
+          <Label FontFamily="Raleway-Medium" Text="Push Notifications Enabled!"
+    StyleClass="text-subtitle"
+    Margin="25"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"  />
+    </StackLayout>
+    <Rock:Divider StyleClass="m-12" />
+</StackLayout>
+

@@ -5,7 +5,7 @@
             StyleClass="btn"
             HorizontalOptions="End"
             Margin="0,0,10,0"
-            Command="{Binding PushPage}"
+            Command="{Binding ReplacePage}"
             CommandParameter="d2ace62e-620e-4245-9f92-8c76bef23dd7" />
 
     <Rock:LoginStatusPhoto

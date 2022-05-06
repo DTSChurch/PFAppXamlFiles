@@ -1,0 +1,84 @@
+<StackLayout>
+
+{% if CurrentPerson %}
+
+ <Label FontFamily="Raleway-Bold" Text="Push Notification History"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                StyleClass="text-lg" />
+
+
+{% assign currentPersonAliasId = CurrentPerson.PrimaryAliasId %}
+{% assign commIds = "" %}
+{% personaldevice where:'PersonAliasId == {{currentPersonAliasId}}' %}
+
+{% for pd in personaldeviceItems %}
+
+{% capture whereClause %}MediumEntityTypeId == 477 && PersonalDeviceId == {{pd.Id}} || PersonAliasId == {{currentPersonAliasId}} && MediumEntityTypeId == 477{% endcapture %}
+{% communicationrecipient where:'{{whereClause}}' %}
+
+{% for comm in communicationrecipientItems %}
+{% assign commId = comm.CommunicationId %}
+
+{% assign commIdsArr = commIds | Split:',' %}
+{% assign inArray = false %}
+{% for commIdInArr in commIdsArr %}
+    {% if commIdInArr == commId %}
+        {% assign inArray = true %}
+    {% endif %}
+{% endfor %}
+{% unless inArray %}
+{% capture commIds %}{{commIds}}{{commId}}{% unless forloop.last%},{% endunless %}{% endcapture %}
+{% endunless %}
+{% endfor %}
+
+{% endcommunicationrecipient %}
+{% endfor %}
+
+{% assign commIdsArrToPresent = commIds | Split:',' %}
+{% for commIdToPresent in commIdsArrToPresent %}
+{% communication id:'{{commIdToPresent}}' securitydisabled:'true' %}
+
+        <Grid RowSpacing="0" ColumnSpacing="0" Margin="10,0,10,10" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+
+
+            <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+                CornerRadius="9,9,9,9"
+                HasShadow="true"
+                Elevation="3"
+                HorizontalOptions="FillAndExpand"
+                HeightRequest="50"
+                Grid.Row="0"
+                Grid.Column="0" />
+
+            <Label FontFamily="Raleway-Medium" Text="{{communication.PushTitle | Escape}}"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Start"
+                Margin="10,-25,0,0"
+                Grid.Row="0"
+                Grid.Column="0"
+                StyleClass="text-md" />
+
+            <Label FontFamily="Raleway-Medium" Text="{{communication.PushMessage | Escape}}"
+                Margin="20,30,0,0"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"
+                Grid.Row="0"
+                Grid.Column="0"
+                StyleClass="text-sm" />
+
+        </Grid>
+
+{% endcommunication %}
+
+{% endfor %}
+{% endpersonaldevice %}
+{% else %}
+{% endif %}
+</StackLayout>
