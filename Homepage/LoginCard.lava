@@ -45,21 +45,22 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Button FontFamily="Raleway-Medium" Text="I'M NEW"
-            x:Name="overviewButton"
+        <Button
+            Text="I'M NEW"
             FontFamily="Raleway-Bold"
             StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
             HorizontalOptions="FillAndExpand"
             Grid.Column="0"
             Command="{Binding PushPage}"
             CommandParameter="11fd268f-baad-4eea-9ba5-0530e2d57825" />
-        <Button FontFamily="Raleway-Medium" Text="LOGIN"
-            FontFamily="Raleway-LightItalic"
+        <Button
+            Text="LOGIN"
+            FontFamily="Raleway-Bold"
             StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
-                HorizontalOptions="FillAndExpand"
-                Grid.Column="1"
-                Command="{Binding PushPage}"
-                CommandParameter="7261c51f-b545-4401-85af-26233d9707b1" />
+            HorizontalOptions="FillAndExpand"
+            Grid.Column="1"
+            Command="{Binding PushPage}"
+            CommandParameter="7261c51f-b545-4401-85af-26233d9707b1" />
     </Grid>
 </StackLayout>
 {%endif%}
