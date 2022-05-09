@@ -5,12 +5,18 @@
 {% else %}
 {% assign actionTeamsPageGuid = "efdb6313-f5f0-4974-86a7-8a3d9b1c0deb" %}
 {% endif %}
+ {% contentchannelitem id:'120' securityenabled:'false' %}
+{% assign item = contentchannelitem %}
+{% assign content = item | Attribute:'ActionTeamContent' %}
+{% endcontentchannelitem %}
 
-<StackLayout Orientation="Vertical" Padding="10,40,10,0" HorizontalOptions="FillAndExpand">
-    <StackLayout StyleClass="px-32, py-16">
-        <Button Text="Action Teams"
+<StackLayout>
+    <Label FontFamily="Raleway-Bold" Text="Action Teams" StyleClass="text-title" HorizontalOptions="Center"  />
+    <Rock:Html StyleClass="px-32, py-4" Text="{{content | Escape}}" />
+     <StackLayout StyleClass="px-32, pb-4">
+            <Button Text="Find A Team"
             StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
             Command="{Binding PushPage}"
             CommandParameter="{{actionTeamsPageGuid}}" />
+        </StackLayout>
     </StackLayout>
-</StackLayout>

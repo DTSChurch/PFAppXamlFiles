@@ -20,9 +20,7 @@
         {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
 
         <StackLayout Grid.Row="{{rowNum | Modulo:3}}" Grid.Column="{{colNum | Modulo:2}}">
-
             <Grid>
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
@@ -33,11 +31,8 @@
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="85bfcfc5-f1f4-469a-8a99-7c67e4a6b537?DefinedValueId={{item.Id}}" />
             </Grid.GestureRecognizers>
-
-
             <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
                 CornerRadius="9,9,9,9"
-                BorderColor="{Rock:PaletteColor App-Light}"
                 BorderThickness="1"
                 HasShadow="true"
                 Elevation="3"
@@ -64,11 +59,8 @@
                     HorizontalTextAlignment="Center"
                     Grid.Row="1"
                     Grid.Column="0" />
-
             </Grid>
-
         </StackLayout>
-
             {% assign rowNum = rowNum | Plus:1 %}
             {% assign colNum = colNum | Plus:1 %}
         {%- endfor -%}
