@@ -1,8 +1,9 @@
 {% contentchannelitem id:'120' securityenabled:'false' %}
     {% assign item = contentchannelitem %}
     {% assign contentVideo = item | Attribute:'WholeLifeVideo','RawValue' %}
+      {% assign contentVideoThumbnail = item | Attribute:'WholeLifeVideoThumbnail','RawValue' %}
 {% endcontentchannelitem %}
 
 <StackLayout>
-    <Rock:MediaPlayer Source="{{contentVideo | Escape}}" AutoPlay="false" />
+    <Rock:MediaPlayer Source="{{contentVideo | Escape}}" AutoPlay="false"  {% if contentVideoThumbnail and contentVideoThumbnail != "" %}ThumbnailSource="{{contentVideoThumbnail | Escape}}"{% endif %} />
 </StackLayout>
