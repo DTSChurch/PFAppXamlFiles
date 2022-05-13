@@ -31,8 +31,7 @@
                 HorizontalOptions="Center" >
                 <Grid RowSpacing="0" ColumnSpacing="0" Margin="0" >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="120"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
@@ -40,19 +39,15 @@
                     <Rock:Image HeightRequest="50"
                         Source="{{wholeLifeCategoryImageLinkHeader}}"
                         Aspect="AspectFit"
-                        HorizontalOptions="End"
-                        Margin="0,0,5,0"
-                        Grid.Row="0"
-                        Grid.Column="0" />
+                        HorizontalOptions="Center"
+                        Margin="-150,0,0,0" />
 
                         <Label FontFamily="Raleway-Medium" Text="{{ item.Value | Escape }}"
-                        HorizontalTextAlignment="Start"
+                        HorizontalTextAlignment="Center"
                         VerticalTextAlignment="Center"
                         TextColor="{Rock:PaletteColor App-Primary}"
                         StyleClass="text-lg"
-                        Margin="5,0,0,0"
-                        Grid.Row="0"
-                        Grid.Column="1"/>
+                        Margin="5,0,0,0"/>
                 </Grid>
             </StackLayout>
 
@@ -109,29 +104,31 @@
                 Grid.Column="2"
                 Grid.ColumnSpan="2" />
 
-            <Label FontFamily="Raleway-Bold" Text="{{ group.Name | Escape }}"
+            <Label Text="{{ group.Name | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
                 Margin="20,-10,10,0"
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
-                StyleClass="text-lg" />
+                StyleClass="text-md"
+                FontFamily="Montserrat-Bold"/>
 
             {% assign groupSubTitle = group | Attribute:'SubTitle' %}
-            <Label FontFamily="Raleway-Medium" Text="{{ groupSubTitle | Escape }}"
-                VerticalTextAlignment="Center"
+            <Label Text="{{ groupSubTitle | Escape }}"
+                VerticalTextAlignment="Start"
                 HorizontalTextAlignment="Start"
-                Margin="20,30,10,0"
-                Grid.Row="1"
+                Margin="20,-15,10,0"
+                Grid.Row="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
-                StyleClass="text-sm font-italic" />
+                StyleClass="text-sm font-italic"
+                FontFamily="Montserrat-LightItalic"/>
 
-             <Label FontFamily="Raleway-Medium" Text="{{ group.Description | TruncateWords:30 | Escape }}"
+             <Label FontFamily="Montserrat-Light" Text="{{ group.Description | TruncateWords:30 | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
-                Margin="20,0,20,10"
+                Margin="20,10,20,10"
                 HeightRequest="65"
                 Grid.Row="2"
                 Grid.Column="0"
@@ -139,11 +136,11 @@
                 StyleClass="text" />
 
             {% if groupPage != null %}
-                <Button FontFamily="Raleway-Medium" Text="Team Info"
+                <Button FontFamily="Montserrat-Bold" Text="Team Info"
                     StyleClass="btn,btn-outline-primary"
                     TextColor="{Rock:PaletteColor App-Light}"
-                    HeightRequest="30"
-                    Margin="10,10,10,10"
+                    HeightRequest="25"
+                    Margin="15,15,15,15"
                     Grid.Row="3"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"

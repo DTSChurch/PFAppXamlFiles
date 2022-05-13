@@ -5,5 +5,9 @@
 {% endcontentchannelitem %}
 
 <StackLayout>
-    <Rock:MediaPlayer Source="{{contentVideo | Escape}}" AutoPlay="false"  {% if contentVideoThumbnail and contentVideoThumbnail != "" %}ThumbnailSource="{{contentVideoThumbnail | Escape}}"{% endif %} />
+    {% if contentVideoThumbnail and contentVideoThumbnail != "" %}
+        <Rock:MediaPlayer Source="{{contentVideo | Escape}}" AutoPlay="false"  ThumbnailSource="{{ 'Global' | Attribute:'PublicApplicationRoot' | Escape }}GetFile.ashx?guid={{contentVideoThumbnail | Escape}}" />
+    {%else%}
+        <Rock:MediaPlayer Source="{{contentVideo | Escape}}" AutoPlay="false"  />
+    {% endif %}
 </StackLayout>

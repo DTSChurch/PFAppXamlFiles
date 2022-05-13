@@ -15,17 +15,18 @@
 {% endfor %}
 {% endattributevalue %}
 
-{% if answer and answer != "" %}
-    <Label FontFamily="Raleway-Medium" Text="What do you want to get out of the team?"
+
+    <Label FontFamily="Montserrat-Light" Text="What do you want to get out of the team?"
             StyleClass="text-lg"
                 TextColor="{Rock:PaletteColor App-Primary}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Center" />
-           <Label FontFamily="Raleway-Medium" Text="{{answer}}"
+
+           <Label FontFamily="Montserrat-Light" Text="{{answer}}"
             StyleClass="text-md"
                 TextColor="White"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Center" />
-{% endif%}
+
 {% endif %}
 </StackLayout>
