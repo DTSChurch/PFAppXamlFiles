@@ -60,7 +60,7 @@
                     Grid.Row="0"
                     Grid.Column="0" />
 
-                <Label FontFamily="Raleway-Medium" Text="{{item.EventItem.Name | Escape}}"
+                <Label FontFamily="Montserrat-Bold" Text="{{item.EventItem.Name | Escape}}"
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Start"
                     Margin="10,-25,0,0"
@@ -69,7 +69,7 @@
                     Grid.ColumnSpan="2"
                     StyleClass="text-md" />
 
-                <Label FontFamily="Raleway-Medium" Text="{{ item.EventItem.Summary  | Truncate:30,'...'  | Escape }}"
+                <Label FontFamily="Montserrat-Light" Text="{{ item.EventItem.Summary  | Truncate:30,'...'  | Escape }}"
                     Margin="20,30,0,0"
                     HorizontalTextAlignment="Start"
                     VerticalTextAlignment="Center"
@@ -95,31 +95,21 @@
     {% endfor %}
 
 {% else %}
-    <Grid MarginTop="20">
+<Grid MarginTop="20">
     <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*"/>
         <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
-    <Label FontFamily="Raleway-Medium" Text="No Pop-Up Events Saved yet!"
+    <Label FontFamily="Montserrat-Light" Text="No Pop-Up Events Saved yet!"
         TextColor="{Rock:PaletteColor App-Primary}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"
         Grid.Row="0"
         Grid.Column="0"
         StyleClass="text-lg" />
-
-    <Rock:Icon IconClass="star"
-        FontSize="32"
-        Grid.Row="0"
-        Grid.Column="1"
-        HorizontalTextAlignment="End"
-        VerticalTextAlignment="Center"
-        MarginRight="30"
-        TextColor="{Rock:PaletteColor App-Primary}" />
 
 </Grid>
 

@@ -19,7 +19,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="80"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="60"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
@@ -59,23 +59,23 @@
                     Grid.Row="0"
                     Grid.Column="0" />
 
-                <Label FontFamily="Raleway-Medium" Text="{{item.Title}}"
+                <Label FontFamily="Montserrat-Bold" Text="{{item.Title | Escape}}"
                     VerticalTextAlignment="Start"
                     HorizontalTextAlignment="Start"
                     Margin="20,10,0,0"
                     Grid.Row="0"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
-                    StyleClass="text-lg" />
+                    StyleClass="text-md" />
 
-                <Label FontFamily="Raleway-Medium" Text="{{item | Attribute:'Speaker'}} | {{item.StartDateTime | Date:'MMM d, yy'}} {{wholeLifeCategory}}"
+                <Label FontFamily="Montserrat-LightItalic" Text="{{item | Attribute:'Speaker' | Escape}} | {{item.StartDateTime | Date:'MMM d, yy'}} {{wholeLifeCategory}}"
                 Margin="30,35,0,0"
                     HorizontalTextAlignment="Start"
                     VerticalTextAlignment="Start"
                     Grid.Row="0"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
-                    StyleClass="heading4" />
+                    StyleClass="text-sm" />
 
                 <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
                     EntityId="{{ item.Id }}"
@@ -97,29 +97,18 @@
     <Grid MarginTop="20">
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
-    <Label FontFamily="Raleway-Medium" Text="No Messages Saved yet!"
+    <Label FontFamily="Montserrat-Light" Text="No Messages Saved yet!"
         TextColor="{Rock:PaletteColor App-Primary}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"
         Grid.Row="0"
         Grid.Column="0"
         StyleClass="text-lg" />
-
-    <Rock:Icon IconClass="star"
-        FontSize="32"
-        Grid.Row="0"
-        Grid.Column="1"
-        HorizontalTextAlignment="End"
-        VerticalTextAlignment="Center"
-        MarginRight="30"
-        TextColor="{Rock:PaletteColor App-Primary}" />
-
 </Grid>
 
 {% endif %}

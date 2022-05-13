@@ -2,9 +2,8 @@
 
 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" HeightRequest="75"  >
 
-
 {%- if favoriteType == "Sermons" or favoriteType == null   -%}
-     <Grid>
+<Grid>
     <Grid.GestureRecognizers>
         <TapGestureRecognizer Command="{Binding ReplacePage}" CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=Sermons" />
     </Grid.GestureRecognizers>
@@ -13,32 +12,21 @@
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
+        <RowDefinition Height="2"/>
     </Grid.RowDefinitions>
 
-    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
-        BorderThickness="2"
-        BorderColor="{Rock:PaletteColor App-Primary}"
-        IsClippedToBounds="true"
-        HorizontalOptions="FillAndExpand"
-        Margin="5"
-        HeightRequest="50"
-        Grid.Row="0"
-        Grid.Column="0"
-         Grid.ColumnSpan="2" />
-
-    <Label FontFamily="Raleway-Medium" Text="Messages"
-        TextColor="{Rock:PaletteColor App-Info}"
+    <Label FontFamily="Montserrat-Bold" Text="Messages"
+        TextColor="{Rock:PaletteColor App-Light}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"
         Margin="10"
         Grid.Row="0"
         Grid.Column="0"
-        Grid.ColumnSpan="2"
-        StyleClass="text-lg" />
-
+        StyleClass="text-md" />
+    <Rock:Divider Grid.Row="1" Grid.Column="0"/>
 </Grid>
 {%- else -%}
-     <Grid>
+<Grid>
     <Grid.GestureRecognizers>
         <TapGestureRecognizer Command="{Binding ReplacePage}" CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=Sermons" />
     </Grid.GestureRecognizers>
@@ -47,34 +35,22 @@
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
+        <RowDefinition Height="2"/>
     </Grid.RowDefinitions>
 
-    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
-        BorderThickness="2"
-        BorderColor="{Rock:PaletteColor App-Primary}"
-        IsClippedToBounds="true"
-        HorizontalOptions="FillAndExpand"
-        Margin="5"
-        HeightRequest="50"
-        Grid.Row="0"
-        Grid.Column="0"
-         Grid.ColumnSpan="2" />
-
-    <Label FontFamily="Raleway-Medium" Text="Sermons"
-        TextColor="{Rock:PaletteColor App-Info}"
+    <Label FontFamily="Montserrat-Light" Text="Messages"
+        TextColor="{Rock:PaletteColor App-Light}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"
         Margin="10"
         Grid.Row="0"
         Grid.Column="0"
-        Grid.ColumnSpan="2"
-        StyleClass="text-lg" />
-
+        StyleClass="text-md" />
 </Grid>
 {%- endif -%}
 
 {%- if favoriteType == "PopUpEvents"  -%}
-         <Grid>
+<Grid>
     <Grid.GestureRecognizers>
         <TapGestureRecognizer Command="{Binding ReplacePage}" CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=PopUpEvents" />
     </Grid.GestureRecognizers>
@@ -83,32 +59,21 @@
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
+        <RowDefinition Height="2"/>
     </Grid.RowDefinitions>
 
-    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
-        BorderThickness="2"
-        BorderColor="{Rock:PaletteColor App-Primary}"
-        IsClippedToBounds="true"
-        HorizontalOptions="FillAndExpand"
-        Margin="5"
-        HeightRequest="50"
-        Grid.Row="0"
-        Grid.Column="0"
-         Grid.ColumnSpan="2" />
-
-    <Label FontFamily="Raleway-Medium" Text="Events"
-        TextColor="{Rock:PaletteColor App-Info}"
+    <Label FontFamily="Montserrat-Bold" Text="Events"
+        TextColor="{Rock:PaletteColor App-Light}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"
         Margin="10"
         Grid.Row="0"
         Grid.Column="0"
-        Grid.ColumnSpan="2"
-        StyleClass="text-lg" />
-
+        StyleClass="text-md" />
+    <Rock:Divider Grid.Row="1" Grid.Column="0"/>
 </Grid>
 {%- else -%}
- <Grid>
+<Grid>
     <Grid.GestureRecognizers>
         <TapGestureRecognizer Command="{Binding ReplacePage}" CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=PopUpEvents" />
     </Grid.GestureRecognizers>
@@ -117,34 +82,22 @@
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
+        <RowDefinition Height="2"/>
     </Grid.RowDefinitions>
 
-    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
-        BorderThickness="2"
-        BorderColor="{Rock:PaletteColor App-Primary}"
-        IsClippedToBounds="true"
-        HorizontalOptions="FillAndExpand"
-        Margin="5"
-        HeightRequest="50"
-        Grid.Row="0"
-        Grid.Column="0"
-         Grid.ColumnSpan="2" />
-
-    <Label FontFamily="Raleway-Medium" Text="Events"
-        TextColor="{Rock:PaletteColor App-Info}"
+    <Label FontFamily="Montserrat-Light" Text="Events"
+        TextColor="{Rock:PaletteColor App-Light}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"
         Margin="10"
         Grid.Row="0"
         Grid.Column="0"
-        Grid.ColumnSpan="2"
-        StyleClass="text-lg" />
-
+        StyleClass="text-md" />
 </Grid>
 {%- endif -%}
 
 {%- if favoriteType == "ActionTeams"  -%}
-          <Grid>
+ <Grid>
     <Grid.GestureRecognizers>
         <TapGestureRecognizer Command="{Binding ReplacePage}" CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=ActionTeams" />
     </Grid.GestureRecognizers>
@@ -153,32 +106,21 @@
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
+        <RowDefinition Height="2"/>
     </Grid.RowDefinitions>
 
-    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
-        BorderThickness="2"
-        BorderColor="{Rock:PaletteColor App-Primary}"
-        IsClippedToBounds="true"
-        HorizontalOptions="FillAndExpand"
-        Margin="5"
-        HeightRequest="50"
-        Grid.Row="0"
-        Grid.Column="0"
-         Grid.ColumnSpan="2" />
-
-    <Label FontFamily="Raleway-Medium" Text="Action Teams"
-        TextColor="{Rock:PaletteColor App-Info}"
+    <Label FontFamily="Montserrat-Bold" Text="Action Teams"
+        TextColor="{Rock:PaletteColor App-Light}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"
         Margin="10"
         Grid.Row="0"
         Grid.Column="0"
-        Grid.ColumnSpan="2"
-        StyleClass="text-lg" />
-
+        StyleClass="text-md" />
+    <Rock:Divider Grid.Row="1" Grid.Column="0"/>
 </Grid>
 {%- else -%}
-      <Grid>
+<Grid>
     <Grid.GestureRecognizers>
         <TapGestureRecognizer Command="{Binding ReplacePage}" CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4?FavoriteType=ActionTeams" />
     </Grid.GestureRecognizers>
@@ -187,29 +129,17 @@
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
+        <RowDefinition Height="2"/>
     </Grid.RowDefinitions>
 
-    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
-        BorderThickness="2"
-        BorderColor="{Rock:PaletteColor App-Primary}"
-        IsClippedToBounds="true"
-        HorizontalOptions="FillAndExpand"
-        Margin="5"
-        HeightRequest="50"
-        Grid.Row="0"
-        Grid.Column="0"
-         Grid.ColumnSpan="2" />
-
-    <Label FontFamily="Raleway-Medium" Text="Action Teams"
-        TextColor="{Rock:PaletteColor App-Info}"
+    <Label FontFamily="Montserrat-Light" Text="Action Teams"
+        TextColor="{Rock:PaletteColor App-Light}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"
         Margin="10"
         Grid.Row="0"
         Grid.Column="0"
-        Grid.ColumnSpan="2"
-        StyleClass="text-lg" />
-
+        StyleClass="text-md" />
 </Grid>
 {%- endif -%}
 </StackLayout>

@@ -60,24 +60,24 @@
                     Grid.Row="0"
                     Grid.Column="0" />
 
-                <Label FontFamily="Raleway-Medium" Text="{{item.Name | Escape}}"
+                <Label FontFamily="Montserrat-Bold" Text="{{item.Name | Escape}}"
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Start"
                     Margin="10,-25,0,0"
                     Grid.Row="0"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
-                    StyleClass="text-lg" />
+                    StyleClass="text-md" />
 
                 {% assign groupSubTitle = item | Attribute:'SubTitle' %}
-                <Label FontFamily="Raleway-Medium" Text="{{ groupSubTitle | Escape }}"
+                <Label FontFamily="Montserrat-Light" Text="{{ groupSubTitle | Escape }}"
                     Margin="20,30,0,0"
                     HorizontalTextAlignment="Start"
                     VerticalTextAlignment="Center"
                     Grid.Row="0"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
-                    StyleClass="heading4" />
+                    StyleClass="text-sm" />
 
 
                 <Rock:FollowingIcon EntityTypeId="16"
@@ -100,31 +100,21 @@
     {% endfor %}
 
 {% else %}
-    <Grid Margin="0,20,0,0">
+    <Grid MarginTop="20">
     <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*"/>
         <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
-    <Label FontFamily="Raleway-Medium" Text="No Action Teams Saved yet!"
+    <Label FontFamily="Montserrat-Light" Text="No Action Teams Saved yet!"
         TextColor="{Rock:PaletteColor App-Primary}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center"
         Grid.Row="0"
         Grid.Column="0"
         StyleClass="text-lg" />
-
-    <Rock:Icon IconClass="star"
-        FontSize="32"
-        Grid.Row="0"
-        Grid.Column="1"
-        HorizontalTextAlignment="End"
-        VerticalTextAlignment="Center"
-        MarginRight="30"
-        TextColor="{Rock:PaletteColor App-Primary}" />
 
 </Grid>
 

@@ -12,7 +12,7 @@
         {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
     {%- enddefinedvalue -%}
     {% assign eventItem = item.EventItem.Id %}
-    {% eventscheduledinstance eventid:'{{eventItem}}' maxoccurrences:'5' sort:'DateTime' daterange:'6m' %}
+    {% eventscheduledinstance eventid:'{{eventItem}}' maxoccurrences:'5' daterange:'6m' %}
         {% for item in EventScheduledInstances %}
             {% assign nextStartDate = item.Date%}
             {% assign nextStartTime = item.Time%}
@@ -42,8 +42,8 @@
                     Grid.Column="0">
                 </Rock:StyledView>
 
-                <Label FontFamily="Montserrat-Light" Text="{{nextStartDate}}" TextColor="{Rock:PaletteColor App-Secondary}" Grid.Row="1" Grid.Column="0" Margin="0,-20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
-                <Label FontFamily="Montserrat-Light" Text="{{nextStartTime}}" TextColor="{Rock:PaletteColor App-Secondary}" Grid.Row="1" Grid.Column="0" Margin="0,20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
+                <Label FontFamily="Montserrat-Light" Text="{{nextStartDate}}" TextColor="{Rock:PaletteColor App-Dark}" Grid.Row="1" Grid.Column="0" Margin="0,-20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
+                <Label FontFamily="Montserrat-Light" Text="{{nextStartTime}}" TextColor="{Rock:PaletteColor App-Dark}" Grid.Row="1" Grid.Column="0" Margin="0,20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
 
                 <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
                     CornerRadius="9,0,0,0"
