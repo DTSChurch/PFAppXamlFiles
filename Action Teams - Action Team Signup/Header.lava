@@ -1,0 +1,8 @@
+{%assign GroupGuid = PageParameter.GroupGuid%}
+{%group where:'Guid == "{{GroupGuid}}"' %}
+    {% assign groupName = group.Name %}
+{%endgroup%}
+
+<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+    <Label FontFamily="Montserrat-Bold" Text="{{groupName}}" StyleClass="text-lg" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
+</StackLayout>

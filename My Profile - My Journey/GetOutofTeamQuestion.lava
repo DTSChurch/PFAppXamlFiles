@@ -1,6 +1,6 @@
  {% assign answer = "" %}
  <StackLayout StyleClass="px-32, py-16">
-{% if CurrentPerson.Id != null %}
+{% if CurrentPerson.Id == 9999999 %}
 {% attributevalue where:'AttributeId == 7285' securityenabled:'false' sort:'CreatedDateTime' %}
 {% assign printed = false %}
 {% for av in attributevalueItems %}
@@ -14,7 +14,6 @@
 {% endgroupmember %}
 {% endfor %}
 {% endattributevalue %}
-
 
     <Label FontFamily="Montserrat-Light" Text="What do you want to get out of the team?"
             StyleClass="text-lg"

@@ -1,0 +1,9 @@
+<StackLayout>
+    <Label FontFamily="Montserrat-Bold" Text="Fantastic!  We can't wait to be a part of your journey and see God grow in an amazing way. Someone will be in touch with you soon." StyleClass="text-lg" HorizontalOptions="Center"  />
+     <StackLayout StyleClass="px-32, pb-4">
+            <Button Text="Return to Home"
+            StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+            Command="{Binding PushPage}"
+            CommandParameter="a9ccef18-c471-4810-9152-4c0bd2f35e72" />
+        </StackLayout>
+</StackLayout>
