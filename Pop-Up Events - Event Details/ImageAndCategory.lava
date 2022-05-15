@@ -12,7 +12,7 @@
 {% assign nextStartDate = ""%}
 {% assign nextStartTime = ""%}
 
-{% eventscheduledinstance eventid:'{{itemId}}' maxoccurrences:'5'  daterange:'6m' %}
+{% eventscheduledinstance eventid:'{{eventItem}}' maxoccurrences:'5'  daterange:'6m' %}
     {% for item in EventScheduledInstances %}
         {% assign nextStartDate = item.Date%}
         {% assign nextStartTime = item.Time%}
