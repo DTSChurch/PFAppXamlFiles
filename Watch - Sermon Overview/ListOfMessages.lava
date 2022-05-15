@@ -17,12 +17,12 @@
                 HorizontalOptions="FillAndExpand" >
 <StackLayout>
 
-<Label FontFamily="Raleway-Medium" Text="{{channelTitle | Escape}}" StyleClass="text-title" HorizontalOptions="Center"
+<Label FontFamily="Montserrat-Bold" Text="{{channelTitle | Escape}}" StyleClass="text-lg" HorizontalOptions="Center"
             Margin="0,15,0,0"
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="3"/>
-        <Label FontFamily="Raleway-Medium" Text="Messages: {{childItemCount}}" StyleClass="text-sm"
+        <Label FontFamily="Montserrat-LightItalic" Text="Messages: {{childItemCount}}" StyleClass="text-sm"
             HorizontalTextAlignment="End"
             Margin="15,0,15,0"
             Grid.Row="0"
@@ -56,23 +56,23 @@
                         Grid.ColumnSpan="3"
                         VerticalOptions="Center"
                         HorizontalOptions="FillAndExpand" />
-                    <Label FontFamily="Raleway-Medium" Text="{{item.Title | Escape}}"
+                    <Label FontFamily="Montserrat-Bold" Text="{{item.Title | Escape}}"
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Start"
                         Margin="20,10,0,0"
                         Grid.Row="0"
                         Grid.Column="0"
                         Grid.ColumnSpan="3"
-                        StyleClass="text-lg" />
+                        StyleClass="text-md" />
 
-                    <Label FontFamily="Raleway-Medium" Text="{{item | Attribute:'Speaker'}} | {{item.StartDateTime | Date:'M/d/yyyy'}}"
+                    <Label FontFamily="Montserrat-LightItalic" Text="{{item | Attribute:'Speaker'}} | {{item.StartDateTime | Date:'M/d/yyyy'}}"
                     Margin="30,0,0,0"
                         HorizontalTextAlignment="Start"
                         VerticalTextAlignment="End"
                         Grid.Row="1"
                         Grid.Column="0"
                         Grid.ColumnSpan="3"
-                        StyleClass="heading4" />
+                        StyleClass="text-sm" />
 
                     <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
                         EntityId="{{ item.Id }}"
