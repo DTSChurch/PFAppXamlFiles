@@ -1,4 +1,25 @@
- <Label FontFamily="Raleway-Bold" Text="Communication List Subscriptions"
-                VerticalTextAlignment="Center"
-                HorizontalTextAlignment="Center"
-                StyleClass="text-lg" />
+<StackLayout>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label FontFamily="Montserrat-Bold" Text="Communication List Subscriptions"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            StyleClass="text-md" 
+            Grid.Row="0"
+            Grid.Column="0" />
+        <Label FontFamily="Montserrat-Light" Text="Please check your communication preference below."
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            StyleClass="text-sm"
+            Margin="20,10,20,10 
+            Grid.Row="1"
+            Grid.Column="0" />
+    </Grid>
+</StackLayout>

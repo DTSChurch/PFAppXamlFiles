@@ -20,7 +20,7 @@
     {% endeventscheduledinstance %}
         <StackLayout>
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="63839327-b59a-439d-93aa-65bc09821143?ItemId={{ item.Id}}" />
+                    <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="63839327-b59a-439d-93aa-65bc09821143?ItemId={{item.Id}}" />
                 </StackLayout.GestureRecognizers>
             <Grid RowSpacing="0" ColumnSpacing="0" Margin="0,0,0,10">
                 <Grid.ColumnDefinitions>
