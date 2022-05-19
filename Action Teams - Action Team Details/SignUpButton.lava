@@ -1,16 +1,20 @@
-<<<<<<< HEAD
-{% assign GroupGuid = PageParameter.GroupGuid%}
-{% assign groupId = 0 %}
-{% group where:'Guid == "{{GroupGuid}}"' securityenabled:'false' %}
-    {% assign groupId = group.Id %}
-    {% assign groupLimit = group.GroupCapacity %}
-{% endgroup %}
-{% groupmember where:'GroupId == {{groupId}} && GroupMemberStatus == 1' count:'true' securityenabled:'false' %}
-    {% assign currentCount = count %}
-{% endgroupmember %}
 <StackLayout Orientation="Vertical"
     Padding="10,0,10,0"
     HorizontalOptions="FillAndExpand" >
+{% assign GroupGuid = PageParameter.GroupGuid%}
+{% assign groupId = 0 %}
+{% assign groupLimit = 0 %}
+{% group where:'Guid == "{{GroupGuid}}"' securityenabled:'false' %}
+    {% assign groupId = group.Id %}
+    {% assign groupLimit = group.GroupCapacity | Default:'0' %}
+{% endgroup %}
+{% if groupLimit == 0 %}
+    {% assign groupLimit = 99 %}
+{% endif %}
+{% groupmember where:'GroupId == {{groupId}} && GroupMemberStatus == 1' count:'true' securityenabled:'false' %}
+    {% assign currentCount = count %}
+{% endgroupmember %}
+
     {% if currentCount < groupLimit %}
         <Button FontFamily="Montserrat-Bold" Text="Sign Me Up"
         StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
@@ -23,15 +27,3 @@
             Margin="20,20,20,10" />
     {% endif %}
 </StackLayout>
-=======
-{%assign GroupGuid = PageParameter.GroupGuid%}
-<StackLayout Orientation="Vertical"
-    Padding="10,0,10,0"
-    HorizontalOptions="FillAndExpand" >
-    <Button FontFamily="Montserrat-Bold" Text="Enroll"
-    StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
-        Command="{Binding PushPage}"
-        CommandParameter="f1c0b713-f986-4e67-8c45-9c6a7e916213?GroupGuid={{GroupGuid}}"
-        Margin="20,20,20,10" />
-</StackLayout>
->>>>>>> a9c23f4bbcc91077fd4ea58b07f119182036f38e
