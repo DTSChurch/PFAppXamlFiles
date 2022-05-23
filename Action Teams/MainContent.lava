@@ -11,12 +11,16 @@
 {% endcontentchannelitem %}
 
 <StackLayout>
-    <Label FontFamily="Raleway-Bold" Text="Action Teams" StyleClass="text-title" HorizontalOptions="Center"  />
-    <Rock:Html StyleClass="px-32, py-4" Text="{{content | Escape}}" />
+    <Label FontFamily="Montserrat-Bold" Text="Action Teams" StyleClass="text-title" HorizontalOptions="Center"  />
+    <Label FontFamily="Montserrat-Light" Text="{{content | Escape}}"
+        HorizontalTextAlignment="Start"
+        Margin="35,10,35,15"
+        StyleClass="text-md" />
      <StackLayout StyleClass="px-32, pb-4">
-            <Button Text="Find A Team"
-            StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
-            Command="{Binding PushPage}"
-            CommandParameter="{{actionTeamsPageGuid}}" />
+            <Button FontFamily="Montserrat-Bold"
+                Text="Find A Team"
+                StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+                Command="{Binding PushPage}"
+                CommandParameter="{{actionTeamsPageGuid}}" />
         </StackLayout>
     </StackLayout>

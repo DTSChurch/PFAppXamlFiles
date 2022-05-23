@@ -1,14 +1,8 @@
 <StackLayout Orientation="Vertical"
     Padding="10,10,10,0"
     HorizontalOptions="FillAndExpand" >
-
      <StackLayout.Behaviors>
     	 <Rock:EntranceTransition Duration="250" />
     </StackLayout.Behaviors>
-
-    <Label FontFamily="Raleway-Medium" Text="Action Teams" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
-
-   
-
-
+    <Label FontFamily="Montserrat-Bold" Text="Action Teams" StyleClass="text-title" TextColor="{Rock:PaletteColor App-Primary}" HorizontalOptions="Center"  />
 </StackLayout>

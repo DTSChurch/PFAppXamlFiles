@@ -42,7 +42,7 @@
                         HorizontalOptions="Center"
                         Margin="-150,0,0,0" />
 
-                        <Label FontFamily="Raleway-Medium" Text="{{ item.Value | Escape }}"
+                        <Label FontFamily="Montserrat-Light" Text="{{ item.Value | Escape }}"
                         HorizontalTextAlignment="Center"
                         VerticalTextAlignment="Center"
                         TextColor="{Rock:PaletteColor App-Primary}"

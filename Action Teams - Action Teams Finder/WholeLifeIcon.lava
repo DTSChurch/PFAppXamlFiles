@@ -26,7 +26,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-            <Label FontFamily="Raleway-Medium" Text="{{wholeLifeCategoryValue}}"
+            <Label FontFamily="Montserrat-Bold" Text="{{wholeLifeCategoryValue}}"
                 StyleClass="text-lg"
                 TextColor="{Rock:PaletteColor App-Primary}"
                 VerticalTextAlignment="Center"
@@ -39,7 +39,7 @@
 </Grid>
 {% enddefinedvalue %}
 {% else %}
-    <Label FontFamily="Raleway-Medium" Text="All Teams"
+    <Label FontFamily="Montserrat-Bold" Text="All Teams"
         StyleClass="text-title"
         TextColor="{Rock:PaletteColor App-Primary}"
         VerticalTextAlignment="Center"

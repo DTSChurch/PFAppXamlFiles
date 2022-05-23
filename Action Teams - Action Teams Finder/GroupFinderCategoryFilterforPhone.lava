@@ -62,17 +62,17 @@
                 Grid.Column="2"
                 Grid.ColumnSpan="2" />
 
-            <Label FontFamily="Raleway-Bold" Text="{{ group.Name | Escape }}"
+            <Label FontFamily="Montserrat-Bold" Text="{{ group.Name | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
                 Margin="20,-10,10,0"
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
-                StyleClass="text-lg" />
+                StyleClass="text-md" />
 
             {% assign groupSubTitle = group | Attribute:'SubTitle' %}
-            <Label FontFamily="Raleway-Medium" Text="{{ groupSubTitle | Escape }}"
+            <Label FontFamily="Montserrat-LightItalic" Text="{{ groupSubTitle | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
                 Margin="20,30,10,0"
@@ -81,7 +81,7 @@
                 Grid.ColumnSpan="4"
                 StyleClass="text-sm font-italic" />
 
-             <Label FontFamily="Raleway-Medium" Text="{{ group.Description | TruncateWords:30 | Escape }}"
+             <Label FontFamily="Montserrat-Light" Text="{{ group.Description | TruncateWords:30 | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
                 Margin="20,0,20,10"
@@ -92,7 +92,7 @@
                 StyleClass="text" />
 
             {% if groupPage != null %}
-                <Button FontFamily="Raleway-Medium" Text="Team Info"
+                <Button FontFamily="Montserrat-Bold" Text="Team Info"
                     StyleClass="btn,btn-outline-primary"
                     TextColor="{Rock:PaletteColor App-Light}"
                     HeightRequest="30"
@@ -107,7 +107,7 @@
             {% assign scheduleDayAttribute = group | Attribute:'Day' %}
             {% assign scheduleTimeAttribute = group | Attribute:'Time' %}
             {% if scheduleDayAttribute != null or scheduleTimeAttribute != null %}
-            <Label FontFamily="Raleway-Medium" Text="{{ scheduleDayAttribute }}"
+            <Label FontFamily="Montserrat-Light" Text="{{ scheduleDayAttribute }}"
                 Margin="10,-20,10,0"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"
