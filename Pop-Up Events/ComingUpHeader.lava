@@ -1,1 +1,1 @@
-<Label FontFamily="Raleway-Medium" Text="Coming Up" StyleClass="text-title" HorizontalOptions="Center"  />
+<Label FontFamily="Montserrat-Bold" Text="Coming Up" StyleClass="text-title" HorizontalOptions="Center"  />

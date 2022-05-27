@@ -1,7 +1,9 @@
 <StackLayout>
+{% assign itemTotalCount = 0 %}
 {%- eventcalendaritem where:'EventCalendarId == 1' sort:'StartDateTime desc' securityenabled:'false' -%}
     {%- for item in eventcalendaritemItems -%}
     {% assign wholeLifeCategory = item | Attribute:'WholeLifeCategory','Guid' %}
+    {% assign itemCount = item | Size %}
     {% assign itemSummary = item.EventItem.Summary |Truncate:120,'..' %}
     {% assign nextStartDate = ""%}
     {% assign nextStartTime = ""%}
@@ -16,8 +18,10 @@
         {% for item in EventScheduledInstances %}
             {% assign nextStartDate = item.Date%}
             {% assign nextStartTime = item.Time%}
+            {% assign itemTotalCount = itemTotalCount | Plus:1 %}
         {% endfor %}
     {% endeventscheduledinstance %}
+    {%if itemTotalCount > 0%}
         <StackLayout>
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="63839327-b59a-439d-93aa-65bc09821143?ItemId={{item.Id}}" />
@@ -67,7 +71,7 @@
 
                 </Rock:StyledView>
 
-                <Label FontFamily="Montserrat-Bold" Text="{{item.EventItem.Name | Escape}}" Margin="10,5,10,5" Grid.Row="0"
+                <Label FontFamily="Montserrat-Bold" Text="{{itemTotalCount}} - {{item.EventItem.Name | Escape}}" Margin="10,5,10,5" Grid.Row="0"
                     Grid.Column="1"
                     Grid.ColumnSpan="3" StyleClass="text-md"/>
                 <Label FontFamily="Montserrat-Light" Text="{{itemSummary | Trim | Escape}}" Margin="10,-30,10,0"
@@ -93,6 +97,24 @@
 
             </Grid>
         </StackLayout>
+    {%endif%}
     {%- endfor -%}
 {%- endeventcalendaritem -%}
+{%if itemTotalCount == 0%}
+<Grid MarginTop="20">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Label FontFamily="Montserrat-Light" Text="No available Pop-Up Events at this time.  Please check back often for new events."
+        TextColor="{Rock:PaletteColor App-Primary}"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Center"
+        Grid.Row="0"
+        Grid.Column="0"
+        StyleClass="text-lg" />
+</Grid>
+{%endif%}
 </StackLayout>
