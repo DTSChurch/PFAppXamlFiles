@@ -4,7 +4,7 @@
 
 {% assign Groups = "" %}
 {% if wholeLifeCategoryGuidPage == "" or wholeLifeCategoryGuidPage == null %}
-    {% group where:'GroupTypeId == 70' securityenabled:'false' %}
+    {% group where:'GroupTypeId == 70 && IsActive == true && IsPublic == true' securityenabled:'false' %}
     {% assign Groups = groupItems %}
     {% endgroup %}
     {% unless Groups == "" %}

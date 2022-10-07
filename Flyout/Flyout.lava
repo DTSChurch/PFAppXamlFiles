@@ -12,16 +12,22 @@
                 SubTitleTextColor="{Rock:PaletteColor App-Light}" />
     </StackLayout>
     <StackLayout>
-        <Button FontFamily="Raleway-Medium" StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Home" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding ShowPage}" CommandParameter="a9ccef18-c471-4810-9152-4c0bd2f35e72" />
-        <Button FontFamily="Raleway-Medium" StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="My Journey" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="b41d997a-7206-490a-9f25-e96dbeff575d" />
-        <Button FontFamily="Raleway-Medium" StyleClass="ml-32, flyout-menu-item" BackgroundColor="#424242" Text="Action Teams" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="7945cc85-bdcf-4d8c-8b49-47b0eb493ade" />
-        <Button FontFamily="Raleway-Medium" StyleClass="ml-32, flyout-menu-item" BackgroundColor="#424242" Text="Pop-Up Events" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="70909791-34ec-46a5-9d6d-8fcf2cdf1704" />
-
+        <Button FontFamily="Montserrat-Bold" StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Home" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding ShowPage}" CommandParameter="a9ccef18-c471-4810-9152-4c0bd2f35e72" />
+        <Button FontFamily="Montserrat-Bold" StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="My Journey" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="b41d997a-7206-490a-9f25-e96dbeff575d" />
+        <Button FontFamily="Montserrat-Bold" StyleClass="ml-32, flyout-menu-item" BackgroundColor="#424242" Text="Action Teams" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="7945cc85-bdcf-4d8c-8b49-47b0eb493ade" />
+        <Button FontFamily="Montserrat-Bold" StyleClass="ml-32, flyout-menu-item" BackgroundColor="#424242" Text="Intensives" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="978b2deb-ffec-4206-89b3-21ef7863be0c" />
     </StackLayout>
     <Rock:Divider />
     <StackLayout>
-        <Button FontFamily="Raleway-Medium" StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Messages" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="9bbc8b74-0204-4744-a082-1e1c05b3eab3" />
-        <Button FontFamily="Raleway-Medium" StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Contact Us" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="96af6f15-b5c1-41c5-b4b9-c57eaad57bd4" />
+        <Button FontFamily="Montserrat-Bold" StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Upcoming Events" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="70909791-34ec-46a5-9d6d-8fcf2cdf1704" />
+        <Button FontFamily="Montserrat-Bold" StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Watch Messages" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="9bbc8b74-0204-4744-a082-1e1c05b3eab3" />
+        <Button FontFamily="Montserrat-Bold" StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Give Today" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding OpenBrowser}">
+            <Button.CommandParameter>
+                <Rock:OpenBrowserParameters Url="https://my.pathfinderstl.org/give">
+                </Rock:OpenBrowserParameters>
+            </Button.CommandParameter>
+        </Button>
+        <Button FontFamily="Montserrat-Bold" StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Contact Us" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="96af6f15-b5c1-41c5-b4b9-c57eaad57bd4" />
     </StackLayout>
     <StackLayout VerticalOptions="FillAndExpand"
             Orientation="Vertical">

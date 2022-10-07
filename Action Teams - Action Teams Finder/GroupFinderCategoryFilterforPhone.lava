@@ -3,10 +3,19 @@
 {% assign Groups = "" %}
 <StackLayout>
 {% if wholeLifeCategoryGuidPage != "" and wholeLifeCategoryGuidPage != null %}
-{% group where:'WholeLifeCategory == "{{wholeLifeCategoryGuidPage}}"' securityenabled:'false' %}
+{% group where:'WholeLifeCategory == "{{wholeLifeCategoryGuidPage}}" && IsActive == true && IsPublic == true' securityenabled:'false' %}
 {% assign Groups = groupItems %}
 {% endgroup %}
-
+{% group where:'WholeLifeCategory == "{{wholeLifeCategoryGuidPage}}" && IsActive == true && IsPublic == true' securityenabled:'false' count:'true' %}
+{% assign GroupsSize = count %}
+{% endgroup %}
+{%if GroupsSize == 0 %}
+<Label FontFamily="Montserrat-Bold" Text="Whoa, looks like you caught us without any open Action Teams.  Please check another Whole Life Category and come back soon!"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Start"
+                Margin="20"
+                StyleClass="text-md" />
+{%endif%}
 {% unless Groups == "" %}
     <StackLayout Margin="10" >
     {% for group in Groups %}

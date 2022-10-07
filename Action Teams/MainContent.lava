@@ -1,13 +1,8 @@
-{% assign enrollmentStatus = 'Global' | Attribute:'ActionTeamEnrollmentStatus' %}
-{% assign actionTeamsPageGuid = "" %}
-{% if enrollmentStatus == "Open" %}
-{% assign actionTeamsPageGuid = "674628fb-7810-46bf-8746-511aaf200266" %}
-{% else %}
-{% assign actionTeamsPageGuid = "efdb6313-f5f0-4974-86a7-8a3d9b1c0deb" %}
-{% endif %}
- {% contentchannelitem id:'120' securityenabled:'false' %}
+{% contentchannelitem id:'120' securityenabled:'false' %}
 {% assign item = contentchannelitem %}
 {% assign content = item | Attribute:'ActionTeamContent' %}
+{% assign actionTeamStatus = item | Attribute:'ActionTeamsStatus' %}
+{% assign actionTeamStatusMessage = item | Attribute:'ActionTeamsClosedMessage' %}
 {% endcontentchannelitem %}
 
 <StackLayout>
@@ -17,10 +12,18 @@
         Margin="35,10,35,15"
         StyleClass="text-md" />
      <StackLayout StyleClass="px-32, pb-4">
-            <Button FontFamily="Montserrat-Bold"
-                Text="Find A Team"
-                StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
-                Command="{Binding PushPage}"
-                CommandParameter="{{actionTeamsPageGuid}}" />
-        </StackLayout>
+        {% if actionTeamStatus == "Open"%}
+        <Button FontFamily="Montserrat-Bold"
+            Text="Find A Team"
+            StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+            Command="{Binding PushPage}"
+            CommandParameter="674628fb-7810-46bf-8746-511aaf200266" />
+        {%else%}
+        <Label FontFamily="Montserrat-Bold" Text="{{actionTeamStatusMessage | Escape}}"
+            HorizontalTextAlignment="Start"
+            Margin="10"
+            StyleClass="text-lg"
+            TextColor="{Rock:PaletteColor App-Warning}" />
+        {%endif%}
     </StackLayout>
+</StackLayout>
