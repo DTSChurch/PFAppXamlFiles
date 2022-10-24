@@ -1,0 +1,3 @@
+<StackLayout>
+    <Label FontFamily="Montserrat-Bold" Text="My Journey" StyleClass="text-title" HorizontalOptions="Center"  />
+</StackLayout>
