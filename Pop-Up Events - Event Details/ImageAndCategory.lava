@@ -1,18 +1,30 @@
 {% assign itemId = PageParameter.ItemId %}
+{%- assign categoryGuid = PageParameter.CategoryGuid -%}
 {% if itemId and itemId != null %}
 {% eventcalendaritem id:'{{itemId}}' securityenabled:'false' %}
 {% capture link %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ eventcalendaritem.EventItem.PhotoId }}{% endcapture %}
 
 {% assign eventItem = eventcalendaritem.EventItem %}
-{% assign wholeLifeCategory = eventItem | Attribute:'WholeLifeCategory','Object' %}
-{% assign wholeLifeCategoryValue = wholeLifeCategory.Value %}
-{% assign wholeLifeCategoryImageId = wholeLifeCategory | Attribute:'Image','Id' %}
-{% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
+{%- if categoryGuid == '' or categoryGuid == null -%}
+    {% assign categoryGuid = eventItem | Attribute:'WholeLifeCategory','Guid' %}
+{%- endif -%}
+
+{%- definedvalue where:'Guid == "{{ categoryGuid }}"' securityenabled:'false' -%}
+    {%- assign definedvalue = definedvalueItems | First -%}
+    {%- assign categoryValue = definedvalue.Value -%}
+    {%- assign categoryImageId = definedvalue | Attribute:'Image','Id' -%}
+{%- enddefinedvalue -%}
+{%- if categoryImageId == '' -%}
+    {% assign categoryGuid = eventItem | Attribute:'WholeLifeCategory','Guid' %}
+    {%- definedvalue where:'Guid == "{{ categoryGuid }}"' securityenabled:'false' -%}
+        {% assign categoryImageId = definedvalue | Attribute:'Image','Id' %}
+    {%- enddefinedvalue -%}
+{%- endif -%}
 
 {% assign nextStartDate = ""%}
 {% assign nextStartTime = ""%}
 
-{% eventscheduledinstance eventid:'{{eventItem.Id}}' maxoccurrences:'5'  daterange:'6m' %}
+{% eventscheduledinstance eventid:'{{ eventItem.Id }}' maxoccurrences:'5'  daterange:'6m' %}
     {% for item in EventScheduledInstances %}
         {% assign nextStartDate = item.Date%}
         {% assign nextStartTime = item.Time%}
@@ -23,29 +35,29 @@
 {% endeventscheduledinstance %}
 
 
-{% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
+{% capture categoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ categoryImageId }}{% endcapture %}
 <StackLayout>
     <Rock:Image HeightRequest="80"
         Margin="10,10,10,10"
-        Source="{{wholeLifeCategoryImageLink}}"
+        Source="{{ categoryImageLink }}"
         VerticalOptions="Start"
         Aspect="AspectFit" />
-    <Label FontFamily="Raleway-Medium" Text="{{wholeLifeCategoryValue}}"
+    <Label FontFamily="Raleway-Medium" Text="{{ categoryValue }}"
         StyleClass="text-lg"
         Margin="0,0,0,0"
         TextColor="{Rock:PaletteColor App-Primary}"
         VerticalTextAlignment="Center"
         HorizontalTextAlignment="Center" />
-    <Label FontFamily="Raleway-Medium" Text="When:" TextColor="{Rock:PaletteColor App-Light}" Grid.Row="0" Grid.Column="0" Margin="0,0,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="text-lg, leading-none, text-bold"/>
-    <Label FontFamily="Raleway-Medium" Text="{{nextStartDate}}" TextColor="{Rock:PaletteColor App-Light}" Grid.Row="0" Grid.Column="0" Margin="0,0,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="text-md, leading-none, text-bold"/>
-    <Label FontFamily="Raleway-Medium" Text="{{nextStartTime}}" TextColor="{Rock:PaletteColor App-Light}" Grid.Row="0" Grid.Column="0" Margin="0,0,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="text-md, leading-none, text-bold"/>
+    <Label FontFamily="Raleway-Medium" Text="When:" TextColor="{Rock:PaletteColor App-Light}" Grid.Row="0" Grid.Column="0" Margin="0,0,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="text-lg, leading-none, text-bold" />
+    <Label FontFamily="Raleway-Medium" Text="{{nextStartDate}}" TextColor="{Rock:PaletteColor App-Light}" Grid.Row="0" Grid.Column="0" Margin="0,0,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="text-md, leading-none, text-bold" />
+    <Label FontFamily="Raleway-Medium" Text="{{nextStartTime}}" TextColor="{Rock:PaletteColor App-Light}" Grid.Row="0" Grid.Column="0" Margin="0,0,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="text-md, leading-none, text-bold" />
     <Button FontFamily="Raleway-Medium" Text="Sign Up"
         StyleClass="btn,btn-outline-primary"
         TextColor="{Rock:PaletteColor App-Light}"
         HeightRequest="50"
         Margin="10,10,10,10"
         Command="{Binding OpenBrowser}"
-        CommandParameter="{{registrationInstanceLink}}" />
+        CommandParameter="{{ registrationInstanceLink }}" />
 </StackLayout>
 {% endeventcalendaritem %}
 {% endif %}
