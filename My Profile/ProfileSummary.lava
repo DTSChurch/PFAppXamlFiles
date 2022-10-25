@@ -1,0 +1,72 @@
+{% assign firstPhone = CurrentPerson.PhoneNumbers | First %}
+<Grid RowSpacing="0">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <StackLayout Grid.Row="0" VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="0" BackgroundColor="rgba(0, 0, 0, 0.2)">
+        <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="0">
+            <Rock:LoginStatusPhoto ProfilePhotoCircle="True"
+                Margin="50,25,50,25"
+                WidthRequest="150"
+                HeightRequest="150"
+                ProfilePhotoStrokeWidth="5"
+                ProfilePhotoStrokeColor="rgba(255, 255, 255, 0.4)" />
+
+            <Label Text="Hello, {{ CurrentPerson.FirstName }}!"
+                TextColor="{Rock:PaletteColor App-Light}"
+                FontSize="Large"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                StyleClass="text-lg" />
+
+            <BoxView HeightRequest="10" BackgroundColor="rgba(255, 255, 255, 0.0)"
+                HorizontalOptions="FillAndExpand"/>
+
+            <StackLayout Margin="50,25,50,25">
+                <Label Text="E-mail Address" FontAttributes="Bold" TextColor="{Rock:PaletteColor App-Light}" />
+                <Label Text="{{ CurrentPerson.Email }}" TextColor="{Rock:PaletteColor App-Light}" />
+                <BoxView HeightRequest="15" BackgroundColor="rgba(255, 255, 255, 0.0)" HorizontalOptions="FillAndExpand"/>
+                <Label Text="Phone Number" FontAttributes="Bold" TextColor="{Rock:PaletteColor App-Light}" />
+                <Label Text="{{ firstPhone.NumberFormatted }}" TextColor="{Rock:PaletteColor App-Light}" />
+                <BoxView HeightRequest="15" BackgroundColor="rgba(255, 255, 255, 0.0)" HorizontalOptions="FillAndExpand"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <Label Text="Gender" FontAttributes="Bold" TextColor="{Rock:PaletteColor App-Light}" />
+                        <Label Text="{{ CurrentPerson.Gender }}" TextColor="{Rock:PaletteColor App-Light}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="End">
+                         <Label Text="Birthday" FontAttributes="Bold" TextColor="{Rock:PaletteColor App-Light}" />
+                        <Label Text="{{ CurrentPerson.BirthDate | Date:'M/d/yyyy' }}" TextColor="{Rock:PaletteColor App-Light}" />
+                    </StackLayout>
+                </StackLayout>
+           </StackLayout>
+
+            <BoxView HeightRequest="15" BackgroundColor="rgba(255, 255, 255, 0.0)"
+                HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+    </StackLayout>
+    <StackLayout Grid.Row="1" VerticalOptions="End" Orientation="Vertical" Padding="0">
+        <BoxView HeightRequest="2" BackgroundColor="{Rock:PaletteColor App-Dark}"
+                HorizontalOptions="FillAndExpand"/>
+        <StackLayout VerticalOptions="End" Orientation="Vertical" Padding="40,40,40,40" >
+            <StackLayout Orientation="Horizontal" Margin="0,0,0,10">
+                <Button
+                    Text="My Favorites"
+                    StyleClass="btn, btn-secondary"
+                    HorizontalOptions="FillAndExpand"
+                    Command="{Binding PushPage}" CommandParameter="fc59df18-d01c-484f-bab1-b40b0ec058e4" />
+                <Button
+                    Text="Edit Profile"
+                    StyleClass="btn, btn-primary"
+                    HorizontalOptions="FillAndExpand"
+                    Command="{Binding PushPage}" CommandParameter="710498c7-b3fa-4585-922d-c3ba0e0f0cc3" />
+            </StackLayout>
+            <Button
+                Text="Sign out"
+                StyleClass="btn, btn-link, btn-danger"
+                HorizontalOptions="FillAndExpand"
+                Command="{Binding Logout}" />
+        </StackLayout>
+    </StackLayout>
+</Grid>
