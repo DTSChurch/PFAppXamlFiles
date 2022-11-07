@@ -1,0 +1,15 @@
+{% contentchannelitem id:'120' securityenabled:'false' %}
+{% assign item = contentchannelitem %}
+{% assign content = item | Attribute:'MyJourneyContent1' %}
+{% endcontentchannelitem %}
+
+<StackLayout>
+    <Label FontFamily="Montserrat-Light" Text="{{content | Escape}}"
+                HorizontalTextAlignment="Start"
+                Margin="35,10,35,15"
+                StyleClass="text-md" />
+    <Label FontFamily="Montserrat-Light" Text="List Here..."
+        HorizontalTextAlignment="Start"
+        Margin="35,10,35,15"
+        StyleClass="text-md" />
+</StackLayout>
