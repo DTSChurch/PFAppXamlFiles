@@ -2,45 +2,40 @@
 {% if definedValueGuid and definedValueGuid != null %}
 {% definedvalue where:'Guid == "{{definedValueGuid}}"' securityenabled:'false' %}
 {% assign definedvalue = definedvalueItems | First %}
-{% assign wholeLifeCategoryValue = definedvalue.Value %}
-{% assign wholeLifeCategoryImageId = definedvalue | Attribute:'Image','Id' %}
-{% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
-
+{% assign categoryValue = definedvalue.Value %}
+{% assign categoryImageId = definedvalue | Attribute:'Image','Id' %}
+{% capture categoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ categoryImageId }}{% endcapture %}
 
 <StackLayout>
-
     <Grid>
      <Grid.Behaviors>
     	<Rock:EntranceTransition Duration="300" />
     </Grid.Behaviors>
        <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*"/>
-
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
-
+        {%- if categoryImageId != '' -%}
         <Rock:Image HeightRequest="150"
-            Source="{{wholeLifeCategoryImageLink}}"
+            Source="{{ categoryImageLink }}"
             Aspect="AspectFit"
             VerticalOptions="StartAndExpand"
             Grid.Row="0"
             Grid.Column="0" />
+        {%- endif -%}
 
-        <Label FontFamily="Raleway-Medium" Text="{{wholeLifeCategoryValue}}"
+        <Label FontFamily="Raleway-Medium" Text="{{ categoryValue }}"
             StyleClass="text-lg"
             TextColor="{Rock:PaletteColor App-Primary}"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Center"
+            Margin="0,0,0,30"
             Grid.Row="1"
-             Grid.Column="0" />
-
+            Grid.Column="0" />
     </Grid>
-
-
-
 </StackLayout>
 {% enddefinedvalue %}
 {% endif %}
