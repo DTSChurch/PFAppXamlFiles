@@ -1,0 +1,32 @@
+{% assign attributeList = '' %}
+{% assign itemId = PageParameter.ItemId %}
+{% workflow where:'Id == {{itemId}}' securityenabled:'false' %}
+{%- assign attributes =  workflow.AttributeValues | Sort:'Value' -%}
+{%- assign assessmentDate =  workflow.CreatedDateTime | Date:'MM/yy' -%}
+{%endworkflow%}
+{% contentchannelitem id:'120' securityenabled:'false' %}
+{% assign item = contentchannelitem %}
+{% assign content = item | Attribute:'MyJourneyAssessmentResults' %}
+{% endcontentchannelitem %}
+
+
+<StackLayout>
+    <Label FontFamily="Montserrat-Bold" Text="{{assessmentDate | Escape}} Assessment" StyleClass="text-title" HorizontalOptions="Center" Margin="35,5,35,15" />
+    <Label FontFamily="Montserrat-Light" Text="{{content | Escape}}"
+                HorizontalTextAlignment="Start"
+                Margin="35,10,35,15"
+                StyleClass="text-md" />
+    <Rock:Divider StyleClass="x-4" />
+    {%- for attribute in attributes reversed -%}
+        {% if attribute.AttributeIsGridColumn %}
+            {% assign attributeValue = attribute.ValueFormatted %}
+            {% if attributeValue != '' %}
+                {% assign name = attribute.AttributeName | Remove:'Number' %}
+                <Label FontFamily="Montserrat-Light" Text="{{name | Escape}} : {{attributeValue | Escape}}"
+                    HorizontalTextAlignment="Start"
+                    Margin="35,15,35,5"
+                    StyleClass="text-lg" />
+            {% endif %}
+        {% endif %}
+    {%- endfor -%}
+</StackLayout>
