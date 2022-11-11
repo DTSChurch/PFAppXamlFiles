@@ -1,9 +1,15 @@
 {% assign attributeList = '' %}
 {% assign itemId = PageParameter.ItemId %}
-{% workflow where:'Id == {{itemId}}' securityenabled:'false' %}
-{%- assign attributes =  workflow.AttributeValues | Sort:'Value' -%}
-{%- assign assessmentDate =  workflow.CreatedDateTime | Date:'MM/yy' -%}
-{%endworkflow%}
+{% sql %}
+    SELECT a.Name, av.Value Value, dv.Guid AS DVGuid
+        FROM
+            [AttributeValue] av
+            INNER JOIN Attribute a ON av.AttributeId = a.Id
+            LEFT JOIN DefinedValue dv ON a.Name like '%' + dv.Value + '%' AND dv.DefinedTypeId = 108
+            WHERE av.EntityId = {{itemId}}
+                AND av.AttributeId IN (8040, 8068, 8054, 8061, 8075, 8047)
+            ORDER BY av.ValueAsNumeric
+{% endsql %}
 {% contentchannelitem id:'120' securityenabled:'false' %}
 {% assign item = contentchannelitem %}
 {% assign content = item | Attribute:'MyJourneyAssessmentResults' %}
@@ -17,16 +23,11 @@
                 Margin="35,10,35,15"
                 StyleClass="text-md" />
     <Rock:Divider StyleClass="x-4" />
-    {%- for attribute in attributes reversed -%}
-        {% if attribute.AttributeIsGridColumn %}
-            {% assign attributeValue = attribute.ValueFormatted %}
-            {% if attributeValue != '' %}
-                {% assign name = attribute.AttributeName | Remove:'Number' %}
-                <Label FontFamily="Montserrat-Light" Text="{{name | Escape}} : {{attributeValue | Escape}}"
-                    HorizontalTextAlignment="Start"
-                    Margin="35,15,35,5"
-                    StyleClass="text-lg" />
-            {% endif %}
-        {% endif %}
+    {% for av in results %}
+        {%assign trimmedName = av.Name | Remove:'Number' | Trim'%}
+        <Label FontFamily="Montserrat-Light" Text="{{trimmedName | Escape}} : {{av.Value | Escape}}"
+            HorizontalTextAlignment="Start"
+            Margin="35,15,35,5"
+            StyleClass="text-lg" />
     {%- endfor -%}
 </StackLayout>
