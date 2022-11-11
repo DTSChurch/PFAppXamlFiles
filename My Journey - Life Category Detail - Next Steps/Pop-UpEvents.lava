@@ -38,7 +38,6 @@
                         <RowDefinition Height="AUTO"/>
                         <RowDefinition Height="AUTO"/>
                     </Grid.RowDefinitions>
-
                     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
                         CornerRadius="0,0,9,0"
                         Margin="0,0,0,0"
@@ -46,22 +45,19 @@
                         Grid.Row="1"
                         Grid.Column="0">
                     </Rock:StyledView>
-
                     <Label FontFamily="Raleway-Medium" Text="{{nextStartDate}}" TextColor="{Rock:PaletteColor App-Secondary}" Grid.Row="1" Grid.Column="0" Margin="0,-20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
                     <Label FontFamily="Raleway-Medium" Text="{{nextStartTime}}" TextColor="{Rock:PaletteColor App-Secondary}" Grid.Row="1" Grid.Column="0" Margin="0,20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
-
                     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
                         CornerRadius="9,0,0,0"
                         Margin="0,0,0,0"
                         HeightRequest="80"
                         Grid.Row="0"
                         Grid.Column="0">
-                        <Rock:Image HeightRequest="60"
-                            Source="{{wholeLifeCategoryImageLink}}"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Center"/>
+                    <Rock:Image HeightRequest="60"
+                        Source="{{wholeLifeCategoryImageLink}}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
                     </Rock:StyledView>
-
                     <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Secondary}"
                         CornerRadius="0,9,0,9"
                         Margin="0,0,0,0"
@@ -69,9 +65,7 @@
                         Grid.Column="1"
                         Grid.RowSpan="2"
                         Grid.ColumnSpan="3">
-
                     </Rock:StyledView>
-
                     <Label FontFamily="Raleway-Medium" Text="{{item.EventItem.Name | Escape}}" Margin="10,5,10,5" Grid.Row="0"
                         Grid.Column="1"
                         Grid.ColumnSpan="3" StyleClass="text-body, leading-none, text-bold"/>
@@ -82,7 +76,6 @@
                         Grid.ColumnSpan="3"
                         HeightRequest="80"
                         StyleClass="heading4, leading-none"/>
-
                     <Rock:FollowingIcon EntityTypeId="{{ item.TypeId }}"
                         EntityId="{{ item.Id }}"
                         HeightRequest="60"
@@ -95,7 +88,6 @@
                         Margin="0,30,10,0"
                         HorizontalTextAlignment="Right"
                         VerticalTextAlignment="Center" />
-
                 </Grid>
             </StackLayout>
         {%endif%}
