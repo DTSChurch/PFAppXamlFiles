@@ -1,0 +1,191 @@
+{% assign definedValueGuid = PageParameter.DefinedValueGuid %}
+{% assign querySize = 0 %}
+<StackLayout Margin="0,0,0,30">
+
+    {% group where:'GroupTypeId == 70 && IsActive == true && IsPublic == true' securityenabled:'false' %}
+    {% assign Groups = groupItems %}
+    {% endgroup %}
+
+    {% assign closeCurly = '}' -%}
+    {%- capture actionTeamsJSON -%}
+        [
+            {%- for group in Groups -%}
+                {% assign groupSubTitle = group | Attribute:'SubTitle' %}
+                {% assign wholeLifeCategory = group | Attribute:'WholeLifeCategory','Object' %}
+                {% assign wholeLifeCategoryGuid = wholeLifeCategory.Guid %}
+                {% if wholeLifeCategoryGuid == definedValueGuid %}
+                {% assign querySize = querySize | Plus:1 %}
+                {% assign wholeLifeCategoryImageId = wholeLifeCategory | Attribute:'Image','Id' %}
+                {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
+                {% assign scheduleDayAttribute = group | Attribute:'Day' %}
+                {% assign scheduleTimeAttribute = group | Attribute:'Time' %}
+                {
+                    "Id": {{ group.Id | ToJSON }},
+                    "Guid": {{ group.Guid | ToJSON }},
+                    "Title": {{ group.Name | ToJSON }},
+                    "SubTitle": {{ groupSubTitle | ToJSON }},
+                    "Description": {{ group.Description | ToJSON }},
+                    "IsFollowed": {{ group | IsFollowed }},
+                    "ScheduleDay": {{ scheduleDayAttribute | ToJSON }},
+                    "ScheduleTime": {{ scheduleTimeAttribute | ToJSON }},
+                    "CategoryImageUrl": {{ wholeLifeCategoryImageLink | ToJSON }},
+                {% if forloop.last %}{{ closeCurly -}}{% else %}{{ closeCurly | Append:', ' -}}{%- endif -%}
+                {% endif %}
+            {%- endfor -%}
+        ]
+    {%- endcapture -%}
+    <Label FontFamily="Montserrat-Bold" Text="Action Teams ({{querySize}})" StyleClass="text-title" HorizontalOptions="Center"/>
+    <StackLayout.Resources>
+        <Rock:FromJson x:Key="ActionTeams">
+            {}{{ actionTeamsJSON | XamlWrap }}
+        </Rock:FromJson>
+    </StackLayout.Resources>
+
+    <CarouselView
+        ItemsSource="{StaticResource ActionTeams}"
+        HeightRequest="220"
+        PeekAreaInsets="0,0,30,0"
+        Loop="False"
+         x:Name="CarouselView" >
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout WidthRequest="200" >
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Path=BindingContext.PushPage, Source={x:Reference Name=CarouselView}}">
+                            <TapGestureRecognizer.CommandParameter>
+                                <MultiBinding StringFormat="79dc4186-5c1e-45ce-b5ef-f3c60363cc8a?GroupGuid={0}">
+                                    <Binding Path="Guid" />
+                                </MultiBinding>
+                            </TapGestureRecognizer.CommandParameter>
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Grid RowSpacing="0" ColumnSpacing="0" Margin="10,0,10,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="100"/>
+                        </Grid.RowDefinitions>
+
+                        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+                            CornerRadius="0,0,9,9"
+                            HasShadow="true"
+                            Elevation="3"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="60"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="4"
+                            Grid.RowSpan="3" />
+
+                        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Info}"
+                            CornerRadius="9,0,0,0"
+                            HasShadow="true"
+                            Elevation="3"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="0,0,0,0"
+                            HeightRequest="60"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2" />
+
+                        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Secondary}"
+                            CornerRadius="0,9,0,0"
+                            HasShadow="true"
+                            Elevation="3"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="0,0,0,0"
+                            HeightRequest="60"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Grid.ColumnSpan="2" />
+
+                        <Label FontFamily="Montserrat-Light"
+                            Text="{Binding ScheduleDay}"
+                            Margin="10,-20,10,0"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            StyleClass="heading4, leading-none" />
+
+                        <Label FontFamily="Raleway-Medium"
+                            Text="{Binding ScheduleTime}"
+                            Margin="10,15,10,0"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            StyleClass="heading4, leading-none"/>
+
+                        <StackLayout Grid.Row="0"
+                            Grid.Column="2"
+                            Orientation="Vertical"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center">
+                            <Rock:Image HeightRequest="50"
+                                Source="{Binding CategoryImageUrl}"
+                                Aspect="AspectFit"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="0"
+                            Grid.Column="3"
+                            Orientation="Vertical"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center">
+                            <Rock:FollowingIcon EntityTypeId="16"
+                                EntityId="{Binding Id}"
+                                FontSize="25"
+                                IsFollowed="{Binding IsFollowed }"
+                                FollowingIconColor="{Rock:PaletteColor App-Primary}"
+                                NotFollowingIconColor="{Rock:PaletteColor App-Primary}"
+                                HorizontalTextAlignment="Right"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+
+                        <Label FontFamily="Montserrat-Bold" Text="{Binding Title}"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Start"
+                            Margin="20,-10,10,0"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="4"
+                            StyleClass="text-md"
+                            MaxLines="1"
+                            LineBreakMode="TailTruncation" />
+
+                        <Label FontFamily="Montserrat-LightItalic" Text="{Binding SubTitle}"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Start"
+                            Margin="20,30,10,0"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="4"
+                            StyleClass="text-sm font-italic"
+                            MaxLines="1"
+                            LineBreakMode="TailTruncation" />
+                        <Label FontFamily="Montserrat-Light" Text="{Binding Description}"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Start"
+                            Margin="20,0,20,10"
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="4"
+                            HeightRequest="65"
+                            StyleClass="leading-none"
+                            LineBreakMode="TailTruncation"
+                            MaxLines="4" />
+                    </Grid>
+                </StackLayout>
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+    </CarouselView>
+</StackLayout>
