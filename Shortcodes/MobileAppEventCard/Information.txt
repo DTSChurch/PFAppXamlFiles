@@ -1,0 +1,4 @@
+Mobile App - Group Card
+mobilegroupcard
+Displays a card for mobile app displaying time and description of a group item.
+Inline

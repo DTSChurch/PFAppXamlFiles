@@ -1,0 +1,7 @@
+title
+subtitle
+description
+categoryimageurl
+scheduleday
+scheduletime
+group

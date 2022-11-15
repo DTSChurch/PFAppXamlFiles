@@ -1,0 +1,7 @@
+startdate
+starttime
+categoryimageurl
+title
+description
+calendaritem
+calendaritemid
