@@ -29,12 +29,12 @@ ORDER BY CASE WHEN eio.[NextStartDateTime] is NULL THEN 2 ELSE 1 END, eio.[NextS
         {%- assign eventCalendarItem = eventcalendaritemItems | First -%}
     {%- endeventcalendaritem -%}
     {%- definedvalue where:'Guid == "{{ item.WholeLifeCategory }}"' securityenabled:'false' -%}
-        {%- assign definedvalue = definedvalueItems | First -%}
+        {% assign definedvalue = definedvalueItems | First %}
         {%- assign categoryValue = definedvalue.Value -%}
         {%- assign categoryImageId = definedvalue | Attribute:'Image','Id' -%}
         {%- capture categoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ categoryImageId }}{%- endcapture -%}
     {%- enddefinedvalue -%}
-    {%- eventscheduledinstance eventid:'{{ item.EventItemId }}' maxoccurrences:'5' daterange:'6m' -%}
+    {%- eventscheduledinstance eventid:'{{ item.EventItemId }}' maxoccurrences:'5' daterange:'12m' -%}
         {%- for item in EventScheduledInstances -%}
             {%- assign nextStartDate = item.Date -%}
             {%- assign nextStartTime = item.Time -%}
@@ -46,75 +46,7 @@ ORDER BY CASE WHEN eio.[NextStartDateTime] is NULL THEN 2 ELSE 1 END, eio.[NextS
         <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="63839327-b59a-439d-93aa-65bc09821143?ItemId={{ item.EventCalendarItemId }}" />
         </StackLayout.GestureRecognizers>
-        <Grid RowSpacing="0" ColumnSpacing="0" Margin="0,0,0,10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="60"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="AUTO"/>
-                <RowDefinition Height="AUTO"/>
-            </Grid.RowDefinitions>
-
-            <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
-                CornerRadius="0,0,9,0"
-                Margin="0,0,0,0"
-                HeightRequest="80"
-                Grid.Row="1"
-                Grid.Column="0">
-            </Rock:StyledView>
-
-            <Label FontFamily="Montserrat-Light" Text="{{ nextStartDate }}" TextColor="{Rock:PaletteColor App-Dark}" Grid.Row="1" Grid.Column="0" Margin="0,-20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
-            <Label FontFamily="Montserrat-Light" Text="{{ nextStartTime }}" TextColor="{Rock:PaletteColor App-Dark}" Grid.Row="1" Grid.Column="0" Margin="0,20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none, text-bold"/>
-
-            <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
-                CornerRadius="9,0,0,0"
-                Margin="0,0,0,0"
-                HeightRequest="80"
-                Grid.Row="0"
-                Grid.Column="0">
-                <Rock:Image HeightRequest="60"
-                    Source="{{ categoryImageLink }}"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"/>
-            </Rock:StyledView>
-
-            <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Secondary}"
-                CornerRadius="0,9,0,9"
-                Margin="0,0,0,0"
-                Grid.Row="0"
-                Grid.Column="1"
-                Grid.RowSpan="2"
-                Grid.ColumnSpan="3">
-
-            </Rock:StyledView>
-
-            <Label FontFamily="Montserrat-Bold" Text="{{ item.Name | Escape}}" Margin="10,5,10,5" Grid.Row="0"
-                Grid.Column="1"
-                Grid.ColumnSpan="3" StyleClass="text-md"/>
-            <Label FontFamily="Montserrat-Light" Text="{{ item.Summary | Trim | Escape}}" Margin="10,-30,10,0"
-                Grid.Row="1"
-                Grid.RowSpan="2"
-                Grid.Column="1"
-                Grid.ColumnSpan="3"
-                HeightRequest="80"
-                StyleClass="leading-none"/>
-
-            <Rock:FollowingIcon EntityTypeId="270"
-                EntityId="{{ eventCalendarItem.Id }}"
-                HeightRequest="60"
-                FontSize="25"
-                IsFollowed="{{ eventCalendarItem | IsFollowed }}"
-                FollowingIconColor="{Rock:PaletteColor App-Primary}"
-                NotFollowingIconColor="{Rock:PaletteColor App-Primary}"
-                Grid.Row="1"
-                Grid.Column="3"
-                Margin="0,30,10,0"
-                HorizontalTextAlignment="Right"
-                VerticalTextAlignment="Center" />
-        </Grid>
+        {[mobileeventcard startdate:'{{ nextStartDate }}' starttime:'{{ nextStartTime }}' categoryimageurl:'{{ categoryImageLink }}' title:'{{ item.Name }}' description:'{{ item.Summary | Escape }}' calendaritem:eventCalendarItem]}
     </StackLayout>
     {%- endif -%}
 {%- endfor -%}
