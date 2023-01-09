@@ -1,0 +1,78 @@
+{%- if calendaritem == null -%}
+    {%- eventcalendaritem where:'Id == "{{ calendaritemid }}"' securityenabled:'false' -%}
+        {%- assign calendaritem = eventcalendaritemItems | First -%}
+    {%- endeventcalendaritem -%}
+{%- endif -%}
+<Grid RowSpacing="0" ColumnSpacing="0" Margin="0,0,0,10">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="60"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="AUTO"/>
+        <RowDefinition Height="AUTO"/>
+    </Grid.RowDefinitions>
+
+    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+        CornerRadius="0,0,9,0"
+        Margin="0,0,0,0"
+        HeightRequest="80"
+        Grid.Row="1"
+        Grid.Column="0">
+    </Rock:StyledView>
+
+    <Label FontFamily="Montserrat" Text="{{ startdate }}" TextColor="{Rock:PaletteColor App-Dark}" Grid.Row="1" Grid.Column="0" Margin="0,-20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none" />
+    <Label FontFamily="Montserrat-Light" Text="{{ starttime }}" TextColor="{Rock:PaletteColor App-Dark}" Grid.Row="1" Grid.Column="0" Margin="0,20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none"/>
+
+    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+        CornerRadius="9,0,0,0"
+        Margin="0,0,0,0"
+        HeightRequest="80"
+        Grid.Row="0"
+        Grid.Column="0">
+        <Rock:Image HeightRequest="60"
+            Source="{{ categoryimageurl }}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+    </Rock:StyledView>
+
+    <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Secondary}"
+        CornerRadius="0,9,0,9"
+        Margin="0,0,0,0"
+        Grid.Row="0"
+        Grid.Column="1"
+        Grid.RowSpan="2"
+        Grid.ColumnSpan="3">
+
+    </Rock:StyledView>
+
+    <Label FontFamily="Montserrat-Bold" Text="{{ title | Escape}}" Margin="10,5,10,5" Grid.Row="0"
+        Grid.Column="1"
+        Grid.ColumnSpan="3" StyleClass="text-md"
+        MaxLines="1"
+        LineBreakMode="TailTruncation" />
+    <Label FontFamily="Montserrat-Light" Text="{{ description | Trim | Escape}}" Margin="10,-30,10,0"
+        Grid.Row="1"
+        Grid.RowSpan="2"
+        Grid.Column="1"
+        Grid.ColumnSpan="3"
+        HeightRequest="80"
+        StyleClass="leading-none"
+        LineBreakMode="TailTruncation"
+        MaxLines="4" />
+
+    <Rock:FollowingIcon EntityTypeId="270"
+        EntityId="{{ calendaritem.Id }}"
+        HeightRequest="60"
+        FontSize="25"
+        IsFollowed="{{ calendaritem | IsFollowed }}"
+        FollowingIconColor="{Rock:PaletteColor App-Primary}"
+        NotFollowingIconColor="{Rock:PaletteColor App-Primary}"
+        Grid.Row="1"
+        Grid.Column="3"
+        Margin="0,40,10,0"
+        HorizontalTextAlignment="Right"
+        VerticalTextAlignment="Center" />
+</Grid>

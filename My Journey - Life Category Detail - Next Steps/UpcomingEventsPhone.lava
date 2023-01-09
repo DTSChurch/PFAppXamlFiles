@@ -1,0 +1,189 @@
+{% assign definedValueGuid = PageParameter.DefinedValueGuid %}
+{% assign querySize = 0 %}
+<StackLayout>
+    {%- sql -%}
+    SELECT ei.[Id] AS [EventItemId]
+        , eci.[Id] AS [EventCalendarItemId]
+        , eio.[Location] AS [Location]
+        , ei.[Name]
+        , ei.[Summary]
+        , wholeLife.[Value] AS [WholeLifeCategory]
+        , lifeStage.[Value] AS [LifeStageCategory]
+        , eio.[NextStartDateTime] AS [NextStartDate]
+    FROM [EventItem] ei
+        LEFT JOIN [EventCalendarItem] eci ON eci.[EventItemId] = ei.[Id]
+        LEFT JOIN [EventItemOccurrence] eio ON eio.[EventItemId] = ei.[Id]
+        LEFT JOIN [AttributeValue] wholeLife ON wholeLife.[EntityId] = eci.[Id] AND wholeLife.[AttributeId] = 6991
+        LEFT JOIN [AttributeValue] lifeStage ON lifeStage.[EntityId] = eci.[Id] AND lifeStage.[AttributeId] = 8004
+        LEFT JOIN [Schedule] s ON s.[Id] = eio.[ScheduleId]
+    WHERE ei.[IsActive] = 1 AND eci.[EventCalendarId] = 1
+        {% if definedValueGuid %}AND wholeLife.Value = '{{definedValueGuid}}'{% endif %}
+    ORDER BY CASE WHEN eio.[NextStartDateTime] is NULL THEN 2 ELSE 1 END, eio.[NextStartDateTime] ASC
+    {%- endsql -%}
+
+    {% assign closeCurly = '}' -%}
+    {% assign querySize = results | Size %}
+
+    <Label FontFamily="Montserrat-Bold" Text="Upcoming Events ({{querySize}})" StyleClass="text-title" HorizontalOptions="Center"  />
+    {%- capture actionTeamsJSON -%}
+        [
+            {%- for item in results -%}
+                {%- assign definedvalue = null -%}
+                {%- assign categoryValue = null -%}
+                {%- assign categoryImageId = null -%}
+                {%- assign categoryImageLink = null -%}
+                {%- assign nextStartDate = null -%}
+                {%- assign nextStartTime = null -%}
+                {%- eventcalendaritem where:'Id == "{{ item.EventCalendarItemId }}"' securityenabled:'false' -%}
+                    {%- assign eventCalendarItem = eventcalendaritemItems | First -%}
+                {%- endeventcalendaritem -%}
+                {%- definedvalue where:'Guid == "{{ item.WholeLifeCategory }}"' securityenabled:'false' -%}
+                    {% assign definedvalue = definedvalueItems | First %}
+                    {%- assign categoryValue = definedvalue.Value -%}
+                    {%- assign categoryImageId = definedvalue | Attribute:'Image','Id' -%}
+                    {%- capture categoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ categoryImageId }}{%- endcapture -%}
+                {%- enddefinedvalue -%}
+                {%- eventscheduledinstance eventid:'{{ item.EventItemId }}' maxoccurrences:'15' daterange:'12m' -%}
+                    {%- for item in EventScheduledInstances -%}
+                        {%- assign nextStartDate = item.Date -%}
+                        {%- assign nextStartTime = item.Time -%}
+                    {%- endfor -%}
+                {%- endeventscheduledinstance -%}
+                {%- if nextStartDate != null -%}
+                    {%- assign itemTotalCount = itemTotalCount | Plus:1 -%}
+                {%- endif -%}
+                {
+                    "Id": {{ item.EventItemId | ToJSON }},
+                    "Title": {{ item.Name | ToJSON }},
+                    "Description": {{ item.Summary | ToJSON }},
+                    "CalendarItemId": {{ item.EventCalendarItemId | ToJSON }},
+                    "IsFollowed": {{ calendaritem | IsFollowed }},
+                    "StartDate": {{ nextStartDate | ToJSON }},
+                    "StartTime": {{ nextStartTime | ToJSON }},
+                    "CategoryImageUrl": {{ categoryImageLink | ToJSON }},
+                {% if forloop.last %}{{ closeCurly -}}{% else %}{{ closeCurly | Append:', ' -}}{%- endif -%}
+            {%- endfor -%}
+        ]
+    {%- endcapture -%}
+
+    {% if querySize == 0 %}
+        {% definedvalue where:'Guid == "{{definedValueGuid}}"' securityenabled:'false' %}
+            {% assign wholeLifeCategoryValue = definedvalue.Value %}
+            <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+                <Label FontFamily="Montserrat-Bold" Text="Currently there are no upcomming {{wholeLifeCategoryValue}} events.  Please check back soon!"
+                    StyleClass="text-lg"
+                    TextColor="{Rock:PaletteColor App-Primary}"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"/>
+            </Grid>
+        {% enddefinedvalue %}
+    {% endif %}
+
+    <StackLayout.Resources>
+        <Rock:FromJson x:Key="ActionTeams">
+            {}{{ actionTeamsJSON | XamlWrap }}
+        </Rock:FromJson>
+    </StackLayout.Resources>
+
+    <CarouselView
+        ItemsSource="{StaticResource ActionTeams}"
+        HeightRequest="220"
+        PeekAreaInsets="0,0,30,0"
+        Loop="False"
+         x:Name="CarouselView" >
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout WidthRequest="200" >
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Path=BindingContext.PushPage, Source={x:Reference Name=CarouselView}}">
+                            <TapGestureRecognizer.CommandParameter>
+                                <MultiBinding StringFormat="63839327-b59a-439d-93aa-65bc09821143?ItemId={0}">
+                                    <Binding Path="CalendarItemId" />
+                                </MultiBinding>
+                            </TapGestureRecognizer.CommandParameter>
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Grid RowSpacing="0" ColumnSpacing="0" Margin="10,0,10,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="60"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="AUTO"/>
+                            <RowDefinition Height="AUTO"/>
+                        </Grid.RowDefinitions>
+
+                        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Info}"
+                            CornerRadius="0,0,9,0"
+                            Margin="0,0,0,0"
+                            HeightRequest="80"
+                            Grid.Row="1"
+                            Grid.Column="0">
+                        </Rock:StyledView>
+
+                        <Label FontFamily="Montserrat" Text="{Binding StartDate}" Grid.Row="1" Grid.Column="0" Margin="0,-20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none" />
+                        <Label FontFamily="Montserrat-Light" Text="{Binding StartTime}" Grid.Row="1" Grid.Column="0" Margin="0,20,0,0" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" StyleClass="heading4, leading-none"/>
+
+                        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
+                            CornerRadius="9,0,0,0"
+                            Margin="0,0,0,0"
+                            HeightRequest="80"
+                            Grid.Row="0"
+                            Grid.Column="0">
+                            <Rock:Image HeightRequest="60"
+                                Source="{Binding CategoryImageUrl}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"/>
+                        </Rock:StyledView>
+
+                        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Secondary}"
+                            CornerRadius="0,9,0,9"
+                            Margin="0,0,0,0"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Grid.RowSpan="2"
+                            Grid.ColumnSpan="3">
+
+                        </Rock:StyledView>
+
+                        <Label FontFamily="Montserrat-Bold" Text="{Binding Title}" Margin="10,5,10,5" Grid.Row="0"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="3" StyleClass="text-md"
+                            MaxLines="1"
+                            LineBreakMode="TailTruncation" />
+                        <Label FontFamily="Montserrat-Light" Text="{Binding Description}" Margin="10,-30,10,0"
+                            Grid.Row="1"
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="3"
+                            HeightRequest="80"
+                            StyleClass="leading-none"
+                            LineBreakMode="TailTruncation"
+                            MaxLines="4" />
+
+                        <Rock:FollowingIcon EntityTypeId="270"
+                            EntityId="{Binding Id}"
+                            HeightRequest="60"
+                            FontSize="25"
+                            IsFollowed="{Binding IsFollowed}"
+                            FollowingIconColor="{Rock:PaletteColor App-Primary}"
+                            NotFollowingIconColor="{Rock:PaletteColor App-Primary}"
+                            Grid.Row="1"
+                            Grid.Column="3"
+                            Margin="0,40,10,0"
+                            HorizontalTextAlignment="Right"
+                            VerticalTextAlignment="Center" />
+                    </Grid>
+                </StackLayout>
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+    </CarouselView>
+</StackLayout>

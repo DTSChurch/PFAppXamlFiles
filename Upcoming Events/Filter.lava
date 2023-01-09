@@ -1,0 +1,123 @@
+<StackLayout>
+    <Rock:Expander>
+        <Rock:Expander.Header>
+            <Grid Margin="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Light}"
+                    BorderColor="#e1e1e1"
+                    BorderThickness="2"
+                    CornerRadius="9,9,9,9"
+                    IsClippedToBounds="true"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="5"
+                    HeightRequest="40"
+                    Grid.Row="0"
+                    Grid.Column="0" />
+
+                <Label FontFamily="Raleway-Medium" Text="FILTER"
+                    TextColor="{Rock:PaletteColor App-Dark}"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    StyleClass="text-lg" />
+                <Rock:Icon IconClass="chevron-down"
+                    TextColor="{Rock:PaletteColor App-Dark}"
+                    IconFamily="FontAwesomeSolid" FontSize="32"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="110,0,0,0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+            </Grid>
+        </Rock:Expander.Header>
+        <StackLayout Orientation="Vertical" Padding="30,0,30,0">
+            <Rock:Expander>
+                <Rock:Expander.Header>
+                    <Grid Margin="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+                            BorderColor="#e1e1e1"
+                            BorderThickness="2"
+                            CornerRadius="9,9,9,9"
+                            IsClippedToBounds="true"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="5"
+                            HeightRequest="40"
+                            Grid.Row="0"
+                            Grid.Column="0" />
+
+                        <Label FontFamily="Raleway-Medium" Text="WHOLE LIFE"
+                            TextColor="{Rock:PaletteColor App-Dark}"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            StyleClass="text-lg" />
+                    </Grid>
+                </Rock:Expander.Header>
+                <StackLayout>
+                    {% definedtype id:'108' securityenabled:'false' %}
+                        {% for dv in definedtype.DefinedValues %}
+                        <Button FontFamily="Raleway-Medium" Text="{{dv.Value}}"
+                            StyleClass="btn,btn-primary"
+                            Margin="20,0,20,0"
+                            HorizontalOptions="FillAndExpand" Command="{Binding PushPage}" CommandParameter="3ae0cf1c-e49a-4b3a-bec7-b66700ff0891?DefinedValueGuid={{dv.Guid}}"  />
+                        {% endfor %}
+                    {% enddefinedtype %}
+                </StackLayout>
+            </Rock:Expander>
+            <Rock:Expander>
+                <Rock:Expander.Header>
+                    <Grid Margin="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Primary}"
+                            BorderColor="#e1e1e1"
+                            BorderThickness="2"
+                            CornerRadius="9,9,9,9"
+                            IsClippedToBounds="true"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="5"
+                            HeightRequest="40"
+                            Grid.Row="0"
+                            Grid.Column="0" />
+
+                        <Label FontFamily="Raleway-Medium" Text="LIFE STAGE"
+                            TextColor="{Rock:PaletteColor App-Dark}"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            StyleClass="text-lg" />
+                    </Grid>
+                </Rock:Expander.Header>
+                <StackLayout>
+                    {% definedtype id:'119' securityenabled:'false' %}
+                    {% for dv in definedtype.DefinedValues %}
+                    <Button FontFamily="Raleway-Medium" Text="{{dv.Value}}"
+                        StyleClass="btn,btn-primary"
+                        Margin="20,0,20,0"
+                        HorizontalOptions="FillAndExpand" Command="{Binding PushPage}" CommandParameter="3ae0cf1c-e49a-4b3a-bec7-b66700ff0891?DefinedValueGuid={{dv.Guid}}"  />
+                    {% endfor %}
+                    {% enddefinedtype %}
+                </StackLayout>
+            </Rock:Expander>
+        </StackLayout>
+    </Rock:Expander>
+    <Label FontFamily="Montserrat-Bold" Text="Coming Up" StyleClass="text-title" HorizontalOptions="CenterAndExpand" Margin="0,20,0,30" />
+</StackLayout>

@@ -1,0 +1,32 @@
+{% contentchannelitem id:'120' securityenabled:'false' %}
+{% assign item = contentchannelitem %}
+{% assign content = item | Attribute:'MyJourneyAssessmentHistory' %}
+{% endcontentchannelitem %}
+{% sql %}
+    Select wf.Id, wf.Name, wf.CreatedDateTime,wft.WorkflowIdPrefix,wf.WorkflowTypeId, wf.Status
+        FROM Workflow wf
+        INNER JOIN WorkFlowType wft ON wf.WorkflowTypeId = wft.Id AND wft.Id = 50
+    WHERE wf.Status = 'Completed'
+        AND wf.InitiatorPersonAliasId IN (
+                    SELECT pa.Id
+                    From PersonAlias pa
+                    INNER JOIN Person p ON p.Id = pa.PersonId
+                        WHERE p.Id = {{CurrentPerson.Id}})
+    ORDER BY Id DESC
+{% endsql %}
+
+
+
+<StackLayout>
+    <Label FontFamily="Montserrat-Light" Text="{{content | Escape}}"
+                HorizontalTextAlignment="Start"
+                Margin="35,10,35,15"
+                StyleClass="text-md" />
+    {% for wf in results limit:5%}
+    <Button FontFamily="Montserrat-Bold" Text="{{wf.CreatedDateTime | Date:'MM/yy'}} Results"
+        Margin="35,10,35,5"
+        StyleClass="btn,btn-md,btn-primary"
+        Command="{Binding PushPage}"
+        CommandParameter="1e082eae-a7a4-47e1-b78a-c80a9b632c34?ItemId={{wf.Id}}" />
+    {% endfor %}
+</StackLayout>

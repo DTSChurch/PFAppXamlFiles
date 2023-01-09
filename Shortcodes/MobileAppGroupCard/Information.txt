@@ -1,0 +1,4 @@
+Mobile App - Event Card
+mobileeventcard
+Displays a card for mobile app displaying time and description of a calendar event item.
+Inline

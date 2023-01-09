@@ -1,0 +1,12 @@
+<StackLayout>
+    <StackLayout StyleClass="px-32, pb-4">
+           <Button FontFamily="Montserrat-Bold" Text="History"
+               StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+               Command="{Binding PushPage}"
+               CommandParameter="60fb2243-87dd-4f61-b69d-05caf039bd9a" />
+           <Button FontFamily="Montserrat-Bold" Text="Take Assessment"
+               StyleClass="btn,btn-outline-primary,btn-lg,overview-button"
+               Command="{Binding PushPage}"
+               CommandParameter="f6348826-da55-4834-ad53-34e522a2fa27" />
+   </StackLayout>
+</StackLayout>

@@ -1,0 +1,70 @@
+{%- assign itemTotalCount = 0 -%}
+<StackLayout>
+{%- sql -%}
+SELECT ei.[Id] AS [EventItemId]
+    , eci.[Id] AS [EventCalendarItemId]
+    , eio.[Location] AS [Location]
+    , ei.[Name]
+    , ei.[Summary]
+    , wholeLife.[Value] AS [WholeLifeCategory]
+    , lifeStage.[Value] AS [LifeStageCategory]
+    , eio.[NextStartDateTime] AS [NextStartDate]
+FROM [EventItem] ei
+    LEFT JOIN [EventCalendarItem] eci ON eci.[EventItemId] = ei.[Id]
+    LEFT JOIN [EventItemOccurrence] eio ON eio.[EventItemId] = ei.[Id]
+    LEFT JOIN [AttributeValue] wholeLife ON wholeLife.[EntityId] = eci.[Id] AND wholeLife.[AttributeId] = 6991
+    LEFT JOIN [AttributeValue] lifeStage ON lifeStage.[EntityId] = eci.[Id] AND lifeStage.[AttributeId] = 8004
+    LEFT JOIN [Schedule] s ON s.[Id] = eio.[ScheduleId]
+WHERE ei.[IsActive] = 1 AND eci.[EventCalendarId] = 1
+ORDER BY CASE WHEN eio.[NextStartDateTime] is NULL THEN 2 ELSE 1 END, eio.[NextStartDateTime] ASC
+{%- endsql -%}
+{%- for item in results -%}
+    {%- assign definedvalue = null -%}
+    {%- assign categoryValue = null -%}
+    {%- assign categoryImageId = null -%}
+    {%- assign categoryImageLink = null -%}
+    {%- assign nextStartDate = null -%}
+    {%- assign nextStartTime = null -%}
+    {%- eventcalendaritem where:'Id == "{{ item.EventCalendarItemId }}"' securityenabled:'false' -%}
+        {%- assign eventCalendarItem = eventcalendaritemItems | First -%}
+    {%- endeventcalendaritem -%}
+    {%- definedvalue where:'Guid == "{{ item.WholeLifeCategory }}"' securityenabled:'false' -%}
+        {% assign definedvalue = definedvalueItems | First %}
+        {%- assign categoryValue = definedvalue.Value -%}
+        {%- assign categoryImageId = definedvalue | Attribute:'Image','Id' -%}
+        {%- capture categoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ categoryImageId }}{%- endcapture -%}
+    {%- enddefinedvalue -%}
+    {%- eventscheduledinstance eventid:'{{ item.EventItemId }}' maxoccurrences:'5' daterange:'12m' -%}
+        {%- for item in EventScheduledInstances -%}
+            {%- assign nextStartDate = item.Date -%}
+            {%- assign nextStartTime = item.Time -%}
+        {%- endfor -%}
+    {%- endeventscheduledinstance -%}
+    {%- if nextStartDate != null -%}
+    {%- assign itemTotalCount = itemTotalCount | Plus:1 -%}
+    <StackLayout>
+        <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="63839327-b59a-439d-93aa-65bc09821143?ItemId={{ item.EventCalendarItemId }}" />
+        </StackLayout.GestureRecognizers>
+        {[mobileeventcard startdate:'{{ nextStartDate }}' starttime:'{{ nextStartTime }}' categoryimageurl:'{{ categoryImageLink }}' title:'{{ item.Name }}' description:'{{ item.Summary | Escape }}' calendaritem:eventCalendarItem]}
+    </StackLayout>
+    {%- endif -%}
+{%- endfor -%}
+{%if itemTotalCount == 0%}
+    <Grid MarginTop="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label FontFamily="Montserrat-Light" Text="No available Upcoming Events at this time. Please check back often for new events."
+            TextColor="{Rock:PaletteColor App-Primary}"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Center"
+            Grid.Row="0"
+            Grid.Column="0"
+            StyleClass="text-lg" />
+    </Grid>
+{%- endif -%}
+</StackLayout>

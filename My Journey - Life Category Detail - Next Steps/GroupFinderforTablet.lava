@@ -6,15 +6,14 @@
 {% group where:'WholeLifeCategory == "{{wholeLifeCategoryGuidPage}}"' securityenabled:'false' %}
 {% assign Groups = groupItems %}
 {% endgroup %}
-
 {% unless Groups == "" %}
-    <StackLayout Margin="10" >
+    <Rock:Divider Margin="20" />
+    <StackLayout Margin="20" >
     {% for group in Groups %}
         {% assign wholeLifeCategory = group | Attribute:'WholeLifeCategory','Object' %}
         {% if wholeLifeCategory.Id == wholeLifeCategoryIdPage or wholeLifeCategoryIdPage == null %}
         {% assign wholeLifeCategoryImageId = wholeLifeCategory | Attribute:'Image','Id' %}
         {% capture wholeLifeCategoryImageLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}/GetImage.ashx?Id={{ wholeLifeCategoryImageId }}{% endcapture %}
-
         <Grid RowSpacing="0" ColumnSpacing="0" Margin="0,0,0,10" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -23,125 +22,98 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="55"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-
             <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Dark}"
-                CornerRadius="0,0,9,9"
+                CornerRadius="0,15,0,15"
                 HasShadow="true"
                 Elevation="3"
                 HorizontalOptions="FillAndExpand"
-                HeightRequest="60"
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="4"
-                Grid.RowSpan="3" />
-
+                HeightRequest="100"
+                Grid.Row="0"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="4" />
             <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Info}"
-                CornerRadius="9,0,0,0"
+                CornerRadius="15,0,0,0"
                 HasShadow="true"
                 Elevation="3"
                 HorizontalOptions="FillAndExpand"
                 Margin="0,0,0,0"
-                HeightRequest="60"
+                HeightRequest="100"
                 Grid.Row="0"
                 Grid.Column="0"
-                Grid.ColumnSpan="2" />
-
+                Grid.RowSpan="2" />
             <Rock:StyledView BackgroundColor="{Rock:PaletteColor App-Secondary}"
-                CornerRadius="0,9,0,0"
+                CornerRadius="0,0,15,0"
                 HasShadow="true"
                 Elevation="3"
                 HorizontalOptions="FillAndExpand"
                 Margin="0,0,0,0"
-                HeightRequest="60"
-                Grid.Row="0"
-                Grid.Column="2"
-                Grid.ColumnSpan="2" />
-
+                HeightRequest="100"
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.RowSpan="2" />
             <Label FontFamily="Raleway-Medium" Text="{{ group.Name | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
-                Margin="20,-10,10,0"
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="4"
+                Margin="20,20,20,0"
+                Grid.Row="0"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
                 StyleClass="text-lg" />
-
-            {% assign groupSubTitle = group | Attribute:'SubTitle' %}
-            <Label FontFamily="Raleway-Medium" Text="{{ groupSubTitle | Escape }}"
+             <Label FontFamily="Raleway-Medium" Text="{{ group.Description | TruncateWords:15 | Escape }}"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Start"
-                Margin="20,30,10,0"
+                Margin="20"
                 Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="4"
-                StyleClass="text-sm font-italic" />
-
-             <Label FontFamily="Raleway-Medium" Text="{{ group.Description | TruncateWords:30 | Escape }}"
-                VerticalTextAlignment="Center"
-                HorizontalTextAlignment="Start"
-                Margin="20,0,20,10"
-                HeightRequest="65"
-                Grid.Row="2"
-                Grid.Column="0"
-                Grid.ColumnSpan="4"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="2"
                 StyleClass="text" />
-
             {% if groupPage != null %}
                 <Button FontFamily="Raleway-Medium" Text="Team Info"
-                    StyleClass="btn,btn-outline-primary"
+                    StyleClass="btn,btn-primary"
                     TextColor="{Rock:PaletteColor App-Light}"
-                    HeightRequest="30"
-                    Margin="10,10,10,10"
+                    Margin="10,0,0,10"
                     Grid.Row="3"
-                    Grid.Column="0"
+                    Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Command="{Binding PushPage}"
                     CommandParameter="{{ groupPage }}?GroupGuid={{ group.Guid }}" />
             {% endif %}
-
-            {% assign scheduleDayAttribute = group | Attribute:'Day' %}
-            {% assign scheduleTimeAttribute = group | Attribute:'Time' %}
-            {% if scheduleDayAttribute != null or scheduleTimeAttribute != null %}
-            <Label FontFamily="Raleway-Medium" Text="{{ scheduleDayAttribute }}"
-                Margin="10,-20,10,0"
+            {% assign scheduleAttribute = group | Attribute:'Schedule1' %}
+            {% if scheduleAttribute != null %}
+            <Label FontFamily="Raleway-Medium" Text="{{ scheduleAttribute }}"
+                Margin="30"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"
                 Grid.Row="0"
                 Grid.Column="0"
-                Grid.ColumnSpan="2"
-                StyleClass="text" />
-
-            <Label FontFamily="Raleway-Medium" Text="{{ scheduleTimeAttribute }}"
-                Margin="10,15,10,0"
-                HorizontalTextAlignment="Center"
-                VerticalTextAlignment="Center"
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
+                Grid.RowSpan="2"
                 StyleClass="text" />
             {% endif %}
-
-
             {% if wholeLifeCategory != empty %}
-            <StackLayout Grid.Row="0"
-                Grid.Column="2"
-                Grid.ColumnSpan="2"
+            <StackLayout Grid.Row="2"
+                Grid.Column="0"
+                Grid.RowSpan="2"
                 Orientation="Vertical"
                 VerticalOptions="Center"
                 HorizontalOptions="Center" >
-                <Rock:Image HeightRequest="50"
+            <Rock:Image HeightRequest="50"
                 Source="{{wholeLifeCategoryImageLink}}"
                 Aspect="AspectFit"
                 VerticalOptions="Center" />
+            <Label FontFamily="Raleway-Medium" Text="{{ wholeLifeCategory.Value | Escape }}"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                 TextColor="{Rock:PaletteColor App-Primary}"
+                StyleClass="heading4" />
             </StackLayout>
-
             {% endif %}
-
             <Rock:FollowingIcon EntityTypeId="16"
                 EntityId="{{ group.Id }}"
                 FontSize="25"
@@ -153,9 +125,7 @@
                 Margin="0,0,20,10"
                 Grid.Row="3"
                 Grid.Column="3" />
-
         </Grid>
-
         {% endif %}
         {% endfor %}
     </StackLayout>

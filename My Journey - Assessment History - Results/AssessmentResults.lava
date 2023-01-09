@@ -1,0 +1,55 @@
+{% assign attributeList = '' %}
+{% assign itemId = PageParameter.ItemId %}
+{% sql %}
+    SELECT a.Name, av.Value Value, dv.Guid AS DVGuid
+        FROM
+            [AttributeValue] av
+            INNER JOIN Attribute a ON av.AttributeId = a.Id
+            LEFT JOIN DefinedValue dv ON a.Name like '%' + dv.Value + '%' AND dv.DefinedTypeId = 108
+            WHERE av.EntityId = {{itemId}}
+                AND av.AttributeId IN (8040, 8068, 8054, 8061, 8075, 8047)
+            ORDER BY av.ValueAsNumeric
+{% endsql %}
+{% contentchannelitem id:'120' securityenabled:'false' %}
+{% assign item = contentchannelitem %}
+{% assign content = item | Attribute:'MyJourneyAssessmentResults' %}
+{% endcontentchannelitem %}
+
+
+<StackLayout>
+    <Label FontFamily="Montserrat-Bold" Text="{{assessmentDate | Escape}} Assessment" StyleClass="text-title" HorizontalOptions="Center" Margin="35,5,35,15" />
+    <Label FontFamily="Montserrat-Light" Text="{{content | Escape}}"
+        HorizontalTextAlignment="Start"
+        Margin="35,10,35,15"
+        StyleClass="text-md" />
+    {% for av in results %}
+        {%assign trimmedName = av.Name | Remove:'Number' | Trim %}
+        <StackLayout>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding PushPage}" CommandParameter="d29ed247-7898-45f2-bf80-63869a6292cb?DefinedValueGuid={{ av.DVGuid}}" />
+            </StackLayout.GestureRecognizers>
+            <Grid RowSpacing="15" ColumnSpacing="0" Margin="30,0,30,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="60"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO"/>
+                </Grid.RowDefinitions>
+                <Label FontFamily="Montserrat-Bold"
+                    Text="{{trimmedName | Escape}} : {{av.Value | Escape}}"
+                    VerticalTextAlignment="Center"
+                    Margin="10"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    StyleClass="text-md"/>
+                <Rock:Icon IconClass="angle-right" IconFamily="FontAwesomeSolid" FontSize="32"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    Margin="0"
+                    Grid.Row="0"
+                    Grid.Column="1"/>
+            </Grid>
+        </StackLayout>
+    {%- endfor -%}
+</StackLayout>
