@@ -21,6 +21,12 @@
     <StackLayout>
         <Button FontFamily="Montserrat-Bold" StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Upcoming Events" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="70909791-34ec-46a5-9d6d-8fcf2cdf1704" />
         <Button FontFamily="Montserrat-Bold" StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Watch Messages" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding PushPage}" CommandParameter="9bbc8b74-0204-4744-a082-1e1c05b3eab3" />
+        <Button FontFamily="Montserrat-Bold" StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Pathfinder Guide" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding OpenBrowser}">
+            <Button.CommandParameter>
+                <Rock:OpenBrowserParameters Url="https://pathfinderstl.org/guide">
+                </Rock:OpenBrowserParameters>
+            </Button.CommandParameter>
+        </Button>
         <Button FontFamily="Montserrat-Bold" StyleClass="ml-16, flyout-menu-item" BackgroundColor="#424242" Text="Give Today" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Command="{Binding OpenBrowser}">
             <Button.CommandParameter>
                 <Rock:OpenBrowserParameters Url="https://my.pathfinderstl.org/give">
@@ -31,7 +37,7 @@
     </StackLayout>
     <StackLayout VerticalOptions="FillAndExpand"
             Orientation="Vertical">
-        <Rock:Image Source="https://res.cloudinary.com/pathfinderstl/image/upload/c_scale,w_500/v1646772686/AppFiles/PFFullLogoYellowWhite_mylfqt.png" Margin="30,30,30,10" Aspect="AspectFit" />
+        <Rock:Image Source="https://my.pathfinderstl.org/Content/MobileApp/PFFullLogoYellowWhite_mylfqt.png" Margin="30,30,30,10" Aspect="AspectFit" />
 
             <Rock:Icon IconClass="info-circle"
             FontSize="28"

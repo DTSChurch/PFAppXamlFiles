@@ -18,8 +18,8 @@
                 <RowDefinition Height="Auto"/>
 			</Grid.RowDefinitions>
 
-			
-			
+
+
         <Rock:Icon IconClass="phone-alt"
         FontSize="32"
         Grid.Row="0"
@@ -29,12 +29,12 @@
         VerticalTextAlignment="Center"
         TextColor="{Rock:PaletteColor App-Dark}" />
 
-        <Label Text="123-4567" 
+        <Label Text="123-4567"
         Grid.Row="0"
         Grid.Column="1"
-        StyleClass="text-title" 
+        StyleClass="text-title"
         Margin="10,20,0,0"
-        TextColor="{Rock:PaletteColor App-Primary}" 
+        TextColor="{Rock:PaletteColor App-Primary}"
         HorizontalTextAlignment="Start"
         VerticalTextAlignment="Center"  />
 
@@ -48,16 +48,16 @@
         VerticalTextAlignment="Center"
         TextColor="{Rock:PaletteColor App-Dark}" />
 
-        <Label Text="ethan@dtschurch.com" 
+        <Label Text="ethan@dtschurch.com"
         Grid.Row="1"
         Grid.Column="1"
         Margin="10,20,0,0"
-        StyleClass="text-title" 
-        TextColor="{Rock:PaletteColor App-Primary}" 
+        StyleClass="text-title"
+        TextColor="{Rock:PaletteColor App-Primary}"
         HorizontalTextAlignment="Start"
         VerticalTextAlignment="Center"  />
     </Grid>
-<Rock:Image Source="https://res.cloudinary.com/pathfinderstl/image/upload/c_scale,h_250/v1646772686/AppFiles/PFFullLogoYellowWhite_mylfqt.png" Margin="90" Aspect="AspectFit" />
-       
+<Rock:Image Source="https://my.pathfinderstl.org/Content/MobileApp/AppFiles/PFFullLogoYellowWhite_mylfqt.png" Margin="90" Aspect="AspectFit" />
+
 
 </StackLayout>
